@@ -1,0 +1,25 @@
+.Player{
+  display: inline-block;
+  margin: 5px;
+  position: relative;
+  width: 165px;
+  height: 115px;
+}
+
+.Player-background-image{
+  width: 20px;
+  opacity: 0.4;
+  padding: 15px;
+}
+
+.Player-name{
+  margin-top: 20px;
+  font-size: 20px;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 2px black;
+}
+
+.Player-info{
+  position: absolute;
+  top: 0;
+}

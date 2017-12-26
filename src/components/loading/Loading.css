@@ -1,0 +1,31 @@
+.Loading {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.5);
+}
+
+.Loading-logo {
+  animation: Loading-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.Loading-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.Loading-title {
+  font-size: 1.5em;
+}
+
+.Loading-intro {
+  font-size: large;
+}
+
+@keyframes Loading-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
