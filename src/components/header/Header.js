@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './style.css';
 
+
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+
 export default class Header extends Component {
   state = {
     loading: false
@@ -9,7 +12,11 @@ export default class Header extends Component {
   render() {
     return (
       <div className="Header">
-
+        <a onClick={()=>{
+          this.props.sortPlayers();
+        }}>
+          <i className='material-icons'>sort</i>
+        </a>
       </div>
     );
   }

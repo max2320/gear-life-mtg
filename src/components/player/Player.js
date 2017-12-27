@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './style.css';
 import Life from './life/Life';
+import Poison from './poison/Poison';
 
 import blackImg from '../../assets/black.svg';
 import blueImg from '../../assets/blue.svg';
@@ -8,7 +9,7 @@ import greenImg from '../../assets/green.svg';
 import incolorImg from '../../assets/incolor.svg';
 import redImg from '../../assets/red.svg';
 import whiteImg from '../../assets/white.svg';
-
+import Dice from '../dice/Dice';
 
 const colorDescription = {
   'white': 'Peace, law, structured, selflessness, equality',
@@ -26,9 +27,10 @@ const colorList = {
   // red: '#f9aa8f'
   green:	'#50A36D',
   blue:	'#3D7FB9',
-  black:	'#000000',
+  black:	'#1C2627',
   red: '#AC4546',
-  white:	'#FFFFFF'
+  white: '#fffbd5',
+
 }
 
 const colorImage = {
@@ -39,44 +41,33 @@ const colorImage = {
   red: redImg
 }
 
+
+const tabs = ['Life', 'Poison', 'Dice'];
+
 export default class Player extends Component {
   state = {
-    lifeCounter: 20
+    counters: {
+      life: 20,
+      poison: 0
+    },
+    tab: 'life'
   };
 
   constructor(props){
     super(props);
   }
 
-  updateLife(points){
+  updateCounter(counter, points){
+    var counters = this.state.counters;
+    counters[counter] = counters[counter] + points;
+
     this.setState({
-      lifeCounter: this.state.lifeCounter + points
+      counters: counters
     });
   }
 
-  onDamage(){
-    if(this.props.onDamage){
-      this.props.onDamage();
-    }
-
-    this.updateLife(-1);
-  }
-
-  onHeal(){
-    if(this.props.onHeal){
-      this.props.onHeal()
-    }
-
-    this.updateLife(1);
-  }
-
-  colorBackgroud(color){
-    return
-  }
-  // const colorImg = `url('${colorImage[colors[0]]}') 50% 50%`;
-
   colorBackgroud(){
-    const colors = this.props.color;
+    const colors = this.props.colors;
 
     if(colors.length > 1){
       const colorText = colors.map((color)=>{
@@ -89,23 +80,84 @@ export default class Player extends Component {
     }
   }
 
+  colorNames(){
+    return this.props.colors.join(' | ');
+  }
+
+  renderImages(){
+    return this.props.colors.map((color)=>{
+      return (<img
+        className='Player-background-image'
+        title={colorDescription[color]}
+        src={colorImage[color]} />)
+    });
+  }
+
+  renderLife(){
+    if(this.state.tab == 'life'){
+      return (
+        <Life
+          counter={this.state.counters.life}
+          onChange={(value)=>{this.updateCounter('life', value)}} />
+      );
+    }
+  }
+
+  renderPoison(){
+    if(this.state.tab == 'poison'){
+      return (
+        <Poison
+          counter={this.state.counters.poison}
+          onChange={(value)=>{this.updateCounter('poison', value)}} />
+      );
+    }
+  }
+
+  renderDice(){
+    if(this.state.tab == 'dice'){
+      return (
+        <Dice/>
+      );
+    }
+
+  }
+
+  renderTabs(){
+    return tabs.map((tab)=>{
+      const tabLower = tab.toLowerCase();
+      const active = tabLower == this.state.tab ? 'active' : '';
+
+      return (
+        <div className={`Player-tab-item ${active}`}
+          onClick={()=>{
+            this.setState({
+              tab: tabLower
+            });
+          }}>
+          {tab} {this.state.counters[tabLower] != undefined ?
+            (<small>({this.state.counters[tabLower]})</small>) : ''}
+        </div>
+      )
+    })
+  }
 
   render() {
     return (
       <div className={`Player`} style={{background: this.colorBackgroud()}}>
-        <img className='Player-background-image' src={colorImage[this.props.color[0]]} />
-        <div className='Player-info'>
-          <h1 className="Player-name">
-            {this.props.name}
-          </h1>
-          <Life
-            counter={this.state.lifeCounter}
-            onDamage={()=>{
-              this.onDamage()
-            }}
-            onHeal={()=>{
-              this.onHeal()
-            }}/>
+        <div className='Player-header'>
+          <strong>P{this.props.index}</strong>
+          {this.props.name}
+
+          <span className='Player-info'>
+            {this.renderImages()}
+          </span>
+        </div>
+        {this.renderLife()}
+        {this.renderPoison()}
+        {this.renderDice()}
+
+        <div className='Player-tab'>
+          {this.renderTabs()}
         </div>
       </div>
     );

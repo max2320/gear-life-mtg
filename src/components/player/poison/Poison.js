@@ -1,54 +1,46 @@
 import React, { Component } from 'react';
-import './style.css';
+import Counter from  '../counter/Counter';
 
 export default class Poison extends Component {
   state = {
     counter: 0
   }
 
-  updateLife(points){
+  constructor(props){
+    super(props);
+    this.state.counter = props.counter;
+  }
+
+  onAdd(){
+    if(this.state.counter < 10){
+      this.setState({
+        counter: this.state.counter + 1
+      });
+
+      this.props.onChange(1);
+    }
+  }
+
+  onSub(){
     this.setState({
-      counter: this.state.counter + points
+      counter: this.state.counter - 1
     });
-  }
 
-  onDamage(){
-    if(this.props.onDamage){
-      this.props.onDamage()
-    }
-    
-    this.updateLife(-1);
-  }
-
-  onHeal(){
-    if(this.props.onHeal){
-      this.props.onHeal()
-    }
-    this.updateLife(1);
+    this.props.onChange(-1);
   }
 
   render() {
     return (
-      <div className="Life">
-        <a
-          className="Life-damage"
-          onClick={(e)=>{
-            this.onDamage()
-          }}>
-          -
-        </a>
-        <div className="Life-counter">
-          {this.state.counter}
-        </div>
+      <Counter
+        counter={this.state.counter}
+        onAdd={()=>{
+          this.onAdd()
+        }}
+        onSub={()=>{
+          this.onSub()
 
-        <a
-          className="Life-heal"
-          onClick={(e)=>{
-            this.onHeal()
-          }}>
-          +
-        </a>
-      </div>
+        }}
+      />
     );
   }
 }

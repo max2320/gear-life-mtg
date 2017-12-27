@@ -1,0 +1,36 @@
+.Counter{
+  height: 70px;
+  width: 230px;
+  font-size: 50px;
+  line-height: 70px;
+  margin: 10px auto;
+  color: #ffffff;
+  text-shadow:
+}
+
+.Counter-side{
+  width: 50px;
+  display: inline-block;
+  height: 70px;
+  text-align: center;
+  background: rgba(0,0,0,0);
+  border: none;
+  color: #fff;
+  text-shadow: 1px 1px 2px black;
+}
+
+
+.Counter-side i{
+  font-size: 50px;
+  cursor: pointer;
+}
+
+
+.Counter-counter{
+  margin: 0px 5px;
+  text-align: center;
+  width: 80px;
+  padding: 0 10px;
+  font-size: 70px;
+  display: inline-block;
+}

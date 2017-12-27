@@ -5,6 +5,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.0",
+    "@fortawesome/react-fontawesome": "^0.0.17",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",

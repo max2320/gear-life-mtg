@@ -3,51 +3,68 @@ import './App.css';
 import Loading from './loading/Loading';
 import Header from './header/Header';
 import Player from './player/Player';
-import Dice from './dice/Dice';
 
-class App extends Component {
+export default class App extends Component {
   state = {
-    loading: false
+    loading: false,
+    players:[{
+      name: 'Max',
+      colors:[
+        'green',
+        'black',
+      ]
+    },{
+      name: 'Khronos',
+      colors:['blue','green', 'white']
+    },{
+      name: 'Fera',
+      colors:['red']
+    },{
+      name: 'DarkSenti',
+      colors:['white']
+    },{
+      name: 'Noob',
+      colors:['blue']
+    }],
+
+    sortPlayers: false
   }
 
-  renderLoading(){
-    if(!this.state.loading){
-      return (<Loading />);
+  sortPlayers(){
+    this.setState({
+      sortPlayers: true
+    });
+  }
+
+  renderPlayers(){
+    return this.state.players.map((player, index)=>{
+      return (
+        <Player {...player} index={index + 1} />);
+    });
+  }
+
+  renderSortPlayer(){
+    if(this.state.sortPlayers){
+      // return (
+      //   <SortPlayers
+      //     player={this.state.players}
+      //   />
+      // );
     }
   }
 
   render() {
-
     return (
       <div className="App">
-        <Header />
+        <Header sortPlayers={()=>{
+          this.sortPlayers()
+        }} />
 
-        <Player
-          name='Player'
-          color={['green', 'black']} />
-        <Player
-          name='Player'
-          color={['green','red']} />
-        <Player
-          name='Player'
-          color={['blue']} />
-        <Player
-          name='Player'
-          color={['black']} />
-        <Player
-          name='Player'
-          color={['white']} />
-
-        <Player
-          name='Player'
-          color={['green','white','black']} />
-        <Player
-          name='Player'
-          color={['red']} />
-        <Dice/>
+        <div className="App-container">
+          {this.renderPlayers()}
+        </div>
+        this.renderSortPlayer();
       </div>
     );
   }
 }
-
-export default App;

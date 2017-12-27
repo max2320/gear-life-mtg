@@ -1,0 +1,19 @@
+.Dice{
+  height: 90px;
+  text-align: center;
+}
+
+.Dice-number{
+  padding: 5px;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 2px black;
+  font-size: 40px;
+}
+
+.Dice-button{
+  background: rgba(0,0,0,0.2);
+  border: none;
+  color: #fff;
+  text-shadow: 1px 1px 2px black;
+  padding: 5px 10px;
+}

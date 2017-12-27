@@ -1,15 +1,27 @@
 .Player{
-  display: inline-block;
+  flex: 1;
+
   margin: 5px;
   position: relative;
-  width: 165px;
-  height: 115px;
+  /* width: 250px; */
+  height: 150px;
+  padding: 10px;
+
+  text-shadow: 1px 1px 2px black;
+}
+
+.Player-header{
+  color: #fff;
+}
+
+.Player-header strong{
+  margin-right: 5px;
 }
 
 .Player-background-image{
-  width: 20px;
+  width: 15px;
   opacity: 0.4;
-  padding: 15px;
+  margin: 0 0 0 5px;
 }
 
 .Player-name{
@@ -20,6 +32,24 @@
 }
 
 .Player-info{
-  position: absolute;
-  top: 0;
+  float: right;
+}
+
+.Player-tab{
+  width: 100%;
+  display: flex;
+}
+
+.Player-tab-item{
+  border-top: 2px rgba(0, 0, 0, 0.3) solid;
+  flex: 1;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  font-size: 12px;
+}
+
+.Player-tab-item.active{
+  border-top: 2px #dfdfdf solid;
 }
