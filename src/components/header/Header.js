@@ -12,7 +12,7 @@ export default class Header extends Component {
   render() {
     return (
       <div className="Header">
-        <a onClick={()=>{
+        <a className='Header-icon' onClick={()=>{
           this.props.sortPlayers();
         }}>
           <i className='material-icons'>sort</i>

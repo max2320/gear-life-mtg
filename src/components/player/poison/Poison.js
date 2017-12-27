@@ -22,7 +22,7 @@ export default class Poison extends Component {
   }
 
   onSub(){
-    if(this.state.counter > 1){  
+    if(this.state.counter > 1){
       this.setState({
         counter: this.state.counter - 1
       });
@@ -40,7 +40,6 @@ export default class Poison extends Component {
         }}
         onSub={()=>{
           this.onSub()
-
         }}
       />
     );

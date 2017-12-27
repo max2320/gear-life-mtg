@@ -2,5 +2,13 @@
   width: 100%;
   height: 40px;
   background-color: #dfdfdf;
-  color: white;
+}
+
+.Header-icon{
+  margin: 5px 10px;
+  font-size: 32px;
+}
+
+.Header-icon i{
+  color: #000;
 }

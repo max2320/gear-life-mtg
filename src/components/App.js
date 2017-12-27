@@ -3,6 +3,7 @@ import './App.css';
 import Loading from './loading/Loading';
 import Header from './header/Header';
 import Player from './player/Player';
+import SortPlayers from './sortPlayers/SortPlayers';
 
 export default class App extends Component {
   state = {
@@ -45,11 +46,16 @@ export default class App extends Component {
 
   renderSortPlayer(){
     if(this.state.sortPlayers){
-      // return (
-      //   <SortPlayers
-      //     player={this.state.players}
-      //   />
-      // );
+      return (
+        <SortPlayers
+          players={this.state.players}
+          onClose={()=>{
+            this.setState({
+              sortPlayers: false
+            })
+          }}
+        />
+      );
     }
   }
 
@@ -63,7 +69,8 @@ export default class App extends Component {
         <div className="App-container">
           {this.renderPlayers()}
         </div>
-        this.renderSortPlayer();
+
+        {this.renderSortPlayer()}
       </div>
     );
   }
