@@ -6,12 +6,12 @@ import redImg from '../assets/red.svg';
 import whiteImg from '../assets/white.svg';
 
 export const colorDescription = {
-  'white': 'Peace, law, structured, selflessness, equality',
-  'blue': 'Knowledge, deceit, cautious, deliberate, perfecting',
-  'black': 'Power, self-interest, death, sacrifice, uninhibited',
-  'red': 'Freedom, emotion, active, impulsive, destructive',
-  'green': 'Nature, wildlife, connected, spiritual, tradition',
-  'colorless': ''
+  white: 'Peace, law, structured, selflessness, equality',
+  blue: 'Knowledge, deceit, cautious, deliberate, perfecting',
+  black: 'Power, self-interest, death, sacrifice, uninhibited',
+  red: 'Freedom, emotion, active, impulsive, destructive',
+  green: 'Nature, wildlife, connected, spiritual, tradition',
+  colorless: ''
 }
 
 export const colorList = {
