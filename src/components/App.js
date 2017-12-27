@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import Loading from './loading/Loading';
 import Header from './header/Header';
 import Player from './player/Player';
 import SortPlayers from './sortPlayers/SortPlayers';
 
 export default class App extends Component {
   state = {
-    loading: false,
     players:[{
       name: 'Max',
       colors:[
@@ -17,16 +15,22 @@ export default class App extends Component {
     },{
       name: 'Khronos',
       colors:['blue','green', 'white']
-    },{
+    },
+    {
       name: 'Fera',
-      colors:['red']
-    },{
-      name: 'DarkSenti',
-      colors:['white']
-    },{
-      name: 'Noob',
-      colors:['blue']
-    }],
+      colors:['colorless']
+    }
+    // {
+    //   name: 'Fera',
+    //   colors:['red']
+    // },{
+    //   name: 'DarkSenti',
+    //   colors:['white']
+    // },{
+    //   name: 'Noob',
+    //   colors:['blue']
+    // }
+  ],
 
     sortPlayers: false
   }

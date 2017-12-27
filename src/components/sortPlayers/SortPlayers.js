@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './style.css';
 import d from 'dicejs'
-import {colorBackground, colorDescription, colorList, colorImage} from '../../lib/color';
+import {colorBackground} from '../../lib/color';
 
 export default class SortPlayers extends Component {
   numberGiven = [];
@@ -54,7 +54,7 @@ export default class SortPlayers extends Component {
   rollDice(name){
     var dice = this.rollD50();
 
-    while(this.numberGiven.indexOf(dice) != -1){
+    while(this.numberGiven.indexOf(dice) !== -1){
       dice = this.rollD50();
     }
 

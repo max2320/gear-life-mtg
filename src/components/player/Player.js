@@ -4,7 +4,7 @@ import Life from './life/Life';
 import Poison from './poison/Poison';
 
 import Dice from '../dice/Dice';
-import {colorBackground, colorDescription, colorList, colorImage} from '../../lib/color';
+import {colorBackground, colorDescription, colorImage} from '../../lib/color';
 
 
 const tabs = ['Life', 'Poison', 'Dice'];
@@ -17,10 +17,6 @@ export default class Player extends Component {
     },
     tab: 'life'
   };
-
-  constructor(props){
-    super(props);
-  }
 
   updateCounter(counter, points){
     var counters = this.state.counters;
@@ -40,12 +36,13 @@ export default class Player extends Component {
       return (<img
         className='Player-background-image'
         title={colorDescription[color]}
+        alt={color}
         src={colorImage[color]} />)
     });
   }
 
   renderLife(){
-    if(this.state.tab == 'life'){
+    if(this.state.tab === 'life'){
       return (
         <Life
           counter={this.state.counters.life}
@@ -55,7 +52,7 @@ export default class Player extends Component {
   }
 
   renderPoison(){
-    if(this.state.tab == 'poison'){
+    if(this.state.tab === 'poison'){
       return (
         <Poison
           counter={this.state.counters.poison}
@@ -65,7 +62,7 @@ export default class Player extends Component {
   }
 
   renderDice(){
-    if(this.state.tab == 'dice'){
+    if(this.state.tab === 'dice'){
       return (
         <Dice/>
       );
@@ -76,7 +73,7 @@ export default class Player extends Component {
   renderTabs(){
     return tabs.map((tab)=>{
       const tabLower = tab.toLowerCase();
-      const active = tabLower == this.state.tab ? 'active' : '';
+      const active = tabLower === this.state.tab ? 'active' : '';
 
       return (
         <div className={`Player-tab-item ${active}`}
@@ -85,7 +82,7 @@ export default class Player extends Component {
               tab: tabLower
             });
           }}>
-          {tab} {this.state.counters[tabLower] != undefined ?
+          {tab} {this.state.counters[tabLower] !== undefined ?
             (<small>({this.state.counters[tabLower]})</small>) : ''}
         </div>
       )

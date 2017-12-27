@@ -1,7 +1,7 @@
 import blackImg from '../assets/black.svg';
 import blueImg from '../assets/blue.svg';
 import greenImg from '../assets/green.svg';
-import incolorImg from '../assets/incolor.svg';
+import colorlessImg from '../assets/colorless.svg';
 import redImg from '../assets/red.svg';
 import whiteImg from '../assets/white.svg';
 
@@ -10,7 +10,8 @@ export const colorDescription = {
   'blue': 'Knowledge, deceit, cautious, deliberate, perfecting',
   'black': 'Power, self-interest, death, sacrifice, uninhibited',
   'red': 'Freedom, emotion, active, impulsive, destructive',
-  'green': 'Nature, wildlife, connected, spiritual, tradition'
+  'green': 'Nature, wildlife, connected, spiritual, tradition',
+  'colorless': ''
 }
 
 export const colorList = {
@@ -19,12 +20,12 @@ export const colorList = {
   // black: '#cbc2bf',
   // white: '#fffbd5',
   // red: '#f9aa8f'
-  green:	'#50A36D',
-  blue:	'#3D7FB9',
-  black:	'#1C2627',
-  red: '#AC4546',
-  white: '#FFF6A6',
-
+  green:	'#50a36d',
+  blue:	'#3d7fb9',
+  black:	'#1c2627',
+  red: '#ac4546',
+  white: '#fff6a6',
+  colorless: '#b3a195'
 }
 
 export const colorImage = {
@@ -32,7 +33,8 @@ export const colorImage = {
   blue: blueImg,
   black: blackImg,
   white: whiteImg,
-  red: redImg
+  red: redImg,
+  colorless: colorlessImg
 }
 
 
