@@ -6,12 +6,12 @@ import redImg from '../assets/red.svg';
 import whiteImg from '../assets/white.svg';
 
 export const colorDescription = {
-  'white': 'Peace, law, structured, selflessness, equality',
-  'blue': 'Knowledge, deceit, cautious, deliberate, perfecting',
-  'black': 'Power, self-interest, death, sacrifice, uninhibited',
-  'red': 'Freedom, emotion, active, impulsive, destructive',
-  'green': 'Nature, wildlife, connected, spiritual, tradition',
-  'colorless': ''
+  white: 'Peace, law, structured, selflessness, equality',
+  blue: 'Knowledge, deceit, cautious, deliberate, perfecting',
+  black: 'Power, self-interest, death, sacrifice, uninhibited',
+  red: 'Freedom, emotion, active, impulsive, destructive',
+  green: 'Nature, wildlife, connected, spiritual, tradition',
+  colorless: ''
 }
 
 export const colorList = {
@@ -39,13 +39,17 @@ export const colorImage = {
 
 
 export const colorBackground = (colors)=>{
-  if(colors.length > 1){
-    const colorText = colors.map((color)=>{
-      return colorList[color];
-    }).join(',');
+  if(colors.length > 0){
+    if(colors.length > 1){
+      const colorText = colors.map((color)=>{
+        return colorList[color];
+      }).join(',');
 
-    return `linear-gradient(-45deg, ${colorText})`;
+      return `linear-gradient(-45deg, ${colorText})`;
+    }else{
+      return colorList[colors[0]];
+    }
   }else{
-    return colorList[colors[0]];
+    return 'rgba(255,255,255,0.4)';
   }
 }

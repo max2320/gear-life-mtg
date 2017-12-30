@@ -1,0 +1,18 @@
+.Tabs{
+  width: 100%;
+  display: flex;
+}
+
+.Tabs-item{
+  border-top: 2px rgba(0, 0, 0, 0.3) solid;
+  flex: 1;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  font-size: 12px;
+}
+
+.Tabs-item.active{
+  border-top: 2px #dfdfdf solid;
+}

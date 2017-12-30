@@ -7,6 +7,18 @@ export default class Header extends Component {
     loading: false
   }
 
+  renderEditButton(){
+    if(!this.props.editMode){
+      return (
+        <a className='Header-icon' onClick={()=>{
+          this.props.editPlayers();
+        }}>
+          <i className='material-icons'>edit</i>
+        </a>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="Header">
@@ -15,6 +27,7 @@ export default class Header extends Component {
         }}>
           <i className='material-icons'>sort</i>
         </a>
+        {this.renderEditButton()}
       </div>
     );
   }

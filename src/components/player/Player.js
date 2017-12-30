@@ -4,10 +4,10 @@ import Life from './life/Life';
 import Poison from './poison/Poison';
 
 import Dice from '../dice/Dice';
+import Tabs from '../tabs/Tabs';
 import {colorBackground, colorDescription, colorImage} from '../../lib/color';
 
 
-const tabs = ['Life', 'Poison', 'Dice'];
 
 export default class Player extends Component {
   state = {
@@ -17,6 +17,27 @@ export default class Player extends Component {
     },
     tab: 'life'
   };
+
+  tabs = [{
+    key: 'life',
+    label: ()=>{
+      return (<span>Life {this.tabTitle('life')} </span>);
+    }
+  }, {
+    key: 'poison',
+    label: ()=>{
+      return (<span>Poison {this.tabTitle('poison')} </span>);
+    }
+  },{
+    key: 'dice',
+    label: 'Dice'
+  }];
+
+  tabTitle(key){
+    if(this.state.counters[key] !== undefined){
+      return (<small>({this.state.counters[key]})</small>)
+    }
+  }
 
   updateCounter(counter, points){
     var counters = this.state.counters;
@@ -71,22 +92,15 @@ export default class Player extends Component {
   }
 
   renderTabs(){
-    return tabs.map((tab)=>{
-      const tabLower = tab.toLowerCase();
-      const active = tabLower === this.state.tab ? 'active' : '';
-
-      return (
-        <div className={`Player-tab-item ${active}`}
-          onClick={()=>{
-            this.setState({
-              tab: tabLower
-            });
-          }}>
-          {tab} {this.state.counters[tabLower] !== undefined ?
-            (<small>({this.state.counters[tabLower]})</small>) : ''}
-        </div>
-      )
-    })
+    return (
+      <Tabs
+        tabs={this.tabs}
+        onClick={(key)=>{
+          this.setState({
+            tab: key
+          });
+        }}/>
+    );
   }
 
   render() {
@@ -104,9 +118,8 @@ export default class Player extends Component {
         {this.renderPoison()}
         {this.renderDice()}
 
-        <div className='Player-tab'>
-          {this.renderTabs()}
-        </div>
+
+        {this.renderTabs()}
       </div>
     );
   }

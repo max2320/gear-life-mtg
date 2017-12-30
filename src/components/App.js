@@ -2,36 +2,20 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './header/Header';
 import Player from './player/Player';
+import EditPlayer from './editPlayer/EditPlayer';
+
 import SortPlayers from './sortPlayers/SortPlayers';
 
 export default class App extends Component {
-  state = {
-    players:[{
-      name: 'Max',
-      colors:[
-        'green',
-        'black',
-      ]
-    },{
-      name: 'Khronos',
-      colors:['blue','green', 'white']
-    },
-    {
-      name: 'Fera',
-      colors:['colorless']
-    }
-    // {
-    //   name: 'Fera',
-    //   colors:['red']
-    // },{
-    //   name: 'DarkSenti',
-    //   colors:['white']
-    // },{
-    //   name: 'Noob',
-    //   colors:['blue']
-    // }
-  ],
+  players = [];
 
+
+  state = {
+    players: [{
+      name: 'Player 1',
+      colors: ['colorless']
+    }],
+    editMode: false,
     sortPlayers: false
   }
 
@@ -41,10 +25,38 @@ export default class App extends Component {
     });
   }
 
+  editPlayers(){
+    this.setState({
+      editMode: ! this.state.editMode
+    });
+  }
+
+
+  refreshPlayers(){
+    this.setState({
+      players: this.players
+    });
+  }
+
   renderPlayers(){
     return this.state.players.map((player, index)=>{
-      return (
-        <Player {...player} index={index + 1} />);
+      if(this.state.editMode){
+        return (
+          <EditPlayer
+            name={player.name}
+            colors={player.colors}
+            index={index + 1}
+            onUpdate={(player)=>{
+              if(JSON.stringify(this.players[index]) !== JSON.stringify(player)){
+                this.players[index] = player;
+                this.refreshPlayers();
+              }
+            }}
+          />
+        );
+      }else{
+        return (<Player {...player} index={index + 1} />);
+      }
     });
   }
 
@@ -63,15 +75,64 @@ export default class App extends Component {
     }
   }
 
+  addPlayer(){
+    var players = this.state.players;
+
+    players.push({
+      name: `Player ${players.length + 1}`,
+      colors: ['']
+    });
+
+    this.setState({
+      players: players
+    });
+  }
+
+
+  renderEditMode(){
+    if(this.state.editMode){
+      return (
+        <div className={`Player AddPlayer-button`}>
+          <div className='AddPlayer-button-add' onClick={()=>{
+            this.addPlayer();
+          }}>
+            <strong>
+              Add new
+            </strong>
+          </div>
+
+          <div className='AddPlayer-button-start' onClick={()=>{
+            this.setState({
+              editMode: false
+            });
+          }}>
+            <strong>
+              Start match
+            </strong>
+          </div>
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="App">
-        <Header sortPlayers={()=>{
-          this.sortPlayers()
-        }} />
+        <Header
+          editMode={this.state.editMode}
+          sortPlayers={()=>{
+            this.sortPlayers()
+          }}
+          editPlayers={()=>{
+            this.setState({
+              editMode: true
+            });
+          }}
+        />
 
         <div className="App-container">
           {this.renderPlayers()}
+          {this.renderEditMode()}
         </div>
 
         {this.renderSortPlayer()}
