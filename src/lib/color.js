@@ -39,13 +39,17 @@ export const colorImage = {
 
 
 export const colorBackground = (colors)=>{
-  if(colors.length > 1){
-    const colorText = colors.map((color)=>{
-      return colorList[color];
-    }).join(',');
+  if(colors.length > 0){
+    if(colors.length > 1){
+      const colorText = colors.map((color)=>{
+        return colorList[color];
+      }).join(',');
 
-    return `linear-gradient(-45deg, ${colorText})`;
+      return `linear-gradient(-45deg, ${colorText})`;
+    }else{
+      return colorList[colors[0]];
+    }
   }else{
-    return colorList[colors[0]];
+    return 'rgba(255,255,255,0.4)';
   }
 }

@@ -1,0 +1,71 @@
+.AddPlayer{
+  flex: 1 250px;
+
+  margin: 5px;
+  position: relative;
+  /* width: 250px; */
+  height: 150px;
+  padding: 10px;
+
+  text-shadow: 1px 1px 2px black;
+}
+.AddPlayer input{
+  background: none;
+  border: none;
+  border-bottom: 4px solid rgba(0,0,0,.5);
+  width: 200px;
+  max-width: 50%;
+  font-size: 20px;
+}
+
+.AddPlayer-header{
+  color: #fff;
+}
+
+.AddPlayer-header strong{
+  margin-right: 5px;
+}
+
+.AddPlayer-background-image{
+  width: 50%;
+  opacity: 0.4;
+  margin: 0 0 0 5px;
+}
+
+.AddPlayer-name{
+  margin-top: 20px;
+  font-size: 20px;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 2px black;
+}
+
+.AddPlayer-info{
+  float: right;
+}
+
+
+.AddPlayer-color{
+  width: 100%;
+  display: flex;
+}
+
+.AddPlayer-color-item{
+  border-bottom: 10px rgba(0, 0, 0, 0.5) solid;
+  flex: 1;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  font-size: 12px;
+}
+.AddPlayer-item img{
+  width: 100%;
+}
+.AddPlayer-color-item.active{
+
+  border-bottom: 10px #dfdfdf solid;
+}
+
+.AddPlayer-button{
+  color: #ffffff !important;
+}

@@ -22,7 +22,7 @@ export default class Poison extends Component {
   }
 
   onSub(){
-    if(this.state.counter > 1){
+    if(this.state.counter > 0){
       this.setState({
         counter: this.state.counter - 1
       });
