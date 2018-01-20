@@ -27,6 +27,11 @@ export default class Header extends Component {
         }}>
           <i className='material-icons'>sort</i>
         </a>
+        <a className='Header-icon' onClick={()=>{
+          this.props.resetMatch();
+        }}>
+          <i className='material-icons'>refresh</i>
+        </a>
         {this.renderEditButton()}
       </div>
     );

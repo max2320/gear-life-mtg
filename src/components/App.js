@@ -13,19 +13,26 @@ export default class App extends Component {
     players: [],
     editMode: false,
     sortPlayers: false,
-    playersCounter: 0
+    playersCounter: 0,
+    match: 0
   }
 
   componentDidMount(){
     if(localStorage.getItem('players')){
-      this.setState({
-        players: JSON.parse(localStorage.getItem('players'))
-      });
+      this.recoverSession();
     }
   }
 
+  recoverSession(){
+    this.setState({
+      players: JSON.parse(localStorage.getItem('players'))
+    });
+  }
+
   componentDidUpdate(){
-    localStorage.setItem('players', JSON.stringify(this.state.players));
+    if(JSON.stringify(localStorage.getItem('players')) !== JSON.stringify(this.state.players)){
+      localStorage.setItem('players', JSON.stringify(this.state.players));
+    }
   }
 
   sortPlayers(){
@@ -36,6 +43,7 @@ export default class App extends Component {
 
   editPlayers(){
     this.setState({
+      match: this.state.match + 1,
       editMode: ! this.state.editMode
     });
   }
@@ -56,7 +64,7 @@ export default class App extends Component {
         index={index + 1}
         onUpdate={(currentPlayer)=>{
           let hasChanges = this.state.players.filter((player)=>( player.code === currentPlayer.code && JSON.stringify(player) === JSON.stringify(currentPlayer) ));
-          if( hasChanges.length == 0 ){
+          if( hasChanges.length === 0 ){
             this.setState({
               players: this.state.players.map((player) => (player.code === currentPlayer.code ? currentPlayer : player))
             });
@@ -76,7 +84,7 @@ export default class App extends Component {
       if(this.state.editMode){
         return this.renderEdit(player, index);
       }else{
-        return (<Player {...player} index={index + 1} />);
+        return (<Player {...player} key={`${this.state.match}_P_${index}`} index={index + 1} />);
       }
     });
   }
@@ -147,6 +155,11 @@ export default class App extends Component {
           editPlayers={()=>{
             this.setState({
               editMode: true
+            });
+          }}
+          resetMatch={()=>{
+            this.setState({
+              match: this.state.match + 1
             });
           }}
         />
