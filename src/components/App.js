@@ -50,6 +50,20 @@ export default class App extends Component {
     });
   }
 
+  updatePlayer(currentPlayer){
+    let hasChanges = this.state.players.filter((player)=>( player.code === currentPlayer.code && JSON.stringify(player) === JSON.stringify(currentPlayer) ));
+    if( hasChanges.length === 0 ){
+      this.setState({
+        players: this.state.players.map((player) => (player.code === currentPlayer.code ? currentPlayer : player))
+      });
+    }
+  }
+  removePlayer(currentPlayer){
+    this.setState({
+      players: this.state.players.filter((player) => (player.code !== currentPlayer.code))
+    });
+  }
+
   refreshPlayers(){
     this.setState({
       players: this.players
@@ -65,21 +79,16 @@ export default class App extends Component {
         colors={player.colors}
         index={index + 1}
         onUpdate={(currentPlayer)=>{
-          let hasChanges = this.state.players.filter((player)=>( player.code === currentPlayer.code && JSON.stringify(player) === JSON.stringify(currentPlayer) ));
-          if( hasChanges.length === 0 ){
-            this.setState({
-              players: this.state.players.map((player) => (player.code === currentPlayer.code ? currentPlayer : player))
-            });
-          }
+          this.updatePlayer(currentPlayer);
         }}
         onDelete={(currentPlayer)=>{
-          this.setState({
-            players: this.state.players.filter((player) => (player.code !== currentPlayer.code))
-          });
+          console.log('asdf');
+          this.removePlayer(currentPlayer);
         }}
       />
     );
   }
+
 
   renderPlayers(){
     return this.state.players.map((player, index)=>{
@@ -110,7 +119,7 @@ export default class App extends Component {
     let player = {
       code: `player_${this.state.playersCounter}`,
       name: `Player ${this.state.players.length + 1}`,
-      colors: ['']
+      colors: ['colorless']
     };
 
     this.setState({
