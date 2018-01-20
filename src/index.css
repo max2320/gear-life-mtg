@@ -5,6 +5,7 @@ body {
   background-color: #4F4F4F;
   height: 100%;
   height: 100vh;
+  background: #4F4F4F url('/logo.png') 50% 20% no-repeat;
 }
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');

@@ -83,11 +83,6 @@ export default class EditPlayer extends Component {
       <div className={`AddPlayer`} style={{background: colorBackground(this.selectedColors())}}>
         <div className='AddPlayer-header'>
           <strong>
-            <i className="material-icons" onClick={()=>{
-              if(window.confirm("Are you sure?")){  
-                this.props.onDelete(this.state);
-              }
-            }}>close</i>
             P{this.props.index}
           </strong>
           <input
@@ -97,6 +92,11 @@ export default class EditPlayer extends Component {
               this.updateName(e.target.value);
             }}
           />
+          <i className="material-icons AddPlayer-remove" onClick={()=>{
+            if(window.confirm("Are you sure?")){
+              this.props.onDelete(this.state);
+            }
+          }}>close</i>
         </div>
 
         <div className='AddPlayer-color'>

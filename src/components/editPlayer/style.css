@@ -1,14 +1,19 @@
 .AddPlayer{
-  flex: 1 250px;
-
+  flex: 1 500px;
+  max-width: 100%;
   margin: 5px;
   position: relative;
-  /* width: 250px; */
   height: 150px;
   padding: 10px;
-
   text-shadow: 1px 1px 2px black;
 }
+
+@media screen and (max-width: 420px) {
+  .AddPlayer {
+    flex: 1 0;
+  }
+}
+
 .AddPlayer input{
   background: none;
   border: none;
@@ -20,6 +25,10 @@
 
 .AddPlayer-header{
   color: #fff;
+}
+
+.AddPlayer-remove{
+  float: right;
 }
 
 .AddPlayer-header strong{
@@ -61,8 +70,8 @@
 .AddPlayer-item img{
   width: 100%;
 }
-.AddPlayer-color-item.active{
 
+.AddPlayer-color-item.active{
   border-bottom: 10px #dfdfdf solid;
 }
 

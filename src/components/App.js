@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './header/Header';
 import Player from './player/Player';
-import EditPlayer from './editPlayer/EditPlayer';
 
+import EditPlayer from './editPlayer/EditPlayer';
 import SortPlayers from './sortPlayers/SortPlayers';
+
+const genKey= ()=> (parseInt(Math.random()*10000000));
+
 
 export default class App extends Component {
   players = [];
@@ -20,6 +23,8 @@ export default class App extends Component {
   componentDidMount(){
     if(localStorage.getItem('players')){
       this.recoverSession();
+    }else{
+      this.editPlayers();
     }
   }
 
@@ -33,6 +38,13 @@ export default class App extends Component {
     if(JSON.stringify(localStorage.getItem('players')) !== JSON.stringify(this.state.players)){
       localStorage.setItem('players', JSON.stringify(this.state.players));
     }
+
+    if(this.state.sortPlayers){
+      document.querySelector('body').style.overflow='hidden';
+    }else{
+      document.querySelector('body').style.overflow='';
+
+    }
   }
 
   sortPlayers(){
@@ -45,6 +57,20 @@ export default class App extends Component {
     this.setState({
       match: this.state.match + 1,
       editMode: ! this.state.editMode
+    });
+  }
+
+  updatePlayer(currentPlayer){
+    let hasChanges = this.state.players.filter((player)=>( player.code === currentPlayer.code && JSON.stringify(player) === JSON.stringify(currentPlayer) ));
+    if( hasChanges.length === 0 ){
+      this.setState({
+        players: this.state.players.map((player) => (player.code === currentPlayer.code ? currentPlayer : player))
+      });
+    }
+  }
+  removePlayer(currentPlayer){
+    this.setState({
+      players: this.state.players.filter((player) => (player.code !== currentPlayer.code))
     });
   }
 
@@ -63,28 +89,23 @@ export default class App extends Component {
         colors={player.colors}
         index={index + 1}
         onUpdate={(currentPlayer)=>{
-          let hasChanges = this.state.players.filter((player)=>( player.code === currentPlayer.code && JSON.stringify(player) === JSON.stringify(currentPlayer) ));
-          if( hasChanges.length === 0 ){
-            this.setState({
-              players: this.state.players.map((player) => (player.code === currentPlayer.code ? currentPlayer : player))
-            });
-          }
+          this.updatePlayer(currentPlayer);
         }}
         onDelete={(currentPlayer)=>{
-          this.setState({
-            players: this.state.players.filter((player) => (player.code !== currentPlayer.code))
-          });
+          console.log('asdf');
+          this.removePlayer(currentPlayer);
         }}
       />
     );
   }
+
 
   renderPlayers(){
     return this.state.players.map((player, index)=>{
       if(this.state.editMode){
         return this.renderEdit(player, index);
       }else{
-        return (<Player {...player} key={`${this.state.match}_P_${index}`} index={index + 1} />);
+        return (<Player {...player} key={`${this.state.match}_P_${index}_${genKey()}`} index={index + 1} />);
       }
     });
   }
@@ -105,16 +126,20 @@ export default class App extends Component {
   }
 
   addPlayer(){
-    let player = {
-      code: `player_${this.state.playersCounter}`,
-      name: `Player ${this.state.players.length + 1}`,
-      colors: ['']
-    };
+    if(this.state.players.length < 10){
+      let player = {
+        code: `player_${this.state.playersCounter}_${genKey()}`,
+        name: `Player ${this.state.players.length + 1}`,
+        colors: ['colorless']
+      };
 
-    this.setState({
-      players: [...this.state.players, player],
-      playersCounter: this.state.playersCounter + 1
-    });
+      this.setState({
+        players: [...this.state.players, player],
+        playersCounter: this.state.playersCounter + 1
+      });
+    }else{
+      alert('Sorry, but the max players support are 10 players')
+    }
   }
 
 
@@ -131,9 +156,13 @@ export default class App extends Component {
           </div>
 
           <div className='AddPlayer-button-start' onClick={()=>{
-            this.setState({
-              editMode: false
-            });
+            if(this.state.players.length < 2){
+              alert('Add at least 2 players');
+            }else{
+              this.setState({
+                editMode: false
+              });
+            }
           }}>
             <strong>
               Start match

@@ -3,13 +3,7 @@
 }
 .App-container {
   display: flex;
-  flex-wrap: wrap;
-}
-
-@media screen and (max-width: 420px) {
-  .App-container {
-    flex-direction: column;
-  }
+  flex-flow: row wrap;
 }
 
 .App-logo {
