@@ -6,6 +6,9 @@ import Player from './player/Player';
 import EditPlayer from './editPlayer/EditPlayer';
 import SortPlayers from './sortPlayers/SortPlayers';
 
+const genKey= ()=> (parseInt(Math.random()*10000000));
+
+
 export default class App extends Component {
   players = [];
 
@@ -95,7 +98,7 @@ export default class App extends Component {
       if(this.state.editMode){
         return this.renderEdit(player, index);
       }else{
-        return (<Player {...player} key={`${this.state.match}_P_${index}`} index={index + 1} />);
+        return (<Player {...player} key={`${this.state.match}_P_${index}_${genKey()}`} index={index + 1} />);
       }
     });
   }
@@ -117,7 +120,7 @@ export default class App extends Component {
 
   addPlayer(){
     let player = {
-      code: `player_${this.state.playersCounter}`,
+      code: `player_${this.state.playersCounter}_${genKey()}`,
       name: `Player ${this.state.players.length + 1}`,
       colors: ['colorless']
     };

@@ -31,10 +31,12 @@
 
 .SortPlayers-container{
   display: flex;
+  flex-flow: row wrap;
+  overflow-y: auto;
 }
 
 .SortPlayers-player{
-  flex: 1 40px;
+  flex: 1 100px;
   height: 50px;
   margin: 5px;
   padding: 10px;
