@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './header/Header';
 import Player from './player/Player';
-import EditPlayer from './editPlayer/EditPlayer';
 
+import EditPlayer from './editPlayer/EditPlayer';
 import SortPlayers from './sortPlayers/SortPlayers';
 
 export default class App extends Component {
@@ -20,6 +20,8 @@ export default class App extends Component {
   componentDidMount(){
     if(localStorage.getItem('players')){
       this.recoverSession();
+    }else{
+      this.editPlayers();
     }
   }
 
@@ -131,9 +133,13 @@ export default class App extends Component {
           </div>
 
           <div className='AddPlayer-button-start' onClick={()=>{
-            this.setState({
-              editMode: false
-            });
+            if(this.state.players.length < 2){
+              alert('Add at least 2 players');
+            }else{
+              this.setState({
+                editMode: false
+              });
+            }
           }}>
             <strong>
               Start match
