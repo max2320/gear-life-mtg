@@ -106,7 +106,6 @@ export default class SortPlayers extends Component {
           <div className='SortPlayers-container'>
             {this.renderPlayers()}
           </div>
-
         </div>
       </div>
     );

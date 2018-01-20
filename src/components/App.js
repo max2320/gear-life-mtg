@@ -38,6 +38,13 @@ export default class App extends Component {
     if(JSON.stringify(localStorage.getItem('players')) !== JSON.stringify(this.state.players)){
       localStorage.setItem('players', JSON.stringify(this.state.players));
     }
+
+    if(this.state.sortPlayers){
+      document.querySelector('body').style.overflow='hidden';
+    }else{
+      document.querySelector('body').style.overflow='';
+
+    }
   }
 
   sortPlayers(){

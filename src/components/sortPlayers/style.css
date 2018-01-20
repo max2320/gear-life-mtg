@@ -7,6 +7,16 @@
   position: relative;
 }
 
+@media screen and (max-width: 480px) {
+  .SortPlayers {
+    width: 95%;
+    height: 100%;
+  }
+  .SortPlayers-overlay{
+    padding: 0;
+  }
+}
+
 .SortPlayers-close{
   position: absolute;
   right: 10px;
@@ -20,7 +30,7 @@
   bottom: 0;
   left: 0;
   position: fixed;
-  padding: 10px;
+
 }
 
 .SortPlayers-header{
@@ -33,6 +43,7 @@
   display: flex;
   flex-flow: row wrap;
   overflow-y: auto;
+  height: 385px;
 }
 
 .SortPlayers-player{
