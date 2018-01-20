@@ -31,6 +31,15 @@
   flex-direction: row;
 }
 
+.AddPlayer-button{
+  flex: 1 500px;
+  min-width: 90%;
+  margin: 5px;
+  position: relative;
+  height: 150px;
+  padding: 10px;
+}
+
 .AddPlayer-button-add{
   margin: 5px;
   flex: 1;
