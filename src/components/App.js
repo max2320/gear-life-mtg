@@ -159,9 +159,13 @@ export default class App extends Component {
             if(this.state.players.length < 2){
               alert('Add at least 2 players');
             }else{
-              this.setState({
-                editMode: false
-              });
+              if(this.state.players.filter((player)=>(player.colors.length == 0)).length > 0){
+                alert('Please select one color');
+              }else{
+                this.setState({
+                  editMode: false
+                });
+              }
             }
           }}>
             <strong>
