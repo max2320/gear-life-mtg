@@ -22,6 +22,10 @@
   color: #fff;
 }
 
+.AddPlayer-remove{
+  float: right;
+}
+
 .AddPlayer-header strong{
   margin-right: 5px;
 }
@@ -61,8 +65,8 @@
 .AddPlayer-item img{
   width: 100%;
 }
-.AddPlayer-color-item.active{
 
+.AddPlayer-color-item.active{
   border-bottom: 10px #dfdfdf solid;
 }
 
