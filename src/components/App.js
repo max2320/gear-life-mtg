@@ -126,16 +126,20 @@ export default class App extends Component {
   }
 
   addPlayer(){
-    let player = {
-      code: `player_${this.state.playersCounter}_${genKey()}`,
-      name: `Player ${this.state.players.length + 1}`,
-      colors: ['colorless']
-    };
+    if(this.state.players.length < 10){
+      let player = {
+        code: `player_${this.state.playersCounter}_${genKey()}`,
+        name: `Player ${this.state.players.length + 1}`,
+        colors: ['colorless']
+      };
 
-    this.setState({
-      players: [...this.state.players, player],
-      playersCounter: this.state.playersCounter + 1
-    });
+      this.setState({
+        players: [...this.state.players, player],
+        playersCounter: this.state.playersCounter + 1
+      });
+    }else{
+      alert('Sorry, but the max players support are 10 players')
+    }
   }
 
 
