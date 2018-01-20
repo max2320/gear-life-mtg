@@ -11,12 +11,10 @@ export default class App extends Component {
 
 
   state = {
-    players: [{
-      name: 'Player 1',
-      colors: ['colorless']
-    }],
+    players: [],
     editMode: false,
-    sortPlayers: false
+    sortPlayers: false,
+    playersCounter: 0
   }
 
   sortPlayers(){
@@ -31,29 +29,41 @@ export default class App extends Component {
     });
   }
 
-
   refreshPlayers(){
     this.setState({
       players: this.players
     });
   }
 
+  renderEdit(player, index){
+    return (
+      <EditPlayer
+        key={player.code}
+        code={player.code}
+        name={player.name}
+        colors={player.colors}
+        index={index + 1}
+        onUpdate={(currentPlayer)=>{
+          let hasChanges = this.state.players.filter((player)=>( player.code === currentPlayer.code && JSON.stringify(player) === JSON.stringify(currentPlayer) ));
+          if( hasChanges.length == 0 ){
+            this.setState({
+              players: this.state.players.map((player) => (player.code === currentPlayer.code ? currentPlayer : player))
+            });
+          }
+        }}
+        onDelete={(currentPlayer)=>{
+          this.setState({
+            players: this.state.players.filter((player) => (player.code !== currentPlayer.code))
+          });
+        }}
+      />
+    );
+  }
+
   renderPlayers(){
     return this.state.players.map((player, index)=>{
       if(this.state.editMode){
-        return (
-          <EditPlayer
-            name={player.name}
-            colors={player.colors}
-            index={index + 1}
-            onUpdate={(player)=>{
-              if(JSON.stringify(this.players[index]) !== JSON.stringify(player)){
-                this.players[index] = player;
-                this.refreshPlayers();
-              }
-            }}
-          />
-        );
+        return this.renderEdit(player, index);
       }else{
         return (<Player {...player} index={index + 1} />);
       }
@@ -76,15 +86,15 @@ export default class App extends Component {
   }
 
   addPlayer(){
-    var players = this.state.players;
-
-    players.push({
-      name: `Player ${players.length + 1}`,
+    let player = {
+      code: `player_${this.state.playersCounter}`,
+      name: `Player ${this.state.players.length + 1}`,
       colors: ['']
-    });
+    };
 
     this.setState({
-      players: players
+      players: [...this.state.players, player],
+      playersCounter: this.state.playersCounter + 1
     });
   }
 
