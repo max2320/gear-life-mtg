@@ -9,12 +9,23 @@ import SortPlayers from './sortPlayers/SortPlayers';
 export default class App extends Component {
   players = [];
 
-
   state = {
     players: [],
     editMode: false,
     sortPlayers: false,
     playersCounter: 0
+  }
+
+  componentDidMount(){
+    if(localStorage.getItem('players')){
+      this.setState({
+        players: JSON.parse(localStorage.getItem('players'))
+      });
+    }
+  }
+
+  componentDidUpdate(){
+    localStorage.setItem('players', JSON.stringify(this.state.players));
   }
 
   sortPlayers(){
