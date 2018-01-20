@@ -1,7 +1,7 @@
 {
-  "name": "MTG Counter",
-  "short_name": "MTG Counter",
-  "description": "MTG Life Counter",
+  "name": "Gear Life MTG",
+  "short_name": "Gear Life MTG",
+  "description": "Life Counter form MTG",
   "icons": [
     {
       "src": "favicon.ico",

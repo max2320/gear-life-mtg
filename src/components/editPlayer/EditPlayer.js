@@ -12,9 +12,12 @@ export default class EditPlayer extends Component {
     red: false,
     green: false,
     colorless: false
-  }
+  };
+
+  oldState = {};
 
   state= {
+    code: '',
     name: '',
     colors: []
   }
@@ -26,7 +29,11 @@ export default class EditPlayer extends Component {
       this.colors[color] = true
     });
 
-    this.state.name = props.name
+    this.state={
+      name: props.name,
+      code: props.code,
+      colors: props.colors
+    }
   }
 
   updateName(name){
@@ -42,7 +49,10 @@ export default class EditPlayer extends Component {
   }
 
   componentDidUpdate(){
-    this.props.onUpdate(this.state);
+    if(JSON.stringify(this.oldState) !== JSON.stringify(this.state)){
+      this.oldState = this.state;
+      this.props.onUpdate(this.state);
+    }
   }
 
   renderImages(){
@@ -65,16 +75,21 @@ export default class EditPlayer extends Component {
   }
 
   selectedColors(){
-    return colorNames.filter((color) => {
-      return this.colors[color];
-    });
+    return colorNames.filter((color) => (this.colors[color]));
   }
 
   render() {
     return (
       <div className={`AddPlayer`} style={{background: colorBackground(this.selectedColors())}}>
         <div className='AddPlayer-header'>
-          <strong>P{this.props.index}</strong>
+          <strong>
+            <i className="material-icons" onClick={()=>{
+              if(window.confirm("Are you sure?")){  
+                this.props.onDelete(this.state);
+              }
+            }}>close</i>
+            P{this.props.index}
+          </strong>
           <input
             value={this.state.name}
             placeholder={'Name of the player'}
