@@ -20,23 +20,37 @@
 
     <link rel="icon" sizes="192x192" href="%PUBLIC_URL%/logo_192.png">
     <link rel="icon" sizes="128x128" href="%PUBLIC_URL%/logo_128.png">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="//www.googletagmanager.com/gtag/js?id=UA-42927176-2"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-42927176-2');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PRCGWN5');</script>
+    <!-- End Google Tag Manager -->
+
   </head>
   <body>
     <noscript>
+      <!-- Google Tag Manager (noscript) -->
+      <iframe src="//www.googletagmanager.com/ns.html?id=GTM-PRCGWN5"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      <!-- End Google Tag Manager (noscript) -->
       You need to enable JavaScript to run this app.
     </noscript>
 
     <div id="root"></div>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42927176-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-42927176-2');
-    </script>
 
   </body>
 </html>
