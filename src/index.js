@@ -4,10 +4,14 @@ import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+try{
+  ReactDOM.render(<App />, document.getElementById('root'));
+  registerServiceWorker();
+}catch(error){
+   document.querySelector('#error').append(error)
+}
 
-// 
+//
 // function gtag(){
 //   window.dataLayer = window.dataLayer || [];
 //   dataLayer.push(arguments);
