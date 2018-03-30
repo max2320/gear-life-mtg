@@ -8,7 +8,8 @@ ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
 
 
-window.dataLayer = window.dataLayer || [];
+window.dataLayer = [];
+
 function gtag(){
   dataLayer.push(arguments);
 }
