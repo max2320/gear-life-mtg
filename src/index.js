@@ -8,9 +8,8 @@ ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
 
 
-window.dataLayer = [];
-
 function gtag(){
+  window.dataLayer = window.dataLayer || [];
   dataLayer.push(arguments);
 }
 gtag('js', new Date());
