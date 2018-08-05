@@ -52,7 +52,7 @@ export default class SortPlayers extends Component {
       return (
         <div
           className='SortPlayers-winner'
-          style={{background: player.colors}}
+          style={{background: colorBackground(player.colors)}}
         >
           <div>Winner</div>
           <div className='SortPlayers-winner-name'>
@@ -68,7 +68,7 @@ export default class SortPlayers extends Component {
       const player = this.props.playersList[playerSorted.playerKey];
 
       return (
-        <div className='SortPlayers-player' style={{background: player.colors}}>
+        <div className='SortPlayers-player' style={{background: colorBackground(player.colors)}}>
           <div className='SortPlayers-player-name'>
             {player.name}
           </div>
