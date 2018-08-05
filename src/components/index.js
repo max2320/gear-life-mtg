@@ -72,19 +72,18 @@ export default class App extends Component {
   renderPlayers(){
     return this.state.playersOrder.map((playerKey)=>{
       const player = this.playersList[playerKey];
-      return '';
-      // return (
-      //   <Player
-      //     {...player}
-      //     key={playerKey}
-      //     onRemove={()=>{
-      //       this.removePlayer(playerKey);
-      //     }}
-      //     onUpdate={(data)=>{
-      //       this.playerList[playerKey] = data;
-      //     }}
-      //   />
-      // );
+      return (
+        <Player
+          {...player}
+          key={playerKey}
+          onRemove={()=>{
+            this.removePlayer(playerKey);
+          }}
+          onUpdate={(data)=>{
+            this.playerList[playerKey] = data;
+          }}
+        />
+      );
     });
   }
 
