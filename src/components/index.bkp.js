@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
+import './style.css';
 import Header from './header/Header';
-import Player from './player/Player';
 
-import EditPlayer from './editPlayer/EditPlayer';
-import SortPlayers from './sortPlayers/SortPlayers';
-
-const genKey= ()=> (parseInt(Math.random()*10000000));
-
+import SortPlayers from './sort_players';
 
 export default class App extends Component {
   players = [];
@@ -80,24 +75,7 @@ export default class App extends Component {
     });
   }
 
-  renderEdit(player, index){
-    return (
-      <EditPlayer
-        key={player.code}
-        code={player.code}
-        name={player.name}
-        colors={player.colors}
-        index={index + 1}
-        onUpdate={(currentPlayer)=>{
-          this.updatePlayer(currentPlayer);
-        }}
-        onDelete={(currentPlayer)=>{
-          console.log('asdf');
-          this.removePlayer(currentPlayer);
-        }}
-      />
-    );
-  }
+
 
 
   renderPlayers(){
@@ -127,7 +105,7 @@ export default class App extends Component {
 
   addPlayer(){
     if(this.state.players.length < 10){
-      let player = {
+      const player = {
         code: `player_${this.state.playersCounter}_${genKey()}`,
         name: `Player ${this.state.players.length + 1}`,
         colors: ['colorless']
@@ -198,7 +176,7 @@ export default class App extends Component {
         />
 
         <div className="App-container">
-          {this.renderPlayers()}
+          <PlayerList
           {this.renderEditMode()}
         </div>
 

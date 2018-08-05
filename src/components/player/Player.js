@@ -3,7 +3,7 @@ import './style.css';
 import Life from './life/Life';
 import Poison from './poison/Poison';
 
-import Dice from '../dice/Dice';
+import Dice from '../dice';
 import Tabs from '../tabs/Tabs';
 import {colorBackground, colorDescription, colorImage} from '../../lib/color';
 

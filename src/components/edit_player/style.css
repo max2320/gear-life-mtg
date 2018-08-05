@@ -73,6 +73,8 @@
 
 .AddPlayer-color-item.active{
   border-bottom: 10px #dfdfdf solid;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 5px 5px 0 0;
 }
 
 .AddPlayer-button{

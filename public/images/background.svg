@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width="297mm" height="210mm" clip-rule="evenodd" fill-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" version="1.1" viewBox="0 0 29700 21000" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:#373435;stroke-width:20;stroke-opacity:0.121569}
+    .fil0 {fill:none;fill-rule:nonzero}
+   ]]>
+  </style>
+    <clipPath id="b" clip-rule="nonzero">
+     <path d="m0 0h29700v21000h-29700v-21000z"/>
+    </clipPath>
+    <clipPath id="a">
+     <path d="m0 0h29700v21000h-29700v-21000z"/>
+    </clipPath>
+ </defs>
+   <g clip-path="url(#b)">
+    <image width="29700" height="21000" xlink:href="Background_Images\Background_ImgID1.png"/>
+   </g>
+   <polygon class="fil0 str0" points="0 0 29700 0 29700 21000 0 21000"/>
+   <g clip-path="url(#a)">
+    <image width="29700" height="21000" xlink:href="Background_Images\Background_ImgID2.png"/>
+   </g>
+</svg>

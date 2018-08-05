@@ -6,7 +6,7 @@ export default class Dice extends Component {
   state={
     dice: '0'
   };
-  
+
   onClick(){
     console.log(this.rollDice())
     this.setState({
@@ -21,9 +21,9 @@ export default class Dice extends Component {
   render() {
     return (
       <div className="Dice">
-        <div className='Dice-number'>{this.state.dice}</div>
-        <button className='Dice-button'
-          onClick={()=>{this.onClick()}}>Roll</button>
+        <div className='Dice-number' onClick={()=>{this.onClick()}} >{this.state.dice}</div>
+
+        <button className='Dice-button' >Roll</button>
       </div>
     );
   }

@@ -15,11 +15,6 @@ export const colorDescription = {
 }
 
 export const colorList = {
-  // green: '#9bd3ae',
-  // blue: '#aae0fa',
-  // black: '#cbc2bf',
-  // white: '#fffbd5',
-  // red: '#f9aa8f'
   green:	'#50a36d',
   blue:	'#3d7fb9',
   black:	'#1c2627',

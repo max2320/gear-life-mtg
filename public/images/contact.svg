@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+<svg width="400mm" height="300mm" clip-rule="evenodd" fill-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" version="1.1" viewBox="0 0 40000 30000" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil1 {fill:#FEFEFE}
+    .fil0 {fill:#282829}
+   ]]>
+  </style>
+ </defs>
+   <path class="fil0" d="m17067 17522l1869-1138 1870 1138v1805c0 220-180 400-400 400h-2939c-220 0-400-180-400-400v-1805z"/>
+   <polygon class="fil1" points="17402 17575 18919 16657 20434 17590 18954 18633"/>
+   <polygon class="fil1" points="17305 17786 18193 18428 17322 19224"/>
+   <polygon class="fil1" points="20549 17786 19661 18428 20532 19224"/>
+   <polygon class="fil1" points="17450 19462 20414 19462 19435 18554 18934 18904 18394 18571"/>
+</svg>

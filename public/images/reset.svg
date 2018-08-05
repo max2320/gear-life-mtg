@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="98.655mm" height="98.655mm" clip-rule="evenodd" fill-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" version="1.1" viewBox="0 0 9865.4999 9865.4999" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><metadata><rdf:RDF><cc:Work rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/><dc:title/></cc:Work></rdf:RDF></metadata>
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:#0D0F0F}
+   ]]>
+  </style>
+ </defs>
+ <g transform="translate(-15876 -1060.8)">
+  <path class="fil0" d="m20746 10481c-327 327-859 327-1186 0l-3239-3239c-327-328-327-859 0-1187l4549-4549c328-327 859-327 1187 0l3239 3239c327 328 327 859 0 1186zm3526-3692h-3640l1333-948c-495-393-1068-589-1717-589-324 0-547 61-666 185-120 124-179 348-179 673 0 897 461 1854 1383 2870l-1050 1064c-1222-1487-1832-2815-1832-3986 0-700 210-1258 633-1672s986-621 1685-621c854 0 1786 325 2794 974l781-1333z" fill="#0d0f0f"/>
+ </g>
+</svg>
