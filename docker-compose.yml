@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    image: node:11-alpine
+    working_dir: /usr/src/app
+    command: yarn start
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "3000:3000"
