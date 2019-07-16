@@ -10,11 +10,11 @@ export default class Header extends Component {
   renderEditButton(){
     if(!this.props.editMode){
       return (
-        <a className='Header-icon' onClick={()=>{
+        <span className='Header-icon' onClick={()=>{
           this.props.editPlayers();
         }}>
           <i className='material-icons'>edit</i>
-        </a>
+        </span>
       );
     }
   }
@@ -22,16 +22,16 @@ export default class Header extends Component {
   render() {
     return (
       <div className="Header">
-        <a className='Header-icon' onClick={()=>{
+        <span className='Header-icon' onClick={()=>{
           this.props.sortPlayers();
         }}>
           <i className='material-icons'>sort</i>
-        </a>
-        <a className='Header-icon' onClick={()=>{
+        </span>
+        <span className='Header-icon' onClick={()=>{
           this.props.resetMatch();
         }}>
           <i className='material-icons'>refresh</i>
-        </a>
+        </span>
         {this.renderEditButton()}
       </div>
     );

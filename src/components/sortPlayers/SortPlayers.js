@@ -92,11 +92,11 @@ export default class SortPlayers extends Component {
           <div className="SortPlayers-header">
             Roll Dices
           </div>
-          <a className="SortPlayers-close" onClick={()=>{
+          <span className="SortPlayers-close" onClick={()=>{
             this.close()
           }}>
             <i className='material-icons'>close</i>
-          </a>
+          </span>
           <div className='SortPlayers-winner'  style={{background: this.state.winnerColor}}>
             <div>Winner</div>
             <div className='SortPlayers-winner-name'>
