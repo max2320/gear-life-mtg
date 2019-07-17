@@ -35,3 +35,33 @@ To access go to https://gearlife.maxfs.com
 ## Feature requests
 
 You can create a [Issue](https://github.com/max2320/gear-life-mtg/issues) or fork and submit a pull-request
+
+
+## Run
+
+### With docker
+
+**Running**
+```bash
+$ docker-compose up
+```
+
+**build**
+```bash
+$ docker-compose run --rm -e NODE_ENV=production -e PUBLIC_URL='https://gearlife.maxfs.com' web yarn build
+```
+
+
+### Without docker
+
+**Running**
+```bash
+$ yarn start
+```
+
+**build**
+```bash
+$ export NODE_ENV=production
+$ export PUBLIC_URL='https://gearlife.maxfs.com'
+$ yarn build
+```
