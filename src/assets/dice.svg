@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg439"
+   viewBox="0 0 2885.6277 2704.1771"
+   style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
+   version="1.1"
+   height="27.041771mm"
+   width="28.856277mm"
+   xml:space="preserve"
+   sodipodi:docname="dice.svg"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1920"
+   inkscape:window-height="1031"
+   id="namedview97"
+   showgrid="false"
+   fit-margin-top="5"
+   fit-margin-left="5"
+   fit-margin-bottom="5"
+   fit-margin-right="5"
+   inkscape:zoom="8.1404925"
+   inkscape:cx="54.531547"
+   inkscape:cy="51.102568"
+   inkscape:window-x="0"
+   inkscape:window-y="24"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="svg439" /><metadata
+   id="metadata443"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata>
+ <defs
+   id="defs410"><style
+     id="style408"
+     type="text/css">
+   <![CDATA[
+    @font-face { font-family:"Arial";font-variant:normal;font-style:normal;font-weight:normal;src:url("#FontID0") format(svg)}
+    .str0 {stroke:#FEFEFE;stroke-width:7.62}
+    .fil1 {fill:#FEFEFE}
+    .fil0 {fill:#373435}
+    .fnt0 {font-weight:normal;font-size:580.12px;font-family:'Arial'}
+   ]]>
+  </style></defs>
+ <polygon
+   style="fill:#373435;stroke:#fefefe;stroke-width:7.61999989"
+   id="polygon413"
+   points="10133,15467 10129,14256 11185,14856 "
+   class="fil0 str0"
+   transform="translate(-9057.7735,-13501.24)" /><polygon
+   style="fill:#373435;stroke:#fefefe;stroke-width:7.61999989"
+   id="polygon415"
+   points="10136,14251 11011,14009 11184,14851 "
+   class="fil0 str0"
+   transform="translate(-9057.7735,-13501.24)" /><polygon
+   style="fill:#373435;stroke:#fefefe;stroke-width:7.61999989"
+   id="polygon417"
+   points="11018,14028 11437,14845 11184,14851 "
+   class="fil0 str0"
+   transform="translate(-9057.7735,-13501.24)" /><polygon
+   style="fill:#373435;stroke:#fefefe;stroke-width:7.61999989"
+   id="polygon419"
+   points="10118,14006 10994,14010 10129,14256 "
+   class="fil0 str0"
+   transform="translate(-9057.7735,-13501.24)" /><polygon
+   style="fill:#373435;stroke:#fefefe;stroke-width:7.61999989"
+   id="polygon421"
+   points="10115,14013 9587,14826 10130,14257 "
+   class="fil0 str0"
+   transform="translate(-9057.7735,-13501.24)" /><polygon
+   style="fill:#373435;stroke:#fefefe;stroke-width:7.61999989"
+   id="polygon423"
+   points="10131,14260 9563,14856 10133,15472 "
+   class="fil0 str0"
+   transform="translate(-9057.7735,-13501.24)" /><polygon
+   style="fill:#373435;stroke:#fefefe;stroke-width:7.61999989"
+   id="polygon425"
+   points="10132,15481 9586,14890 10116,15694 "
+   class="fil0 str0"
+   transform="translate(-9057.7735,-13501.24)" /><polygon
+   style="fill:#373435;stroke:#fefefe;stroke-width:7.61999989"
+   id="polygon427"
+   points="11185,14856 11002,15690 10133,15472 "
+   class="fil0 str0"
+   transform="translate(-9057.7735,-13501.24)" /><polygon
+   style="fill:#373435;stroke:#fefefe;stroke-width:7.61999989"
+   id="polygon429"
+   points="11185,14856 11437,14845 11010,15672 "
+   class="fil0 str0"
+   transform="translate(-9057.7735,-13501.24)" /><polygon
+   style="fill:#373435;stroke:#fefefe;stroke-width:7.61999989"
+   id="polygon431"
+   points="10115,15694 10132,15472 10989,15687 "
+   class="fil0 str0"
+   transform="translate(-9057.7735,-13501.24)" /><text
+   x="239.2092"
+   y="2116.834"
+   class="fil1 fnt0"
+   id="text433"
+   style="font-weight:normal;font-size:580.11999512px;font-family:Arial;fill:#fefefe"
+   transform="rotate(-29.999471)">20</text>
+
+</svg>

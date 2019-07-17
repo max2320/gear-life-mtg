@@ -1,14 +1,14 @@
 .Header{
   width: 100%;
-  height: 40px;
+  height: 60px;
   background-color: #dfdfdf;
 }
 
 .Header-icon{
-  margin: 5px 10px;
-  font-size: 32px;
+  margin: 5px;
 }
 
-.Header-icon i{
-  color: #000;
+.Header-icon img{
+  height: 40px;
+  margin: 10px 5px;
 }
