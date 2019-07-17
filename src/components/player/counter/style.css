@@ -5,12 +5,12 @@
   font-size: 50px;
   line-height: 70px;
   color: #ffffff;
-  text-shadow:
+  display: flex;
 }
 
 .Counter-side{
+  flex: 1 0 50px;
   width: 50px;
-  display: inline-block;
   height: 70px;
   text-align: center;
   background: rgba(0,0,0,0);
@@ -20,16 +20,17 @@
 }
 
 
-.Counter-side i{
-  font-size: 50px;
+.Counter-side img{
+  height: 50px;
   cursor: pointer;
 }
 
 
 .Counter-counter{
+  flex: 1 0 90px;
   margin: 0px 5px;
   text-align: center;
-  width: 80px;
+  width: 90px;
   padding: 0 10px;
   font-size: 70px;
   display: inline-block;

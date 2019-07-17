@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './style.css';
 // import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import config from '../../assets/config.svg';
+import dice from '../../assets/dice.svg';
+import reset from '../../assets/reset.svg';
+import github from '../../assets/github.svg';
 
 export default class Header extends Component {
   state = {
@@ -13,7 +17,7 @@ export default class Header extends Component {
         <span className='Header-icon' onClick={()=>{
           this.props.editPlayers();
         }}>
-          <i className='material-icons'>edit</i>
+          <img src={config} />
         </span>
       );
     }
@@ -25,14 +29,21 @@ export default class Header extends Component {
         <span className='Header-icon' onClick={()=>{
           this.props.sortPlayers();
         }}>
-          <i className='material-icons'>sort</i>
+          <img src={dice} />
         </span>
         <span className='Header-icon' onClick={()=>{
           this.props.resetMatch();
         }}>
-          <i className='material-icons'>refresh</i>
+          <img src={reset} />
         </span>
         {this.renderEditButton()}
+
+        <a
+          target='_blank'
+          className='Header-icon Header-icon--right'
+          href='https://github.com/max2320/gear-life-mtg'>
+          <img src={github} />
+        </a>
       </div>
     );
   }
