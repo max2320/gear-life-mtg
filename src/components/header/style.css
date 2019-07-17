@@ -5,10 +5,14 @@
 }
 
 .Header-icon{
-  margin: 5px;
+  margin: 5px 10px;
+  display: inline-block;
+}
+
+.Header-icon--right{
+  float: right;
 }
 
 .Header-icon img{
-  height: 40px;
-  margin: 10px 5px;
+  height: 45px;
 }
