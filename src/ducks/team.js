@@ -1,64 +1,84 @@
-const actionTypes = {
+import uuid from '../lib/uuid';
+import {setCache, getCache} from '../lib/local_cache';
+
+export const actionTypes = {
   createTeam: 'team/CREATE',
   removeTeam: 'team/REMOVE',
-  addTeamMember: 'team/ADD_MEMBER',
-  removeTeamMember: 'team/REMOVE_MEMBER',
+  setTeamName: 'team/SET_TEAM_NAME',
+  updateCache: 'team/UPDATE_CACHE'
 };
 
-const initialState = {
-  teamOrder: [],
+const initialState = getCache('team') || {
+  order: [],
   teams: {}
 };
 
-const actions = {
-  createTeam: (team) =>{
-    return dispatch => {
-      dispatch({
-        type: actionTypes.createTeam,
-        payload: team
-      })
+export const actions = {
+  createTeam: () => {
+    return (dispatch, getState) => {
+      const { teams, order } = getState().team
+      const teamName = `Team ${(order.length + 1)}`;
+      const team = {
+        id: uuid(teamName),
+        name: teamName
+      };
+
+      const payload = {
+        order: [ ...order, team.id ],
+        teams: { ...teams, [team.id]: team }
+      }
+      dispatch({ type: actionTypes.createTeam, payload })
+      dispatch(actions.updateCache())
     }
   },
-  removeTeam: () =>{
-    return dispatch => {
+  removeTeam: (teamId) => {
+    return (dispatch, getState) => {
+      let { teams, order } = getState().team
 
+      delete teams[teamId];
+      order = order.filter(id => id !== teamId)
+
+      const payload = { order, teams };
+
+      dispatch({ type: actionTypes.createTeam, payload })
+      dispatch(actions.updateCache())
     }
   },
-  addTeamMember: () =>{
-    return dispatch => {
+  setTeamName: (teamId, name) => {
+    return (dispatch, getState) => {
+      let { teams } = getState().team;
 
+      const payload = {
+        ...teams,
+        [teamId]: {
+          ...teams[teamId],
+          name
+        }
+      };
+
+      dispatch({ type: actionTypes.setTeamName, payload })
+      dispatch(actions.updateCache())
     }
   },
-  removeTeamMember: () =>{
-    return dispatch => {
-
+  updateCache: ()=>{
+    return (dispatch, getState) => {
+      setCache('team', getState().team)
+      dispatch({ type: actionTypes.updateCache, payload: {} })
     }
   }
 };
 
+
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case actionTypes.createTeam:
-      return {
-        ...state
-      };
     case actionTypes.removeTeam:
-      return {
-        ...state
-      };
-    case actionTypes.addTeamMember:
-      return {
-        ...state
-      };
-    case actionTypes.removeTeamMember:
-      return {
-        ...state
-      };
+    case actionTypes.setTeamName:
+      return { ...state, ...payload };
 
     default:
       return state;
   }
 };
-
 
 export default reducer;
