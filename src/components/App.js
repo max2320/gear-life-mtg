@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './header/Header';
 import Player from './player/Player';
+import Team from './Teams';
 
 import EditPlayer from './editPlayer/EditPlayer';
 import SortPlayers from './sortPlayers/SortPlayers';
+import { setCache, getCache } from '../lib/local_cache';
 
 const genKey= ()=> (parseInt(Math.random()*10000000));
+
 
 
 export default class App extends Component {
@@ -30,14 +33,12 @@ export default class App extends Component {
 
   recoverSession(){
     this.setState({
-      players: JSON.parse(localStorage.getItem('players'))
+      players: getCache('players')
     });
   }
 
   componentDidUpdate(){
-    if(JSON.stringify(localStorage.getItem('players')) !== JSON.stringify(this.state.players)){
-      localStorage.setItem('players', JSON.stringify(this.state.players));
-    }
+    setCache('players', this.state.players)
 
     if(this.state.sortPlayers){
       document.querySelector('body').style.overflow='hidden';
@@ -123,7 +124,7 @@ export default class App extends Component {
       );
     }
   }
-
+  
   addPlayer(){
     if(this.state.players.length < 10){
       let player = {
@@ -202,6 +203,8 @@ export default class App extends Component {
         </div>
 
         {this.renderSortPlayer()}
+
+        <Team />
       </div>
     );
   }
