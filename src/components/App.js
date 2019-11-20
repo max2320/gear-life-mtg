@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Header from './header/Header';
 import Player from './player/Player';
-import Team from './Teams';
+import TeamList from './TeamList';
 
 import EditPlayer from './editPlayer/EditPlayer';
 import SortPlayers from './sortPlayers/SortPlayers';
@@ -204,7 +204,7 @@ export default class App extends Component {
 
         {this.renderSortPlayer()}
 
-        <Team />
+        <TeamList />
       </div>
     );
   }
