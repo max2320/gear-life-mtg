@@ -1,6 +1,11 @@
 import uuid from '../lib/uuid';
 import {setCache, getCache} from '../lib/local_cache';
 
+const initialState = getCache('team') || {
+  order: [],
+  teams: {}
+};
+
 export const actionTypes = {
   createTeam: 'team/CREATE',
   removeTeam: 'team/REMOVE',
@@ -8,10 +13,6 @@ export const actionTypes = {
   updateCache: 'team/UPDATE_CACHE'
 };
 
-const initialState = getCache('team') || {
-  order: [],
-  teams: {}
-};
 
 export const actions = {
   createTeam: () => {
@@ -49,12 +50,15 @@ export const actions = {
       let { teams } = getState().team;
 
       const payload = {
-        ...teams,
-        [teamId]: {
-          ...teams[teamId],
-          name
+        teams:{
+          ...teams,
+          [teamId]: {
+            ...teams[teamId],
+            name
+          }
         }
       };
+      console.log(payload)
 
       dispatch({ type: actionTypes.setTeamName, payload })
       dispatch(actions.updateCache())
