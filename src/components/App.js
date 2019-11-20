@@ -3,6 +3,7 @@ import './App.css';
 import Header from './header/Header';
 import Player from './player/Player';
 import TeamList from './TeamList';
+import PlayerList from './PlayerList';
 
 import EditPlayer from './editPlayer/EditPlayer';
 import SortPlayers from './sortPlayers/SortPlayers';
@@ -205,6 +206,7 @@ export default class App extends Component {
         {this.renderSortPlayer()}
 
         <TeamList />
+        <PlayerList />
       </div>
     );
   }
