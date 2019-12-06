@@ -24,6 +24,7 @@ To access go to https://gearlife.maxfs.com
   - [ ] Free-for-all extended (30 life points, 15 poison)
   - [ ] King format (30 life points, 10 poison)
   - [ ] Emperor (20 life points, 10 poison)
+  - [ ] Pioneer (20 life points, 10 poison)
 - [ ] Team management
 - [ ] Manual planeswalker sort
 - [ ] Performance improvements
