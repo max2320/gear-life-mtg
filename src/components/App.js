@@ -4,6 +4,7 @@ import Header from './header/Header';
 import Player from './player/Player';
 import TeamList from './TeamList';
 import PlayerList from './PlayerList';
+import ToggleEdit from './Control/ToggleEdit';
 
 import EditPlayer from './editPlayer/EditPlayer';
 import SortPlayers from './sortPlayers/SortPlayers';
@@ -125,7 +126,7 @@ export default class App extends Component {
       );
     }
   }
-  
+
   addPlayer(){
     if(this.state.players.length < 10){
       let player = {
@@ -207,6 +208,7 @@ export default class App extends Component {
 
         <TeamList />
         <PlayerList />
+        <ToggleEdit/>
       </div>
     );
   }
