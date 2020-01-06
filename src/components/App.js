@@ -4,6 +4,7 @@ import Header from './header/Header';
 import Player from './player/Player';
 import TeamList from './TeamList';
 import PlayerList from './PlayerList';
+import MatchType from './MatchType';
 import ToggleEdit from './Control/ToggleEdit';
 
 import EditPlayer from './editPlayer/EditPlayer';
@@ -11,7 +12,6 @@ import SortPlayers from './sortPlayers/SortPlayers';
 import { setCache, getCache } from '../lib/local_cache';
 
 const genKey= ()=> (parseInt(Math.random()*10000000));
-
 
 
 export default class App extends Component {
@@ -200,10 +200,11 @@ export default class App extends Component {
         />
 
         <div className="App-container">
-          {this.renderPlayers()}
-          {this.renderEditMode()}
+        <MatchType />
         </div>
 
+        {this.renderPlayers()}
+        {this.renderEditMode()}
         {this.renderSortPlayer()}
 
         <TeamList />
