@@ -19,7 +19,6 @@ class TeamList extends Component{
   render() {
     return (
       <div className="TeamList">
-        {JSON.stringify(Object.keys(this.props))}
         {this.renderTeams()}
 
         <button onClick={this.props.createTeam}>
