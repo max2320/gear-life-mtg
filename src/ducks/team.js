@@ -1,18 +1,19 @@
 import uuid from '../lib/uuid';
 import {setCache, getCache} from '../lib/local_cache';
 
-const initialState = getCache('team') || {
+const defaultState = {
   order: [],
   teams: {}
 };
+const initialState = getCache('team') || defaultState;
 
 export const actionTypes = {
   createTeam: 'team/CREATE',
   removeTeam: 'team/REMOVE',
   setTeamName: 'team/SET_TEAM_NAME',
+  reset: 'team/RESET',
   updateCache: 'team/UPDATE_CACHE'
 };
-
 
 export const actions = {
   createTeam: () => {
@@ -28,8 +29,10 @@ export const actions = {
         order: [ ...order, team.id ],
         teams: { ...teams, [team.id]: team }
       }
-      dispatch({ type: actionTypes.createTeam, payload })
-      dispatch(actions.updateCache())
+      dispatch({ type: actionTypes.createTeam, payload });
+      dispatch(actions.updateCache());
+
+      return team.id;
     }
   },
   removeTeam: (teamId) => {
@@ -41,8 +44,8 @@ export const actions = {
 
       const payload = { order, teams };
 
-      dispatch({ type: actionTypes.createTeam, payload })
-      dispatch(actions.updateCache())
+      dispatch({ type: actionTypes.createTeam, payload });
+      dispatch(actions.updateCache());
     }
   },
   setTeamName: (teamId, name) => {
@@ -58,16 +61,21 @@ export const actions = {
           }
         }
       };
-      console.log(payload)
 
-      dispatch({ type: actionTypes.setTeamName, payload })
-      dispatch(actions.updateCache())
+      dispatch({ type: actionTypes.setTeamName, payload });
+      dispatch(actions.updateCache());
+    }
+  },
+  reset: () =>{
+    return (dispatch, getState) => {
+      dispatch({ type: actionTypes.reset, payload: {} });
+      dispatch(actions.updateCache());
     }
   },
   updateCache: ()=>{
     return (dispatch, getState) => {
-      setCache('team', getState().team)
-      dispatch({ type: actionTypes.updateCache, payload: {} })
+      setCache('team', getState().team);
+      dispatch({ type: actionTypes.updateCache, payload: {} });
     }
   }
 };
@@ -79,6 +87,9 @@ const reducer = (state = initialState, { type, payload }) => {
     case actionTypes.removeTeam:
     case actionTypes.setTeamName:
       return { ...state, ...payload };
+
+    case actionTypes.reset:
+      return { ...defaultState };
 
     default:
       return state;

@@ -11,21 +11,19 @@ class Team extends Component {
   }
 
   handleNameUpdate = ({ target: { value: name }}) => {
-    this.setState({ name });
+    this.props.setTeamName(this.id, name)
   }
-  
+
   handleSetName = () =>{
-    this.props.setTeamName(this.id, this.state.name)
   }
 
   render() {
     return (
       <div>
-        {JSON.stringify(Object.keys(this.props))}
-        <input value={this.state.name} onInput={this.handleNameUpdate}/>
-        <button onClick={this.handleSetName}>
-          save
-        </button>
+        <input
+          defaultValue={this.state.name}
+          onInput={this.handleNameUpdate}
+        />
 
         <button onClick={this.handleRemove}>
           -
