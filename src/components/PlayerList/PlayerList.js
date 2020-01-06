@@ -19,7 +19,6 @@ class PlayerList extends Component{
   render() {
     return (
       <div className="PlayerList">
-        {JSON.stringify(Object.keys(this.props))}
         {this.renderPlayers()}
 
         <button onClick={this.props.createPlayer}>

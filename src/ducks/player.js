@@ -1,28 +1,40 @@
 import uuid from '../lib/uuid';
 import {setCache, getCache} from '../lib/local_cache';
+import { actions as teamActions } from './team';
 
-const initialState = getCache('player') || {
+const defaultState = {
   order: [],
   players: {}
 };
+const initialState = getCache('player') || defaultState;
 
 export const actionTypes = {
   createPlayer: 'player/CREATE',
   removePlayer: 'player/REMOVE',
   setPlayerColors: 'player/SET_PLAYER_COLORS',
   setPlayerName: 'player/SET_PLAYER_NAME',
+  setPlayerTeam: 'player/SET_PLAYER_TEAM',
+  reset: 'player/RESET',
   updateCache: 'player/UPDATE_CACHE'
 };
 
 export const actions = {
-  createPlayer: () => {
+  createPlayer: (teamId = null) => {
     return (dispatch, getState) => {
       const { players, order } = getState().player;
-      const playerName = `Player ${(order.length + 1)}`;
+      const { order: teamOrder } = getState().team;
+
+      const name = `Player ${(order.length + 1)}`;
+
+      if(typeof teamId !== 'string'){
+        teamId = teamOrder[order.length] || dispatch(teamActions.createTeam());
+      }
+
       const player = {
-        id: uuid(playerName),
-        name: playerName,
-        colors: ['white', 'blue', 'black', 'red', 'green', 'colorless']
+        id: uuid(name),
+        colors: ['white', 'blue', 'black', 'red', 'green', 'colorless'],
+        name,
+        teamId
       };
 
       const payload = {
@@ -30,8 +42,8 @@ export const actions = {
         players: { ...players, [player.id]: player }
       };
 
-      dispatch({ type: actionTypes.createPlayer, payload })
-      dispatch(actions.updateCache())
+      dispatch({ type: actionTypes.createPlayer, payload });
+      dispatch(actions.updateCache());
     }
   },
   removePlayer: (playerId) => {
@@ -43,8 +55,8 @@ export const actions = {
 
       const payload = { order, players };
 
-      dispatch({ type: actionTypes.removePlayer, payload })
-      dispatch(actions.updateCache())
+      dispatch({ type: actionTypes.removePlayer, payload });
+      dispatch(actions.updateCache());
     }
   },
   setPlayerColors: (playerId, colors) => {
@@ -61,8 +73,8 @@ export const actions = {
         }
       };
 
-      dispatch({ type: actionTypes.setPlayerColors, payload })
-      dispatch(actions.updateCache())
+      dispatch({ type: actionTypes.setPlayerColors, payload });
+      dispatch(actions.updateCache());
     }
   },
   setPlayerName: (playerId, name) => {
@@ -79,18 +91,41 @@ export const actions = {
         }
       };
 
-      dispatch({ type: actionTypes.setPlayerName, payload })
-      dispatch(actions.updateCache())
+      dispatch({ type: actionTypes.setPlayerName, payload });
+      dispatch(actions.updateCache());
+    }
+  },
+  setPlayerTeam: (playerId, teamId) => {
+    return (dispatch, getState) => {
+      let { players } = getState().player;
+
+      const payload = {
+        players: {
+          ...players,
+          [playerId]: {
+            ...players[playerId],
+            teamId
+          }
+        }
+      };
+
+      dispatch({ type: actionTypes.setPlayerName, payload });
+      dispatch(actions.updateCache());
+    }
+  },
+  reset: () =>{
+    return (dispatch, getState) => {
+      dispatch({ type: actionTypes.reset, payload: {} });
+      dispatch(actions.updateCache());
     }
   },
   updateCache: ()=>{
     return (dispatch, getState) => {
-      setCache('player', getState().player)
-      dispatch({ type: actionTypes.updateCache, payload: {} })
+      setCache('player', getState().player);
+      dispatch({ type: actionTypes.updateCache, payload: {} });
     }
   }
 };
-
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -98,12 +133,15 @@ const reducer = (state = initialState, { type, payload }) => {
     case actionTypes.removePlayer:
     case actionTypes.setPlayerColors:
     case actionTypes.setPlayerName:
+    case actionTypes.setPlayerTeam:
       return { ...state, ...payload };
+
+    case actionTypes.reset:
+      return { ...defaultState };
 
     default:
       return state;
   }
 };
-
 
 export default reducer;
