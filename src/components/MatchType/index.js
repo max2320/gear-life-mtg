@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
 import MatchType from './MatchType';
 
@@ -8,4 +9,4 @@ const { setType } = actions;
 const mapStateToProps = ({ match }) => ({ ...match });
 const mapDispatchToProps = { setType };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MatchType);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MatchType));
