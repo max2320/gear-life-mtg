@@ -66,7 +66,7 @@ export const actions = {
         }
       }
 
-      dispatch({ type: actionTypes.prepareMatch, payload: { allowCustom: selectedMatch['selectedMatch'] } })
+      dispatch({ type: actionTypes.prepareMatch, payload: { allowCustom: selectedMatch['allowCustom'] } })
       dispatch(actions.updateCache())
     }
   },
@@ -82,6 +82,7 @@ export const actions = {
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case actionTypes.setType:
+    case actionTypes.prepareMatch:
       return { ...state, ...payload };
 
     default:

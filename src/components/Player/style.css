@@ -1,65 +1,55 @@
-.AddPlayer{
-  flex: 1 500px;
-  max-width: 100%;
+.Player{
+  color: #fff;
+  flex: 1 0 200px;
+  padding: 5px;
   margin: 5px;
-  position: relative;
-  height: 150px;
-  padding: 10px;
   text-shadow: 1px 1px 2px black;
+  border-radius: 3px;
 }
 
-@media screen and (max-width: 420px) {
-  .AddPlayer {
-    flex: 1 0;
+@media screen and (min-width: 420px) {
+  .Player {
+    flex: 1;
   }
 }
 
-.AddPlayer input{
+.PlayerHeader{
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.PlayerHeader__name, .PlayerHeader__team{
+  color: #fff;
   background: none;
   border: none;
   border-bottom: 4px solid rgba(0,0,0,.5);
-  width: 200px;
-  max-width: 50%;
-  font-size: 20px;
+  font-size: 15px;
+  margin: 5px;
 }
 
-.AddPlayer-header{
-  color: #fff;
+.PlayerHeader__name{
+  flex: 1;
 }
 
-.AddPlayer-remove{
-  float: right;
+.PlayerHeader__team{
+  flex: 1;
+  /* max-width: 50%;/ */
 }
 
-.AddPlayer-header strong{
-  margin-right: 5px;
-}
-
-.AddPlayer-background-image{
-  width: 50%;
-  opacity: 0.4;
-  margin: 0 0 0 5px;
-}
-
-.AddPlayer-name{
-  margin-top: 20px;
-  font-size: 20px;
-  color: #FFFFFF;
-  text-shadow: 1px 1px 2px black;
-}
-
-.AddPlayer-info{
-  float: right;
+.PlayerHeader__remove{
+  flex: 1;
+  max-width: 25px;
+  line-height: 40px !important;
 }
 
 
-.AddPlayer-color{
+.PlayerColors{
   width: 100%;
   display: flex;
 }
 
-.AddPlayer-color-item{
-  border-bottom: 10px rgba(0, 0, 0, 0.5) solid;
+.PlayerColors__item{
+  border-bottom: 5px rgba(0, 0, 0, 0.5) solid;
   flex: 1;
   color: #fff;
   text-align: center;
@@ -67,14 +57,13 @@
   margin: 5px;
   font-size: 12px;
 }
-.AddPlayer-item img{
-  width: 100%;
+
+.PlayerColors__item.active{
+  border-bottom: 5px #dfdfdf solid;
 }
 
-.AddPlayer-color-item.active{
-  border-bottom: 10px #dfdfdf solid;
-}
-
-.AddPlayer-button{
-  color: #ffffff !important;
+.PlayerColors__item-image{
+  width: 50%;
+  opacity: 0.4;
+  margin: 0 0 0 5px;
 }

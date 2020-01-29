@@ -36,7 +36,6 @@ export const actions = {
   }
 };
 
-
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case actionTypes.enableEdit:
@@ -47,6 +46,5 @@ const reducer = (state = initialState, { type, payload }) => {
       return state;
   }
 };
-
 
 export default reducer;

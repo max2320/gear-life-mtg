@@ -59,17 +59,21 @@ export const actions = {
       dispatch(actions.updateCache());
     }
   },
-  setPlayerColors: (playerId, colors) => {
+  setPlayerColors: (playerId, color) => {
     return (dispatch, getState) => {
       let { players } = getState().player;
+      const player = players[playerId];
+
+      if(player.colors.includes(color)){
+        player.colors = player.colors.filter((c)=>(c != color))
+      }else{
+        player.colors = [...player.colors, color].sort();
+      }
 
       const payload = {
         players: {
           ...players,
-          [playerId]: {
-            ...players[playerId],
-            colors
-          }
+          [playerId]: { ...player }
         }
       };
 

@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class Team extends Component {
+import './style.css';
+
+class Team extends PureComponent {
   id = this.props.id;
-  state = {
-    name: this.props.name
-  }
 
   handleRemove = () => {
     this.props.removeTeam(this.id)
@@ -19,15 +18,19 @@ class Team extends Component {
 
   render() {
     return (
-      <div>
-        <input
-          defaultValue={this.state.name}
-          onInput={this.handleNameUpdate}
-        />
+      <div className='Team'>
+        <div className='TeamHeader'>
+          <input
+            className='TeamHeader__name'
+            defaultValue={this.props.name}
+            onInput={this.handleNameUpdate}
+          />
 
-        <button onClick={this.handleRemove}>
-          -
-        </button>
+          <i
+            className="material-icons TeamHeader__remove"
+            onClick={this.handleRemove}
+          >close</i>
+        </div>
       </div>
     );
   }
