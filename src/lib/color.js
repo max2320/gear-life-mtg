@@ -30,13 +30,15 @@ export const colorImage = {
   white: whiteImg,
   red: redImg,
   colorless: colorlessImg
-}
+};
+
+export const colorOrder = ['white','blue','black','red','green','colorless'];
 
 
 export const colorBackground = (colors)=>{
   if(colors.length > 0){
     if(colors.length > 1){
-      const colorText = colors.map((color)=>{
+      const colorText = colorOrder.filter((color)=>(colors.includes(color))).map((color)=>{
         return colorList[color];
       }).join(',');
 

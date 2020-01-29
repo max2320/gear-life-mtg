@@ -7,7 +7,7 @@ import { actions } from '../../ducks/team';
 
 const { createTeam } = actions;
 
-const mapStateToProps = ({ team }) => (team);
+const mapStateToProps = ({ team, match: {allowCustom}  }) => ({ ...team, allowCustom });
 const mapDispatchToProps = { createTeam };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TeamList);

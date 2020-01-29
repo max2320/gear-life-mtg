@@ -7,7 +7,7 @@ import { actions } from '../../ducks/player';
 
 const { createPlayer } = actions;
 
-const mapStateToProps = ({ player }) => (player);
+const mapStateToProps = ({ player, match: {allowCustom} }) => ({ ...player, allowCustom });
 const mapDispatchToProps = { createPlayer };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerList);
