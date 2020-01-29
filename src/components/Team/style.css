@@ -1,0 +1,33 @@
+.Team{
+  color: #fff;
+  flex: 1 0 200px;
+  padding: 5px;
+  margin: 5px;
+  text-shadow: 1px 1px 2px black;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.3);
+}
+
+.TeamHeader{
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.TeamHeader__name, .TeamHeader__team{
+  color: #fff;
+  background: none;
+  border: none;
+  border-bottom: 4px solid rgba(0,0,0,.5);
+  font-size: 15px;
+  margin: 5px;
+}
+
+.TeamHeader__name{
+  flex: 1;
+}
+
+.TeamHeader__remove{
+  flex: 1;
+  max-width: 25px;
+  line-height: 40px !important;
+}

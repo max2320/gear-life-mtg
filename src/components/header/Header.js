@@ -6,19 +6,15 @@ import dice from '../../assets/dice.svg';
 import reset from '../../assets/reset.svg';
 import github from '../../assets/github.svg';
 
-export default class Header extends Component {
-  state = {
-    loading: false
-  }
+import { Link } from "react-router-dom";
 
+export default class Header extends Component {
   renderEditButton(){
     if(!this.props.editMode){
       return (
-        <span className='Header-icon' onClick={()=>{
-          this.props.editPlayers();
-        }}>
+        <Link className='Header-icon' to="/match_type">
           <img src={config} />
-        </span>
+        </Link>
       );
     }
   }
