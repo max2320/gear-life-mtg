@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import './style.css';
 
-class MatchtType extends Component {
-  get types(){
+class MatchtType extends PureComponent {
+  get types() {
     return Object.keys(this.props.matchTypes);
   }
 
-  handleSelection(type){
+  handleSelection(type) {
     this.props.setType(type);
+    this.props.history.push('/players/edit');
   }
 
   renderTypes() {
@@ -28,7 +29,6 @@ class MatchtType extends Component {
     return(
       <div className='MatchType'>
         <h1>Choose Format</h1>
-
         {this.renderTypes()}
       </div>
     );
