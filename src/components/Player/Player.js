@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
 
 import './style.css';
-import {colorBackground, colorDescription, colorImage} from '../../lib/color';
-
-const colorNames = ['white','blue','black','red','green','colorless'];
+import {colors, order} from '../../configs/consts/colors';
+import { colorBackground } from '../../lib/color';
 
 class Player extends PureComponent {
   id = this.props.id;
@@ -48,18 +47,21 @@ class Player extends PureComponent {
   }
 
   renderColors(){
-    return colorNames.map((color)=>{
-      const selectClass = this.props.colors.includes(color) ? 'active': '';
+    return order.map((colorName) => {
+      const { description, color, Symbol } = colors[colorName];
+      const isSelected = this.props.colors.includes(colorName);
+      const selectClass = isSelected ? 'active': '';
+
       return (
         <div
           className={`PlayerColors__item ${selectClass}`}
-          onClick={this.handleColorToggle.bind(this, color)}
+          onClick={this.handleColorToggle.bind(this, colorName)}
+          aria-label={description}
+          data-balloon-pos="down"
         >
-          <img
+          <Symbol
             className='PlayerColors__item-image'
-            title={colorDescription[color]}
-            alt={color}
-            src={colorImage[color]}
+
           />
         </div>
       );
@@ -68,7 +70,7 @@ class Player extends PureComponent {
 
   render() {
     return (
-      <div className="Player"  style={{background : colorBackground(this.props.colors)}}>
+      <div className="Player" style={{background : colorBackground(this.props.colors)}}>
         <div className='PlayerHeader'>
           <input
             className='PlayerHeader__name'

@@ -10,6 +10,7 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "balloon-css": "^1.0.4",
     "dicejs": "^0.1.0",
     "express": "^4.17.1",
     "react": "^16.5.2",

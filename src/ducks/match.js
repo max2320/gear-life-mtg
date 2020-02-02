@@ -6,6 +6,7 @@ import { actions as playerActions } from './player';
 const initialState = getCache('match') || {
   selectedType: null,
   allowCustom: false,
+  matchConfig: null,
   matchTypes: {
     standard: {
       name: "Standard",
@@ -66,7 +67,11 @@ export const actions = {
         }
       }
 
-      dispatch({ type: actionTypes.prepareMatch, payload: { allowCustom: selectedMatch['allowCustom'] } })
+      const payload = {
+        allowCustom: selectedMatch['allowCustom'],
+        matchConfig: selectedMatch
+      };
+      dispatch({ type: actionTypes.prepareMatch, payload })
       dispatch(actions.updateCache())
     }
   },

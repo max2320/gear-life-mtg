@@ -5,6 +5,7 @@ import store from '../configs/store'
 import App from './App';
 
 import './index.css';
+import 'balloon-css';
 
 export default ()=>{
   render(

@@ -3,6 +3,7 @@ import './App.css';
 import Header from './header/Header';
 // import Player from './player/Player';
 import TeamList from './TeamList';
+import Match from './Match';
 import PlayerList from './PlayerList';
 import MatchType from './MatchType';
 import ToggleEdit from './Control/ToggleEdit';
@@ -25,6 +26,10 @@ export default class App extends Component {
           <div className="App-container">
 
             <Switch>
+              <Route path="/" exact>
+                <Match />
+              </Route>
+
               <Route path="/match_type">
                 <MatchType />
               </Route>

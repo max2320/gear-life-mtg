@@ -9,6 +9,11 @@ class PlayerList extends PureComponent{
     this.props.createPlayer();
   }
 
+  handleStartMatch = () => {
+    this.props.startMatch();
+    this.props.history.push('/');
+  }
+
   renderPlayer(playerId) {
     return (
       <Player
@@ -32,7 +37,7 @@ class PlayerList extends PureComponent{
       </button>
     )];
   }
-  
+
   render() {
     return (
       <div className="PlayerList">
@@ -44,6 +49,12 @@ class PlayerList extends PureComponent{
           className='PlayerList__button PlayerList__button--blue'>
           Teams
         </Link>
+        <button
+          className='PlayerList__button PlayerList__button--green'
+          onClick={this.handleStartMatch}
+        >
+          StartMatch
+        </button>
       </div>
     )
   }
