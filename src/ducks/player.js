@@ -32,7 +32,7 @@ export const actions = {
 
       const player = {
         id: uuid(name),
-        colors: ['white', 'blue', 'black', 'red', 'green', 'colorless'],
+        colors: [],
         name,
         teamId
       };
