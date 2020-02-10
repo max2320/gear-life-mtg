@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import './style.css';
 import Counter from '../../Counter';
+import Dice from '../../Dice';
 
 class Control extends Component {
   teamId = this.props.teamId;
@@ -55,6 +56,10 @@ class Control extends Component {
       return this.renderPlayers();
     }
 
+    if(currentControl === 'dice'){
+      return <Dice />;
+    }
+
     return this.renderScoreCounter();
   }
 
@@ -64,6 +69,7 @@ class Control extends Component {
     return [
       ['life', 'Life'],
       ['poison', 'Poison'],
+      ['dice', 'Dice'],
       ['players', 'Players']
     ].map(([key, name])=>{
       const selectedClass = key === currentControl ? 'active' : '';
