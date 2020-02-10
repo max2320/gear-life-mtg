@@ -14,37 +14,32 @@ import {
   Route
 } from "react-router-dom";
 
+const App = (props)=>(
+  <Router>
+    <div className="App">
+      <Header />
 
-export default class App extends Component {
+      <div className="App-container">
+        <Switch>
+          <Route path="/" exact>
+            <Match />
+          </Route>
 
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <Header />
+          <Route path="/match/selection">
+            <MatchType />
+          </Route>
 
-          <div className="App-container">
+          <Route path="/players/edit">
+            <PlayerList />
+          </Route>
 
-            <Switch>
-              <Route path="/" exact>
-                <Match />
-              </Route>
+          <Route path="/teams/edit">
+            <TeamList />
+          </Route>
+        </Switch>
+      </div>
+    </div>
+  </Router>
+);
 
-              <Route path="/match/selection">
-                <MatchType />
-              </Route>
-
-              <Route path="/players/edit">
-                <PlayerList />
-              </Route>
-
-              <Route path="/teams/edit">
-                <TeamList />
-              </Route>
-            </Switch>
-          </div>
-        </div>
-      </Router>
-    );
-  }
-}
+export default App;
