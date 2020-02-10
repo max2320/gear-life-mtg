@@ -25,3 +25,8 @@
   background: #012375;
   color: #fff;
 }
+
+.PlayerList__controls{
+  flex: 0 0 100%;
+  display: flex;
+}

@@ -36,13 +36,15 @@ class TeamList extends PureComponent{
     return (
       <div className="TeamList">
         {this.renderTeams()}
+        
+        <div className="TeamList__controls">
+          {this.props.allowCustom && this.renderButtons()}
 
-        {this.props.allowCustom && this.renderButtons()}
-
-        <Link to='/players/edit'
-          className='TeamList__button TeamList__button--blue'>
-          Players
-        </Link>
+          <Link to='/players/edit'
+            className='TeamList__button TeamList__button--blue'>
+            Players
+          </Link>
+        </div>
       </div>
     )
   }
