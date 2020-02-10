@@ -1,69 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   id="svg808"
-   viewBox="0 0 3025.1143 3024.2661"
-   style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-   version="1.1"
-   height="30.242661mm"
-   width="30.251143mm"
-   xml:space="preserve"
-   sodipodi:docname="plus.svg"
-   inkscape:version="0.92.4 5da689c313, 2019-01-14"><sodipodi:namedview
-   pagecolor="#ffffff"
-   bordercolor="#666666"
-   borderopacity="1"
-   objecttolerance="10"
-   gridtolerance="10"
-   guidetolerance="10"
-   inkscape:pageopacity="0"
-   inkscape:pageshadow="2"
-   inkscape:window-width="1920"
-   inkscape:window-height="1009"
-   id="namedview178"
-   showgrid="false"
-   inkscape:zoom="2.0646883"
-   inkscape:cx="-129.05915"
-   inkscape:cy="57.151484"
-   inkscape:window-x="0"
-   inkscape:window-y="46"
-   inkscape:window-maximized="0"
-   inkscape:current-layer="svg808" /><metadata
-   id="metadata812"><rdf:RDF><cc:Work
-       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata>
- <defs
-   id="defs799">
-  <style
-   id="style797"
-   type="text/css">
-   <![CDATA[
-    .str0 {stroke:#FEFEFE;stroke-width:25}
-    .fil0 {fill:black}
-   ]]>
-  </style>
- 
-  
-  
- 
-   
-   
-  </defs>
- <path
-   style="fill:#000000;stroke:none;stroke-width:25"
-   id="path802"
-   d="m 1156.5,1437.1029 h 281 v -281 c 0,-41 34,-75 75,-75 v 0 c 41,0 75,34 75,75 v 281 h 281 c 41,0 75,34 75,75 v 0 c 0,41 -34,75 -75,75 h -281 v 281 c 0,41 -34,75 -75,75 v 0 c -41,0 -75,-34 -75,-75 v -281 h -281 c -41,0 -75,-34 -75,-75 v 0 c 0,-41 34,-75 75,-75 z"
-   class="fil0 str0"
-   inkscape:connector-curvature="0" /><path
-   style="fill:#000000;stroke:none;stroke-width:25"
-   id="path804"
-   d="m 785.5,853.1029 c 0,48 58,129 142,43 24,-23 35,-32 61,-53 258,-213 657,-239 945,-69 14,8 22,11 34,18 79,49 184,148 237,226 l 77,128 c 108,226 108,498 2,727 -126,273 -429,488 -733,488 -249,0 -454,-64 -634,-244 -69,-69 -125,-143 -169,-233 -109,-222 -110,-472 -19,-701 17,-41 59,-99 16,-146 -20,-22 -82,-34 -116,15 -67,92 -116,344 -116,475 0,83 19,192 42,262 20,61 41,122 71,179 6,13 13,25 21,39 l 155,202 c 80,88 191,165 302,213 467,204 942,48 1229,-340 l 68,-114 c 9,-16 15,-32 22,-46 168,-347 90,-761 -143,-1048 -20,-24 -40,-45 -62,-67 -20,-20 -39,-38 -63,-58 -72,-62 -142,-107 -232,-147 -293,-128 -552,-114 -841,9 -68,29 -296,177 -296,242 z"
-   class="fil0 str0"
-   inkscape:connector-curvature="0" />
+<svg viewBox="0 0 3025.1143 3024.2661">
+  <path
+    style="fill:currentColor;stroke:none;stroke-width:25"
+    d="m 1156.5,1437.1029 h 281 v -281 c 0,-41 34,-75 75,-75 v 0 c 41,0 75,34 75,75 v 281 h 281 c 41,0 75,34 75,75 v 0 c 0,41 -34,75 -75,75 h -281 v 281 c 0,41 -34,75 -75,75 v 0 c -41,0 -75,-34 -75,-75 v -281 h -281 c -41,0 -75,-34 -75,-75 v 0 c 0,-41 34,-75 75,-75 z" />
+  <path
+    style="fill:currentColor;stroke:none;stroke-width:25"
+    d="m 785.5,853.1029 c 0,48 58,129 142,43 24,-23 35,-32 61,-53 258,-213 657,-239 945,-69 14,8 22,11 34,18 79,49 184,148 237,226 l 77,128 c 108,226 108,498 2,727 -126,273 -429,488 -733,488 -249,0 -454,-64 -634,-244 -69,-69 -125,-143 -169,-233 -109,-222 -110,-472 -19,-701 17,-41 59,-99 16,-146 -20,-22 -82,-34 -116,15 -67,92 -116,344 -116,475 0,83 19,192 42,262 20,61 41,122 71,179 6,13 13,25 21,39 l 155,202 c 80,88 191,165 302,213 467,204 942,48 1229,-340 l 68,-114 c 9,-16 15,-32 22,-46 168,-347 90,-761 -143,-1048 -20,-24 -40,-45 -62,-67 -20,-20 -39,-38 -63,-58 -72,-62 -142,-107 -232,-147 -293,-128 -552,-114 -841,9 -68,29 -296,177 -296,242 z" />
 </svg>

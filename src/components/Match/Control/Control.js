@@ -1,37 +1,15 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 
 import './style.css';
-import {colors, order} from '../../../configs/consts/colors';
-import { colorBackground } from '../../../lib/color';
+import Counter from '../../Counter';
 
-class Counter extends PureComponent {
-  render(){
-    return (
-      <div class="Counter">
-        <button
-          class="Counter__button"
-          onClick={this.props.onSub}>
-          -
-        </button>
-
-        <div class="Counter__score">
-          {this.props.value}
-        </div>
-
-        <button
-          class="Counter__button"
-          onClick={this.props.onAdd}
-        >
-          +
-        </button>
-      </div>
-    );
-  }
-}
-
-
-class Control extends PureComponent {
+class Control extends Component {
   teamId = this.props.teamId;
+  state = {
+    currentControl: 'life'
+  }
+
+  handleTab = (currentControl) => this.setState({ currentControl });
 
   handleAction = (action, value) => {
     const actionObject = {
@@ -44,23 +22,71 @@ class Control extends PureComponent {
     this.props.registryAction(actionObject);
   }
 
+  counterThreshold(value){
+    const { currentControl } = this.state;
+    const { matchConfig } = this.props;
+
+    return (currentControl === 'life' && value <= 0) ||
+           (currentControl === 'poison' && value >= matchConfig.poison)
+  }
+
+  renderScoreCounter(){
+    const { currentControl } = this.state;
+    const { scoreBoard } = this.props;
+    const value = scoreBoard[currentControl];
+
+    return (
+      <Counter
+        className={this.counterThreshold(value) ? 'red' : '' }
+        value={value}
+        onAction={this.handleAction.bind(this, currentControl)}
+      />
+    );
+  }
+
+  renderPlayers(){
+    return this.props.players();
+  }
+
+  renderContent(){
+    const { currentControl } = this.state;
+
+    if(currentControl === 'players'){
+      return this.renderPlayers();
+    }
+
+    return this.renderScoreCounter();
+  }
+
+  renderTabs(){
+    const { currentControl } = this.state;
+
+    return [
+      ['life', 'Life'],
+      ['poison', 'Poison'],
+      ['players', 'Players']
+    ].map(([key, name])=>{
+      const selectedClass = key === currentControl ? 'active' : '';
+      return (
+        <div
+          className={`Match-Control__tabs-item ${selectedClass}`}
+          onClick={this.handleTab.bind(this, key)}
+        >
+          {name}
+        </div>
+      )
+    })
+  }
+
   render() {
     return (
       <div className="Match-Control">
-        <div className="Match-Control__life">
-          <Counter
-            value={this.props.scoreBoard.life}
-            onSub={this.handleAction.bind(this, 'life', -1)}
-            onAdd={this.handleAction.bind(this, 'life', 1)}
-          />
+        <div className="Match-Control__content">
+          {this.renderContent()}
         </div>
 
-        <div className="Match-Control__Poison">
-          <Counter
-            value={this.props.scoreBoard.poison}
-            onSub={this.handleAction.bind(this, 'poison', -1)}
-            onAdd={this.handleAction.bind(this, 'poison', 1)}
-          />
+        <div className="Match-Control__content">
+          {this.renderTabs()}
         </div>
       </div>
     );

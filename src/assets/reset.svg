@@ -1,39 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   id="svg634"
-   viewBox="0 0 10465.5 10465.5"
-   style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-   version="1.1"
-   height="104.655mm"
-   width="104.655mm"
-   xml:space="preserve"><metadata
-   id="metadata638"><rdf:RDF><cc:Work
-       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata>
- <defs
-   id="defs629">
-  <style
-   id="style627"
-   type="text/css">
-   <![CDATA[
-    .fil0 {fill:#0D0F0F}
-   ]]>
-  </style>
- </defs>
- <g
-   transform="translate(-15575.75,-760.75)"
-   id="Camada_x0020_1">
-  <metadata
-   id="CorelCorpID_0Corel-Layer" />
-  <path
-   style="fill:#0d0f0f"
-   d="m 20746,10481 c -327,327 -859,327 -1186,0 L 16321,7242 c -327,-328 -327,-859 0,-1187 l 4549,-4549 c 328,-327 859,-327 1187,0 l 3239,3239 c 327,328 327,859 0,1186 z m 3526,-3692 h -3640 l 1333,-948 c -495,-393 -1068,-589 -1717,-589 -324,0 -547,61 -666,185 -120,124 -179,348 -179,673 0,897 461,1854 1383,2870 l -1050,1064 C 18514,8557 17904,7229 17904,6058 c 0,-700 210,-1258 633,-1672 423,-414 986,-621 1685,-621 854,0 1786,325 2794,974 l 781,-1333 z"
-   class="fil0"
-   id="path459" />
- </g>
+<svg viewBox="0 0 10465.5 10465.5">
+  <g transform="translate(-15575.75,-760.75)" >
+    <path
+      style="fill:#0d0f0f"
+      d="m 20746,10481 c -327,327 -859,327 -1186,0 L 16321,7242 c -327,-328 -327,-859 0,-1187 l 4549,-4549 c 328,-327 859,-327 1187,0 l 3239,3239 c 327,328 327,859 0,1186 z m 3526,-3692 h -3640 l 1333,-948 c -495,-393 -1068,-589 -1717,-589 -324,0 -547,61 -666,185 -120,124 -179,348 -179,673 0,897 461,1854 1383,2870 l -1050,1064 C 18514,8557 17904,7229 17904,6058 c 0,-700 210,-1258 633,-1672 423,-414 986,-621 1685,-621 854,0 1786,325 2794,974 l 781,-1333 z" />
+  </g>
 </svg>

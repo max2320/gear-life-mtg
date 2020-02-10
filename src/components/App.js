@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+
 import './App.css';
-import Header from './header/Header';
-// import Player from './player/Player';
+
+import Header from './Header';
 import TeamList from './TeamList';
 import Match from './Match';
 import PlayerList from './PlayerList';
 import MatchType from './MatchType';
-import ToggleEdit from './Control/ToggleEdit';
 
 import {
   HashRouter as Router,
@@ -30,7 +30,7 @@ export default class App extends Component {
                 <Match />
               </Route>
 
-              <Route path="/match_type">
+              <Route path="/match/selection">
                 <MatchType />
               </Route>
 
@@ -43,9 +43,6 @@ export default class App extends Component {
               </Route>
             </Switch>
           </div>
-
-
-          <ToggleEdit/>
         </div>
       </Router>
     );

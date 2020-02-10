@@ -1,44 +1,23 @@
-.Match-Player{
+.Match-Control{
+
+}
+
+.Match-Control__content {
+  width: 100%;
+  display: flex;
+}
+
+.Match-Control__tabs-item{
+  border-top: 2px rgba(0, 0, 0, 0.3) solid;
+  flex: 1;
   color: #fff;
-  flex: 1;
-  margin: 5px;
-  text-shadow: 1px 1px 3px black;
-  border-radius: 5px;
-}
-
-.Match-PlayerHeader{
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-.Match-PlayerHeader__name{
-  flex: 1 1;
-  color:#fff;
-  border: none;
-  font-size: 10px;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.Match-PlayerColors{
-  flex: 1;
-  width: 100 %;
-  display: flex;
-  background: rgba(0,0,0,0.5);
-  border-radius: 5px;
-  margin: 5px;
-  padding: 5px;
-}
-
-.Match-PlayerColors__item{
-  flex: 1;
-  color: rgba(255, 255, 255, 1);
   text-align: center;
-  margin: 3px;
+  padding: 5px;
+  margin: 5px;
   font-size: 12px;
-  min-width: 15px;
 }
 
-.Match-PlayerColors__item-image{
-  opacity: 0.7;
+.Match-Control__tabs-item.active{
+  border-top: 2px #dfdfdf solid;
+
 }

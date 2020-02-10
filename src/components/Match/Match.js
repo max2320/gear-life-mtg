@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
+import MatchTeam from  './MatchTeam';
 import { Link } from "react-router-dom";
 
-import MatchTeam from  './MatchTeam';
 
 class Match extends PureComponent{
   renderTeam(teamId) {
@@ -17,26 +17,17 @@ class Match extends PureComponent{
     return this.props.order.map((teamId) => (this.renderTeam(teamId)));
   }
 
-  renderButtons(){
-    return [(
-      <button
-        className='Match__button Match__button--green'
-        onClick={this.handleAddTeam}
-      >
-        + Team
-      </button>
-    )];
-  }
-
   render() {
     return (
       <div className="Match">
         {this.renderTeams()}
-        {JSON.stringify(this.props.history)}
+        
+        <div className="Match__controls">
+          <Link className="Match__button Match__button--green" to='/match/winner'>Finish</Link>
+        </div>
       </div>
     )
   }
 }
-
 
 export default Match;

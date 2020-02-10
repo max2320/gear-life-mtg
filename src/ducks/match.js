@@ -1,38 +1,15 @@
-import uuid from '../lib/uuid';
 import {setCache, getCache} from '../lib/local_cache';
+
 import { actions as teamActions } from './team';
 import { actions as playerActions } from './player';
+
+import { matchTypes } from '../configs/consts/matchTypes';
 
 const initialState = getCache('match') || {
   selectedType: null,
   allowCustom: false,
   matchConfig: null,
-  matchTypes: {
-    standard: {
-      name: "Standard",
-      defaultLife: 20,
-      defaultPoison: 10,
-      teams: 2,
-      teamMembers: 1,
-      allowCustom: true
-    },
-    twoHeadedGiant: {
-      name: "Two-Headed Giant",
-      defaultLife: 30,
-      defaultPoison: 15,
-      teams: 2,
-      teamMembers: 2,
-      allowCustom: false
-    },
-    emperor: {
-      name: "Emperor",
-      defaultLife: 20,
-      defaultPoison: 10,
-      teams: 2,
-      teamMembers: 3,
-      allowCustom: false
-    }
-  }
+  matchTypes
 };
 
 export const actionTypes = {
@@ -56,7 +33,7 @@ export const actions = {
   prepareMatch: () => {
     return (dispatch, getState) => {
       const { matchTypes, selectedType } = getState().match;
-
+      
       const selectedMatch = matchTypes[selectedType];
 
       for(let team = 0; team < selectedMatch.teams; team++){

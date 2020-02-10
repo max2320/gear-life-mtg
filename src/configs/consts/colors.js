@@ -35,7 +35,6 @@ export const colors = {
   },
   white:{
     description: 'Peace, law, structured, selflessness, equality',
-    color: '#efead4',
     color: '#fff6a6',
     Symbol: WhiteImg
   }

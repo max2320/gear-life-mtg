@@ -1,10 +1,4 @@
-import uuid from '../lib/uuid';
 import {setCache, getCache} from '../lib/local_cache';
-
-const defaultTeamScoreBoard = {
-  currentScore: null,
-  wins: 0
-};
 
 const defaultState = {
   currentMatch: 0,
@@ -16,6 +10,7 @@ const initialState = getCache('scoreBoard') || { ...defaultState };
 
 export const actionTypes = {
   startMatch: 'scoreBoard/START_MATCH',
+  resetMatch: 'scoreBoard/RESET_MATCH',
   registryAction: 'scoreBoard/REGISTRY_ACTION',
   logHistory: 'scoreBoard/LOG_HISTORY',
   updateCache: 'scoreBoard/UPDATE_CACHE',
@@ -23,15 +18,23 @@ export const actionTypes = {
 
 export const actions = {
   startMatch: () => {
-    return (dispatch, getState) => {
-      const { team: { teams }, match: { matchConfig } } = getState();
+    return async (dispatch, getState) => {
+      const {
+        team: { teams },
+        match: { matchConfig },
+        scoreBoard
+      } = getState();
+
+      if(Object.keys(scoreBoard.teams) > 0){
+        await dispatch(actions.resetMatch());
+      }
 
       const newTeams = Object.values(teams).reduce((cur, team)=>{
         return {
           ...cur,
           [team.id]: {
             currentScore: {
-              life: matchConfig.defaultLife,
+              life: matchConfig.life,
               poison: 0,
             },
             wins: 0
@@ -49,21 +52,34 @@ export const actions = {
       dispatch(actions.updateCache())
     }
   },
+  resetMatch: () => {
+    return (dispatch, getState) => {
+      // TODO archive current match
+
+      const payload = {
+        currentMatch: 0,
+        teams: {},
+        history: []
+      }
+
+      dispatch({ type: actionTypes.resetMatch, payload })
+      dispatch(actions.updateCache())
+    }
+  },
   registryAction: (actionObject) => {
     return (dispatch, getState) => {
       const { scoreBoard: { teams } } = getState();
-      const { match, action, teamId, value } = actionObject;
+      const { action, teamId, value } = actionObject;
 
       const targetTeam = teams[teamId];
       const { currentScore } = targetTeam;
-      console.log(targetTeam)
+
       const targetScore = currentScore[action] + value;
-      console.log(action, currentScore[action], targetScore)
 
       const payload = {
-        teams:{
+        teams: {
           ...teams,
-          [teamId]:{
+          [teamId]: {
             ...targetTeam,
             currentScore: {
               ...currentScore,

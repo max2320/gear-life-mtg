@@ -1,4 +1,3 @@
-import uuid from '../lib/uuid';
 import {setCache, getCache} from '../lib/local_cache';
 
 const initialState = getCache('control') || {

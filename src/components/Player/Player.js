@@ -48,7 +48,7 @@ class Player extends PureComponent {
 
   renderColors(){
     return order.map((colorName) => {
-      const { description, color, Symbol } = colors[colorName];
+      const { description, Symbol } = colors[colorName];
       const isSelected = this.props.colors.includes(colorName);
       const selectClass = isSelected ? 'active': '';
 
@@ -61,7 +61,6 @@ class Player extends PureComponent {
         >
           <Symbol
             className='PlayerColors__item-image'
-
           />
         </div>
       );

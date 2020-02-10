@@ -36,11 +36,13 @@ class MatchTeam extends PureComponent {
           </div>
         </div>
 
-        <div className='Match-TeamPlayers'>
-          {this.renderPlayers()}
-        </div>
 
-        <Control teamId={this.id} scoreBoard={this.scoreBoard.currentScore} />
+        <Control
+          teamId={this.id}
+          scoreBoard={this.scoreBoard.currentScore}
+          players={this.renderPlayers.bind(this)}
+          >
+        </Control>
       </div>
     );
   }

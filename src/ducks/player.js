@@ -65,7 +65,7 @@ export const actions = {
       const player = players[playerId];
 
       if(player.colors.includes(color)){
-        player.colors = player.colors.filter((c)=>(c != color))
+        player.colors = player.colors.filter((c)=>(c !== color))
       }else{
         player.colors = [...player.colors, color].sort();
       }
