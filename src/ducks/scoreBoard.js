@@ -20,6 +20,7 @@ export const actions = {
   startMatch: () => {
     return async (dispatch, getState) => {
       const {
+        player: { players },
         team: { teams },
         match: { matchConfig },
         scoreBoard
@@ -29,7 +30,9 @@ export const actions = {
         await dispatch(actions.resetMatch());
       }
 
-      const newTeams = Object.values(teams).reduce((cur, team)=>{
+      const teamIds = [...new Set(Object.values(players).map(({teamId}) => teamId)) ]
+      console.log(teamIds.map((teamId) => teams[teamId]));
+      const newTeams = teamIds.map((teamId) => teams[teamId]).reduce((cur, team)=>{
         return {
           ...cur,
           [team.id]: {
