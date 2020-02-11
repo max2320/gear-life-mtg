@@ -7,6 +7,7 @@ import TeamList from './TeamList';
 import Match from './Match';
 import PlayerList from './PlayerList';
 import MatchType from './MatchType';
+import MatchSort from './MatchSort';
 
 import {
   HashRouter as Router,
@@ -27,6 +28,10 @@ const App = (props)=>(
 
           <Route path="/match/selection">
             <MatchType />
+          </Route>
+
+          <Route path="/match/sort">
+            <MatchSort />
           </Route>
 
           <Route path="/players/edit">

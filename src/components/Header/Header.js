@@ -15,7 +15,7 @@ export default class Header extends Component {
           <Config />
         </Link>
 
-        <Link className='Header-icon' to="/match_sort">
+        <Link className='Header-icon' to="/match/sort">
           <Dice />
         </Link>
 

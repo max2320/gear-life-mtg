@@ -10,12 +10,12 @@ body {
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
-
 .Button {
-  padding: 10px;
+  flex: 1;
+  margin: 5px;
+  padding: 5px;
   font-size: 18px;
   border: 0;
-  margin: 5px;
   border-radius: 3px;
   cursor: pointer;
   text-decoration: none;
@@ -23,11 +23,11 @@ body {
 }
 
 .Button--green {
-  background: #017523;
+  background: #0f9615;
   color: #fff;
 }
 
 .Button--blue {
-  background: #012375;
+  background: #1c8dd5;
   color: #fff;
 }

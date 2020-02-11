@@ -1,6 +1,7 @@
 .App {
 
 }
+
 .App-container {
   display: flex;
   flex-flow: row wrap;
@@ -11,47 +12,7 @@
   height: 80px;
 }
 
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-
-.App-add-player{
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-}
-
-.AddPlayer-button{
-  flex: 1 500px;
-  min-width: 90%;
-  margin: 5px;
-  position: relative;
-  height: 150px;
-  padding: 10px;
-}
-
-.AddPlayer-button-add{
-  margin: 5px;
-  flex: 1;
-  line-height: 65px;
-  text-align: center;
-  background: #1c8dd5;
-}
-
-.AddPlayer-button-start{
-  margin: 5px;
-  flex: 1;
-  line-height: 65px;
-  text-align: center;
-  background: #0f9615;
 }
