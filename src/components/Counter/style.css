@@ -34,6 +34,7 @@
   padding: 0 10px;
   font-size: 70px;
   display: inline-block;
+  user-select: none;
 }
 
 .Counter__counter.red{

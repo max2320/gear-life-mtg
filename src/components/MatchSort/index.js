@@ -3,8 +3,6 @@ import { withRouter } from 'react-router-dom'
 
 import MatchSort from './MatchSort';
 
-import { actions } from '../../ducks/match';
-
 const mapStateToProps = ({ team }) => (team);
 const mapDispatchToProps = {  };
 

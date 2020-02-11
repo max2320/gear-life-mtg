@@ -7,9 +7,19 @@ import { colorBackground } from '../../../lib/color';
 class MatchPlayer extends PureComponent {
   id = this.props.id;
 
+  get colors(){
+    return order.filter((color)=>this.props.colors.includes(color));
+  }
+
+  get colorBackground(){
+    return {
+      background: colorBackground(this.props.colors)
+    }
+  }
+
   renderColors(){
 
-    return order.filter((color)=>this.props.colors.includes(color)).map((colorName) => {
+    return this.colors.map((colorName) => {
       const { Symbol } = colors[colorName];
       const isSelected = this.props.colors.includes(colorName);
       const selectClass = isSelected ? 'active': '';
@@ -24,7 +34,7 @@ class MatchPlayer extends PureComponent {
 
   render() {
     return (
-      <div className="Match-Player" style={{background : colorBackground(this.props.colors)}}>
+      <div className="Match-Player" style={this.colorBackground}>
         <div className='Match-PlayerHeader'>
           <div className='Match-PlayerHeader__name'>
             {this.props.name}

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-import './style.css';
-import Counter from '../../Counter';
 import Dice from '../../Dice';
 import Life from './Life';
 import Poison from './Poison';
 
+import './style.css';
 
 class Control extends Component {
   teamId = this.props.teamId;
@@ -48,7 +47,6 @@ class Control extends Component {
 
   renderContent(){
     const { currentControl } = this.state;
-    const { scoreBoard, matchConfig } = this.props;
 
     return this.renderers[currentControl]();
   }

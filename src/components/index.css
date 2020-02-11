@@ -8,6 +8,11 @@ body {
   background: #4F4F4F;
 }
 
+button::-moz-focus-inner {
+  border: 0;
+}
+
+
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 .Button {
@@ -21,6 +26,7 @@ body {
   text-decoration: none;
   text-align: center;
 }
+
 
 .Button--green {
   background: #0f9615;
