@@ -9,3 +9,25 @@ body {
 }
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+
+.Button {
+  padding: 10px;
+  font-size: 18px;
+  border: 0;
+  margin: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.Button--green {
+  background: #017523;
+  color: #fff;
+}
+
+.Button--blue {
+  background: #012375;
+  color: #fff;
+}

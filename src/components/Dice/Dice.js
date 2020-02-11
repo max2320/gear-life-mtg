@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import './style.css';
+
 import d from 'dicejs';
+import './style.css';
 
 export default class Dice extends Component {
   state = {
     dice: '0'
   }
 
-  onClick(){
+  onClick = () => {
     this.setState({
       dice: this.rollDice().result
     });
@@ -23,7 +24,7 @@ export default class Dice extends Component {
         <div className='Dice-number'>{this.state.dice}</div>
         <button
           className='Dice-button'
-          onClick={()=>{this.onClick()}}
+          onClick={this.onClick}
         >
           Roll
         </button>

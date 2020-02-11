@@ -6,8 +6,24 @@ import { ReactComponent as PlusIcon} from '../../assets/plus.svg';
 
 
 class Counter extends PureComponent {
-  handleAction = (value) => {
-    this.props.onAction(value);
+  allowUpdate(modifier){
+    const { minValue, maxValue, value } = this.props;
+    const nextValue = value + modifier;
+    let allow = true;
+
+    if(minValue !== undefined){
+      allow = allow && minValue <= nextValue;
+    }
+
+    if(maxValue !== undefined){
+      allow = allow && maxValue >= nextValue;
+    }
+
+    return allow;
+  }
+
+  handleAction = (modifier) => {
+    this.allowUpdate(modifier) && this.props.onAction(modifier);
   }
 
   render() {

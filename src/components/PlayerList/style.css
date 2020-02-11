@@ -4,28 +4,6 @@
   width: 100%;
 }
 
-.PlayerList__button {
-  flex: 1;
-  padding: 10px;
-  font-size: 18px;
-  border: 0;
-  margin: 5px;
-  border-radius: 10px;
-  cursor: pointer;
-  text-decoration: none;
-  text-align: center;
-}
-
-.PlayerList__button--green {
-  background: #017523;
-  color: #fff;
-}
-
-.PlayerList__button--blue {
-  background: #012375;
-  color: #fff;
-}
-
 .PlayerList__controls{
   flex: 0 0 100%;
   display: flex;

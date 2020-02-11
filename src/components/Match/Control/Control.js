@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import './style.css';
 import Counter from '../../Counter';
 import Dice from '../../Dice';
+import Life from './Life';
+import Poison from './Poison';
+
 
 class Control extends Component {
   teamId = this.props.teamId;
@@ -23,55 +26,43 @@ class Control extends Component {
     this.props.registryAction(actionObject);
   }
 
-  counterThreshold(value){
-    const { currentControl } = this.state;
-    const { matchConfig } = this.props;
-
-    return (currentControl === 'life' && value <= 0) ||
-           (currentControl === 'poison' && value >= matchConfig.poison)
-  }
-
-  renderScoreCounter(){
-    const { currentControl } = this.state;
-    const { scoreBoard } = this.props;
-    const value = scoreBoard[currentControl];
-
-    return (
-      <Counter
-        className={this.counterThreshold(value) ? 'red' : '' }
-        value={value}
-        onAction={this.handleAction.bind(this, currentControl)}
+  renderers = {
+    players : () => {
+      return this.props.players();
+    },
+    dice: () => (<Dice />),
+    life: () => (
+      <Life
+        value={this.props.scoreBoard.life}
+        onAction={this.handleAction.bind(this, 'life')}
       />
-    );
-  }
-
-  renderPlayers(){
-    return this.props.players();
+    ),
+    poison: () => (
+      <Poison
+        threshold={this.props.matchConfig.poison}
+        value={this.props.scoreBoard.poison}
+        onAction={this.handleAction.bind(this, 'poison')}
+      />
+    )
   }
 
   renderContent(){
     const { currentControl } = this.state;
+    const { scoreBoard, matchConfig } = this.props;
 
-    if(currentControl === 'players'){
-      return this.renderPlayers();
-    }
-
-    if(currentControl === 'dice'){
-      return <Dice />;
-    }
-
-    return this.renderScoreCounter();
+    return this.renderers[currentControl]();
   }
 
   renderTabs(){
     const { currentControl } = this.state;
+    const { scoreBoard } = this.props;
 
     return [
-      ['life', 'Life'],
-      ['poison', 'Poison'],
-      ['dice', 'Dice'],
-      ['players', 'Players']
-    ].map(([key, name])=>{
+      ['life', 'Life', scoreBoard.life ],
+      ['poison', 'Poison', scoreBoard.poison ],
+      ['dice', 'Dice', null],
+      ['players', 'Players', null]
+    ].map(([key, name, counter])=>{
       const selectedClass = key === currentControl ? 'active' : '';
       return (
         <div
@@ -79,6 +70,7 @@ class Control extends Component {
           onClick={this.handleTab.bind(this, key)}
         >
           {name}
+          {counter !== null && ` (${counter})`}
         </div>
       )
     })

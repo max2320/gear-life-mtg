@@ -21,9 +21,9 @@ class Match extends PureComponent{
     return (
       <div className="Match">
         {this.renderTeams()}
-        
+
         <div className="Match__controls">
-          <Link className="Match__button Match__button--green" to='/match/winner'>Finish</Link>
+          <Link className="Button Button--green" to='/match/winner'>Finish</Link>
         </div>
       </div>
     )

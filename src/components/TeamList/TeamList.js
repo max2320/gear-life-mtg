@@ -24,7 +24,7 @@ class TeamList extends PureComponent{
   renderButtons(){
     return [(
       <button
-        className='TeamList__button TeamList__button--green'
+        className='Button Button--green'
         onClick={this.handleAddTeam}
       >
         + Team
@@ -41,7 +41,7 @@ class TeamList extends PureComponent{
           {this.props.allowCustom && this.renderButtons()}
 
           <Link to='/players/edit'
-            className='TeamList__button TeamList__button--blue'>
+            className='Button Button--blue'>
             Players
           </Link>
         </div>

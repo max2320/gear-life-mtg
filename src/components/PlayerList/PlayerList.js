@@ -30,7 +30,7 @@ class PlayerList extends PureComponent{
   renderButtons(){
     return [(
       <button
-        className='PlayerList__button PlayerList__button--green'
+        className='Button Button--green'
         onClick={this.handleAddPlayer}
       >
         + Player
@@ -42,16 +42,16 @@ class PlayerList extends PureComponent{
     return (
       <div className="PlayerList">
         {this.renderPlayers()}
-        
+
         <div className="PlayerList__controls">
           {this.props.allowCustom && this.renderButtons()}
 
           <Link to='/teams/edit'
-            className='PlayerList__button PlayerList__button--blue'>
+            className='Button Button--blue'>
             Teams
           </Link>
           <button
-            className='PlayerList__button PlayerList__button--green'
+            className='Button Button--green'
             onClick={this.handleStartMatch}
           >
             StartMatch
