@@ -3,7 +3,8 @@ import {setCache, getCache} from '../lib/local_cache';
 
 const defaultState = {
   order: [],
-  teams: {}
+  teams: {},
+  length: 0
 };
 const initialState = getCache('team') || defaultState;
 
@@ -18,8 +19,9 @@ export const actionTypes = {
 export const actions = {
   createTeam: () => {
     return (dispatch, getState) => {
-      const { teams, order } = getState().team
-      const teamName = `Team ${(order.length + 1)}`;
+      const { teams, order, length } = getState().team
+
+      const teamName = `Team ${(length + 1)}`;
       const team = {
         id: uuid(teamName),
         name: teamName
@@ -27,8 +29,10 @@ export const actions = {
 
       const payload = {
         order: [ ...order, team.id ],
-        teams: { ...teams, [team.id]: team }
-      }
+        teams: { ...teams, [team.id]: team },
+        length: length + 1
+      };
+
       dispatch({ type: actionTypes.createTeam, payload });
       dispatch(actions.updateCache());
 
@@ -44,7 +48,7 @@ export const actions = {
 
       const payload = { order, teams };
 
-      dispatch({ type: actionTypes.createTeam, payload });
+      dispatch({ type: actionTypes.removeTeam, payload });
       dispatch(actions.updateCache());
     }
   },

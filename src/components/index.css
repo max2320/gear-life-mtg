@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 body {
   margin: 0;
   padding: 0;
@@ -12,9 +14,6 @@ button::-moz-focus-inner {
   border: 0;
 }
 
-
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
 .Button {
   flex: 1;
   margin: 5px;
@@ -26,7 +25,6 @@ button::-moz-focus-inner {
   text-decoration: none;
   text-align: center;
 }
-
 
 .Button--green {
   background: #0f9615;

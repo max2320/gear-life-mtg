@@ -19,7 +19,7 @@ export const colors = {
     Symbol: BlueImg
   },
   colorless:{
-    description: '',
+    description: 'Wastes, transcendence, annihilator, devoid ,ingest',
     color: '#b3a195',
     Symbol: ColorlessImg
   },

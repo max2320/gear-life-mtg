@@ -6,7 +6,6 @@ import Player from  '../Player';
 class PlayerList extends PureComponent{
   handleAddPlayer = () => {
     this.props.createPlayer();
-    this.props.createPlayer();
   }
 
   handleStartMatch = () => {

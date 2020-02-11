@@ -4,7 +4,8 @@ import { actions as teamActions } from './team';
 
 const defaultState = {
   order: [],
-  players: {}
+  players: {},
+  length: 0
 };
 const initialState = getCache('player') || defaultState;
 
@@ -21,10 +22,10 @@ export const actionTypes = {
 export const actions = {
   createPlayer: (teamId = null) => {
     return (dispatch, getState) => {
-      const { players, order } = getState().player;
+      const { players, order, length } = getState().player;
       const { order: teamOrder } = getState().team;
 
-      const name = `Player ${(order.length + 1)}`;
+      const name = `Player ${(length + 1)}`;
 
       if(typeof teamId !== 'string'){
         teamId = teamOrder[order.length] || dispatch(teamActions.createTeam());
@@ -39,7 +40,8 @@ export const actions = {
 
       const payload = {
         order: [ ...order, player.id ],
-        players: { ...players, [player.id]: player }
+        players: { ...players, [player.id]: player },
+        length: length + 1
       };
 
       dispatch({ type: actionTypes.createPlayer, payload });
@@ -50,6 +52,8 @@ export const actions = {
     return (dispatch, getState) => {
       let { players, order } = getState().player;
 
+      let currenPlayerTeamId = players[playerId].teamId;
+
       delete players[playerId];
       order = order.filter(id => id !== playerId)
 
@@ -57,6 +61,10 @@ export const actions = {
 
       dispatch({ type: actionTypes.removePlayer, payload });
       dispatch(actions.updateCache());
+      
+      if(!Object.values(players).find(({ teamId }) =>(teamId === currenPlayerTeamId))){
+        dispatch(teamActions.removeTeam(currenPlayerTeamId));
+      }
     }
   },
   setPlayerColors: (playerId, color) => {
