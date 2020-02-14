@@ -6,7 +6,7 @@ import Poison from './Poison';
 
 import './style.css';
 
-class Control extends Component {
+class MatchControl extends Component {
   teamId = this.props.teamId;
   state = {
     currentControl: 'life'
@@ -45,6 +45,20 @@ class Control extends Component {
     )
   }
 
+  get tabs(){
+    const { scoreBoard } = this.props;
+
+    let tabs = [
+      ['life', 'Life', scoreBoard.life ],
+      ['poison', 'Poison', scoreBoard.poison ],
+      ['dice', 'Dice', null]
+    ];
+
+    this.props.players && tabs.push(['players', 'Players', null]);
+
+    return tabs;
+  }
+
   renderContent(){
     const { currentControl } = this.state;
 
@@ -53,14 +67,8 @@ class Control extends Component {
 
   renderTabs(){
     const { currentControl } = this.state;
-    const { scoreBoard } = this.props;
 
-    return [
-      ['life', 'Life', scoreBoard.life ],
-      ['poison', 'Poison', scoreBoard.poison ],
-      ['dice', 'Dice', null],
-      ['players', 'Players', null]
-    ].map(([key, name, counter])=>{
+    return this.tabs.map(([key, name, counter])=>{
       const selectedClass = key === currentControl ? 'active' : '';
       return (
         <div
@@ -89,4 +97,4 @@ class Control extends Component {
   }
 }
 
-export default Control;
+export default MatchControl;
