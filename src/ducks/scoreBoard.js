@@ -12,6 +12,7 @@ export const actionTypes = {
   startMatch: 'scoreBoard/START_MATCH',
   resetMatch: 'scoreBoard/RESET_MATCH',
   registryAction: 'scoreBoard/REGISTRY_ACTION',
+  registryRoundWinners: 'scoreBoard/REGISTRY_ROUND_WINNERS',
   logHistory: 'scoreBoard/LOG_HISTORY',
   updateCache: 'scoreBoard/UPDATE_CACHE',
 };
@@ -31,11 +32,12 @@ export const actions = {
       }
 
       const teamIds = [...new Set(Object.values(players).map(({teamId}) => teamId)) ]
-      console.log(teamIds.map((teamId) => teams[teamId]));
+
       const newTeams = teamIds.map((teamId) => teams[teamId]).reduce((cur, team)=>{
         return {
           ...cur,
           [team.id]: {
+            id: team.id,
             currentScore: {
               life: matchConfig.life,
               poison: 0,
@@ -96,6 +98,40 @@ export const actions = {
       dispatch(actions.logHistory(actionObject));
     }
   },
+  registryRoundWinners: (teamIds) => {
+    return (dispatch, getState) => {
+      const {
+        match: { matchConfig },
+        scoreBoard: { currentMatch, teams },
+      } = getState();
+
+      const newScoreBoard = teams.map(({ wins, id })=>{
+        if(teamIds.includes(id)){
+          wins++;
+        }
+
+        return {
+          id,
+          currentScore: {
+            life: matchConfig.life,
+            poison: 0,
+          },
+          wins
+        };
+      });
+
+      const payload = {
+        teams: { ...newScoreBoard }
+      };
+
+      dispatch({ type: actionTypes.registryRoundWinners, payload });
+      dispatch(actions.logHistory({
+        match: currentMatch,
+        action: 'roundWinners',
+        teamIds: teamIds
+      }));
+    }
+  },
   logHistory:  (actionObject) => {
     return (dispatch, getState) => {
       const { scoreBoard: { history } } = getState();
@@ -116,6 +152,7 @@ const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case actionTypes.startMatch:
     case actionTypes.registryAction:
+    case actionTypes.registryRoundWinners:
     case actionTypes.logHistory:
       return { ...state, ...payload };
 

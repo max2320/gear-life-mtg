@@ -33,7 +33,7 @@ export const actions = {
   prepareMatch: () => {
     return (dispatch, getState) => {
       const { matchTypes, selectedType } = getState().match;
-      
+
       const selectedMatch = matchTypes[selectedType];
 
       for(let team = 0; team < selectedMatch.teams; team++){
