@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 
 import MatchPlayer from '../MatchPlayer';
-import Control from '../Control';
+import MatchControl from '../MatchControl';
+import ColorSymbols from '../../ColorSymbols';
 
 import './style.css';
 import { colorBackground } from '../../../lib/color';
@@ -19,10 +20,21 @@ class MatchTeam extends PureComponent {
   }
 
   get teamStyle(){
+    return { background: colorBackground(this.teamColors) };
+  }
+
+  get teamColors(){
+    return [...new Set(this.teamPlayers.reduce((acc, { colors } )=>{
+      return [...acc, ...colors ];
+    },[]))]
+  }
+
+  shouldRenderPlayers(){
     if(this.teamPlayers.length === 1){
-      return { background: colorBackground(this.teamPlayers[0].colors) }
+      return null;
     }
-    return null;
+
+    return this.renderPlayers.bind(this)
   }
 
   renderPlayers() {
@@ -34,7 +46,6 @@ class MatchTeam extends PureComponent {
         />
       );
     })
-
   }
 
   render() {
@@ -44,12 +55,18 @@ class MatchTeam extends PureComponent {
           <div className='Match-TeamHeader__name'>
             {this.props.name} ({this.scoreBoard.wins})
           </div>
+
+          <ColorSymbols
+            className='Match-TeamHeader__colors'
+            colors={this.teamColors}
+            size='small'
+          />
         </div>
 
-        <Control
+        <MatchControl
           teamId={this.id}
           scoreBoard={this.scoreBoard.currentScore}
-          players={this.renderPlayers.bind(this)}
+          players={this.shouldRenderPlayers()}
         />
       </div>
     );
