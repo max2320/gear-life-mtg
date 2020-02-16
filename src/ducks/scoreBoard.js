@@ -105,20 +105,23 @@ export const actions = {
         scoreBoard: { currentMatch, teams },
       } = getState();
 
-      const newScoreBoard = teams.map(({ wins, id })=>{
+      const newScoreBoard = Object.values(teams).reduce((acc, { wins, id })=>{
         if(teamIds.includes(id)){
           wins++;
         }
 
         return {
-          id,
-          currentScore: {
-            life: matchConfig.life,
-            poison: 0,
-          },
-          wins
+          ...acc,
+          [id]: {
+            id,
+            currentScore: {
+              life: matchConfig.life,
+              poison: 0,
+            },
+            wins
+          }
         };
-      });
+      }, {});
 
       const payload = {
         teams: { ...newScoreBoard }

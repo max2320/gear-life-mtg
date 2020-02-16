@@ -32,7 +32,7 @@ class MatchRoundWinner extends Component {
   handleConfirm = () =>{
     const { teamIds } = this.state;
     if(teamIds.length > 0){
-      this.props.registryRoundWinners();
+      this.props.registryRoundWinners(teamIds);
       this.props.history.push('/');
     } else {
       alert('Please select the winner!!');
@@ -40,9 +40,13 @@ class MatchRoundWinner extends Component {
   }
 
   renderTeams() {
-    return this.teams.map(({ name, id }, index) => {
+    const { teamIds } = this.state;
+    return this.teams.map(({ name, id }) => {
       return (
-        <div className={`MatchRoundWinner__team ${(index === 0 ? 'MatchRoundWinner__team--first' : '')}`}>
+        <div
+          className={`MatchRoundWinner__team ${(teamIds.includes(id) ? 'selected' : '')}`}
+          onClick={this.handleSelection.bind(this, id)}
+        >
           <div className='MatchRoundWinner__team-name'>
             {name}
           </div>
@@ -57,14 +61,14 @@ class MatchRoundWinner extends Component {
       <div className='MatchRoundWinner'>
         <h1>Round Result</h1>
         <h3>Select the winner(s)</h3>
+
         <div className='MatchRoundWinner__container'>
           {this.renderTeams()}
         </div>
 
-
         <button
           className='Button Button--green'
-          onClick={this.nextMacth}
+          onClick={this.handleConfirm}
           disabled={this.state.locked}
         >
           Next Round

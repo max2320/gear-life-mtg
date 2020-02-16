@@ -23,10 +23,8 @@
   background: rgba(255,255,255,0.3);
 }
 
-.MatchRoundWinner__team--first{
-  flex: 0 0 calc(100% - 30px);
+.MatchRoundWinner__team.selected{
   background: rgba(20, 200, 20, 0.6);
-  height: 60px;
 }
 
 .MatchRoundWinner__team-name{

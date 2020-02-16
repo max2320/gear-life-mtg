@@ -23,11 +23,13 @@ class Match extends PureComponent{
         {this.renderTeams()}
 
         <div className="Match__controls">
-          <Link className="Button Button--green" to='/match/winner'>Finish</Link>
+          <Link className="Button Button--green" to='/match/round_winner'>Finish round</Link>
+          <Link className="Button Button--green" to='/players/edit'>Edit</Link>
         </div>
       </div>
     )
   }
+  // <button className="Button Button--green" onClick={this.props.resetMatch.bind(this)}>Finish match</button>
 }
 
 export default Match;
