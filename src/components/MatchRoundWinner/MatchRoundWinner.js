@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 
-import d from 'dicejs'
 import './style.css';
 
 class MatchRoundWinner extends Component {

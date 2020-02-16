@@ -29,6 +29,14 @@ class MatchTeam extends PureComponent {
     },[]))]
   }
 
+  get teamName(){
+    let name = this.props.name;
+    if(this.teamPlayers.length === 1){
+      name = `${name} ${this.teamPlayers[0].name}`;
+    }
+    return name;
+  }
+
   shouldRenderPlayers(){
     if(this.teamPlayers.length === 1){
       return null;
@@ -53,7 +61,10 @@ class MatchTeam extends PureComponent {
       <div className='Match-Team' style={this.teamStyle}>
         <div className='Match-TeamHeader'>
           <div className='Match-TeamHeader__name'>
-            {this.props.name} ({this.scoreBoard.wins})
+            {this.teamName}
+          </div>
+          <div className='Match-TeamHeader__score'>
+            {this.scoreBoard.wins}
           </div>
 
           <ColorSymbols

@@ -1,27 +1,40 @@
+import {
+  DefaultImg,
+  TwoHeadGiantImg,
+  EmperorImg
+} from '../../assets/formats';
+
+
 const matchTypes = {
-  standard: {
-    name: "Standard",
+  default: {
+    id: 'default',
+    name: "Free-for-all",
     life: 20,
     poison: 10,
     teams: 2,
     teamMembers: 1,
-    allowCustom: true
+    allowCustom: true,
+    Icon: DefaultImg
   },
   twoHeadedGiant: {
+    id: 'twoHeadedGiant',
     name: "Two-Headed Giant",
     life: 30,
     poison: 15,
     teams: 2,
     teamMembers: 2,
-    allowCustom: false
+    allowCustom: false,
+    Icon: TwoHeadGiantImg
   },
   emperor: {
+    id: 'emperor',
     name: "Emperor",
     life: 20,
     poison: 10,
     teams: 2,
     teamMembers: 3,
-    allowCustom: false
+    allowCustom: false,
+    Icon: EmperorImg
   }
 };
 

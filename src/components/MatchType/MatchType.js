@@ -4,7 +4,7 @@ import './style.css';
 
 class MatchtType extends PureComponent {
   get types() {
-    return Object.keys(this.props.matchTypes);
+    return Object.values(this.props.matchTypes);
   }
 
   handleSelection(type) {
@@ -13,13 +13,17 @@ class MatchtType extends PureComponent {
   }
 
   renderTypes() {
-    return this.types.map((type)=>{
+    return this.types.map(({id, name, Icon})=>{
       return (
         <div
-          key={type}
-          onClick={this.handleSelection.bind(this, type)}
+          className='Format'
+          key={id}
+          onClick={this.handleSelection.bind(this, id)}
         >
-          {this.props.matchTypes[type].name}
+          <Icon className='Format__icon'/>
+          <div className='Format__name'>
+            {name}
+          </div>
         </div>
       );
     })

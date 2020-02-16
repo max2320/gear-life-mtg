@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 
 import './style.css';
-import {colors, order} from '../../../configs/consts/colors';
 import { colorBackground } from '../../../lib/color';
 
 import ColorSymbols from '../../ColorSymbols';
@@ -14,7 +13,7 @@ class MatchPlayer extends PureComponent {
       background: colorBackground(this.props.colors)
     }
   }
-  
+
   render() {
     return (
       <div className="Match-Player" style={this.colorBackground}>

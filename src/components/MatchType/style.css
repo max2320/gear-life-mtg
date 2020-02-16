@@ -1,20 +1,27 @@
 .MatchType {
   text-align: center;
   color: #dfdfdf;
-  width: 300px;
+  width: 100%;
   margin: 0 auto;
 }
 
-.MatchType > div {
+.Format{
   background-color: rgba(255,255,255,0.5);
   margin: 10px;
-  padding: 5px;
   color: #000;
   font-weight: bold;
-  min-height: 40px;
   font-size: 20px;
-  text-align: ;
-  line-height: 40px;
-  border-radius: 20px;
+  line-height: 55px;
+  border-radius: 6px;
   cursor: pointer;
+  display: flex;
+}
+
+.Format__icon{
+  width: 55px;
+  margin: 5px 10px;
+}
+
+.Format__name{
+  margin: 5px;
 }

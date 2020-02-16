@@ -35,3 +35,8 @@ button::-moz-focus-inner {
   background: #1c8dd5;
   color: #fff;
 }
+.Button:disabled {
+  background: #b5b5b5;
+  color: #fff;
+  cursor: none;
+}

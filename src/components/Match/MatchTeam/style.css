@@ -24,6 +24,19 @@
   background: rgba(0,0,0,0.5);
 }
 
+.Match-TeamHeader__score{
+  flex: 0 30px;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  line-height: 23px;
+  background: rgba(10,0,0,0.5);
+  margin-left: 5px;
+  text-align: center;
+}
+
 .Match-TeamHeader__colors{
   flex: 0 30px;
   margin-left: 5px;

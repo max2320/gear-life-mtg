@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 
 
 class Match extends PureComponent{
+  handleMatchEnd = ()=> {
+    if(window.confirm("Are you sure you want end this match?")) {
+      this.props.history.push('/players/edit');
+    }
+  }
+
   renderTeam(teamId) {
     return (
       <MatchTeam
@@ -23,13 +29,17 @@ class Match extends PureComponent{
         {this.renderTeams()}
 
         <div className="Match__controls">
-          <Link className="Button Button--green" to='/match/round_winner'>Finish round</Link>
-          <Link className="Button Button--green" to='/players/edit'>Edit</Link>
+          <Link className="Button Button--blue" to='/match/round_winner'>Finish round</Link>
+          <button
+            className="Button Button--green"
+            onClick={this.handleMatchEnd}
+            >
+            Finish match
+          </button>
         </div>
       </div>
     )
   }
-  // <button className="Button Button--green" onClick={this.props.resetMatch.bind(this)}>Finish match</button>
 }
 
 export default Match;
