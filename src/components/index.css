@@ -8,6 +8,7 @@ body {
   height: 100%;
   height: 100vh;
   background: #4F4F4F;
+  overflow: hidden;
 }
 
 button::-moz-focus-inner {

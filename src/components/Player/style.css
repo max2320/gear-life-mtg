@@ -9,7 +9,7 @@
 
 @media screen and (min-width: 420px) {
   .Player {
-    flex: 1;
+    flex: 1 40%;
   }
 }
 
@@ -27,6 +27,7 @@
   margin-bottom: 5px;
   padding: 5px;
   border-radius: 5px;
+  white-space: nowrap;
 }
 
 .PlayerHeader__name{
