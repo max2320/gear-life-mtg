@@ -1,44 +1,76 @@
-import {setCache, getCache} from '../lib/local_cache';
+import { validators } from '../lib/validators';
 
-const initialState = getCache('control') || {
-  editMode: true
+const initialState = {
+  playerSetup: false,
+  teamSetup: false,
+  allowStart: false
 };
 
 export const actionTypes = {
-  enableEdit: 'control/ENABLE_EDIT',
-  disableEdit: 'control/DISABLE_EDIT',
-  updateCache: 'control/UPDATE_CACHE'
+  validatePlayers: 'control/VALIDATE_PLAYERS',
+  validateTeams: 'control/VALIDATE_TEAMS',
 };
 
 export const actions = {
-  enableEdit: () => {
-    return (dispatch, getState) => {
-      const payload = { editMode: true };
-
-      dispatch({ type: actionTypes.enableEdit, payload })
-      dispatch(actions.updateCache())
+  validateAll: () => {
+    return (dispatch) => {
+      dispatch(actions.validatePlayers());
+      dispatch(actions.validateTeams());
     }
   },
-  disableEdit: () => {
+  validatePlayers: () => {
     return (dispatch, getState) => {
-      const payload = { editMode: false };
+      const {
+        control: { teamSetup },
+        player: { players }
+      } = getState();
+      const playerList = Object.values(players);
 
-      dispatch({ type: actionTypes.disableEdit, payload })
-      dispatch(actions.updateCache())
+      const playerSetup = playerList.reduce((acc, { colors, name }) => {
+        return acc &&
+               validators.colors(colors) &&
+               validators.name(name);
+      }, true);
+
+      const payload = {
+        playerSetup,
+        allowStart: teamSetup && playerSetup
+      };
+
+      dispatch({ type: actionTypes.validatePlayers, payload });
     }
   },
-  updateCache: ()=>{
+  validateTeams: () => {
     return (dispatch, getState) => {
-      setCache('control', getState().control)
-      dispatch({ type: actionTypes.updateCache, payload: {} })
+      const {
+        control: { playerSetup },
+        team: { teams },
+        player: { players }
+      } = getState();
+      const teamList = Object.values(teams);
+      const playerList = Object.values(players);
+
+      const teamNames = teamList.reduce((acc, { colors, name }) => {
+        return acc &&
+               validators.name(name);
+      }, true);
+
+      const teamSetup = teamNames && validators.teamsSizes(teamList, playerList);
+
+      const payload = {
+        teamSetup,
+        allowStart: teamSetup && playerSetup
+      };
+
+      dispatch({ type: actionTypes.validatePlayers, payload });
     }
   }
 };
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case actionTypes.enableEdit:
-    case actionTypes.disableEdit:
+    case actionTypes.validatePlayers:
+    case actionTypes.validateTeams:
       return { ...state, ...payload };
 
     default:

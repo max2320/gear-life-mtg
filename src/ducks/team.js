@@ -1,5 +1,6 @@
 import uuid from '../lib/uuid';
 import {setCache, getCache} from '../lib/local_cache';
+import { actions as controlActions } from './control';
 
 const defaultState = {
   order: [],
@@ -78,6 +79,7 @@ export const actions = {
   },
   updateCache: ()=>{
     return (dispatch, getState) => {
+      dispatch(controlActions.validateAll());
       setCache('team', getState().team);
       dispatch({ type: actionTypes.updateCache, payload: {} });
     }

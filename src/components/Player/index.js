@@ -6,13 +6,13 @@ import { actions } from '../../ducks/player';
 
 const {removePlayer, setPlayerName, setPlayerColors, setPlayerTeam} = actions;
 
-const mapStateToProps = ({ team }) => {
+const mapStateToProps = ({ team, match: { allowCustom }, }) => {
   const teamsOptions = team.order.map((teamId)=>({
     key: teamId,
     label: team.teams[teamId].name
   }));
 
-  return { teamsOptions };
+  return { teamsOptions, allowCustom };
 };
 const mapDispatchToProps = { removePlayer, setPlayerName, setPlayerColors, setPlayerTeam };
 

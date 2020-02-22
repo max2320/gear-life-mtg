@@ -1,44 +1,52 @@
 import React, { PureComponent } from 'react';
 import MatchTeam from  './MatchTeam';
-import { Link } from "react-router-dom";
-
+import { Link, Redirect } from "react-router-dom";
 
 class Match extends PureComponent{
-  handleMatchEnd = ()=> {
+  handleMatchEnd = () => {
     if(window.confirm("Are you sure you want end this match?")) {
+      this.props.resetMatch();
       this.props.history.push('/players/edit');
     }
   }
 
-  renderTeam(teamId) {
+  renderTeam(teamId, leader) {
     return (
       <MatchTeam
         key={teamId}
+        leader={leader}
         {...this.props.teams[teamId]}
       />
     );
   }
 
   renderTeams() {
-    return this.props.order.map((teamId) => (this.renderTeam(teamId)));
+    const { leaders } = this.props.matchConfig;
+
+    return this.props.order.map((teamId, index) => this.renderTeam(teamId, leaders.includes(index)));
   }
 
   render() {
+    if(this.props.order.length === 0 ) {
+      return (<Redirect to="/match/selection" />);
+    }
+
     return (
       <div className="Match">
         {this.renderTeams()}
 
         <div className="Match__controls">
           <Link className="Button Button--blue" to='/match/round_winner'>Finish round</Link>
+
           <button
             className="Button Button--green"
             onClick={this.handleMatchEnd}
-            >
+          >
             Finish match
           </button>
         </div>
       </div>
-    )
+    );
   }
 }
 

@@ -2,14 +2,15 @@ import {setCache, getCache} from '../lib/local_cache';
 
 import { actions as teamActions } from './team';
 import { actions as playerActions } from './player';
+import { actions as controlActions } from './control';
+import { actions as scoreBoardActions } from './scoreBoard';
 
 import { matchTypes } from '../configs/consts/matchTypes';
 
 const initialState = getCache('match') || {
   selectedType: null,
   allowCustom: false,
-  matchConfig: null,
-  matchTypes
+  matchConfig: null
 };
 
 export const actionTypes = {
@@ -20,19 +21,20 @@ export const actionTypes = {
 
 export const actions = {
   setType: (selectedType) => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
       dispatch({ type: actionTypes.setType, payload: { selectedType } })
 
-      dispatch(teamActions.reset());
-      dispatch(playerActions.reset());
+      await dispatch(teamActions.reset());
+      await dispatch(playerActions.reset());
+      await dispatch(scoreBoardActions.resetMatch());
 
-      setTimeout(()=>dispatch(actions.prepareMatch()), 100);
+      await dispatch(actions.prepareMatch());
       dispatch(actions.updateCache());
     }
   },
   prepareMatch: () => {
-    return (dispatch, getState) => {
-      const { matchTypes, selectedType } = getState().match;
+    return async (dispatch, getState) => {
+      const { selectedType } = getState().match;
 
       const selectedMatch = matchTypes[selectedType];
 
@@ -40,7 +42,7 @@ export const actions = {
         const teamId = dispatch(teamActions.createTeam());
 
         for(let player = 0; player < selectedMatch.teamMembers; player++){
-          dispatch(playerActions.createPlayer(teamId));
+          await dispatch(playerActions.createPlayer(teamId));
         }
       }
 
@@ -48,18 +50,18 @@ export const actions = {
         allowCustom: selectedMatch['allowCustom'],
         matchConfig: selectedMatch
       };
-      dispatch({ type: actionTypes.prepareMatch, payload })
-      dispatch(actions.updateCache())
+      await dispatch({ type: actionTypes.prepareMatch, payload });
+      await dispatch(controlActions.validateAll());
+      dispatch(actions.updateCache());
     }
   },
-  updateCache: ()=>{
+  updateCache: () => {
     return (dispatch, getState) => {
-      setCache('match', getState().match)
-      dispatch({ type: actionTypes.updateCache, payload: {} })
+      setCache('match', getState().match);
+      dispatch({ type: actionTypes.updateCache, payload: {} });
     }
   }
 };
-
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
@@ -71,6 +73,5 @@ const reducer = (state = initialState, { type, payload }) => {
       return state;
   }
 };
-
 
 export default reducer;

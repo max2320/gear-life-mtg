@@ -1,26 +1,29 @@
 import React, { PureComponent } from 'react';
+import { matchTypes } from '../../configs/consts/matchTypes';
 
 import './style.css';
 
 class MatchtType extends PureComponent {
   get types() {
-    return Object.values(this.props.matchTypes);
+    return Object.values(matchTypes);
   }
 
-  handleSelection(type) {
-    this.props.setType(type);
+  handleSelection = async (type)=> {
+    await this.props.setType(type);
     this.props.history.push('/players/edit');
   }
 
   renderTypes() {
-    return this.types.map(({id, name, Icon})=>{
+    return this.types.map(({id, name, Symbol}, index)=>{
+
       return (
         <div
           className='Format'
           key={id}
           onClick={this.handleSelection.bind(this, id)}
         >
-          <Icon className='Format__icon'/>
+          <Symbol className='Format__icon'/>
+
           <div className='Format__name'>
             {name}
           </div>
@@ -33,6 +36,7 @@ class MatchtType extends PureComponent {
     return(
       <div className='MatchType'>
         <h1>Choose Format</h1>
+
         {this.renderTypes()}
       </div>
     );

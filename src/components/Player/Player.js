@@ -7,6 +7,10 @@ import { colorBackground } from '../../lib/color';
 class Player extends PureComponent {
   id = this.props.id;
 
+  get teamName() {
+    return this.props.teamsOptions.find(({ key }) => this.props.teamId === key);
+  }
+
   handleRemove = () => {
     if(window.confirm("Are you sure?")){
       this.props.removePlayer(this.id)
@@ -67,6 +71,26 @@ class Player extends PureComponent {
     });
   }
 
+  renderActions(){
+    if(!this.props.allowCustom) {
+      return (
+        <div className='PlayerHeader__team'>
+          {this.teamName['label']}
+        </div>
+      )
+    }
+
+    return [
+      this.renderTeamSelection(),
+      (
+        <i
+          className="material-icons PlayerHeader__remove"
+          onClick={this.handleRemove}
+        >close</i>
+      )
+    ]
+  }
+
   render() {
     return (
       <div className="Player" style={{background : colorBackground(this.props.colors)}}>
@@ -76,11 +100,7 @@ class Player extends PureComponent {
             defaultValue={this.props.name}
             onInput={this.handleNameUpdate}
           />
-          {this.renderTeamSelection()}
-          <i
-            className="material-icons PlayerHeader__remove"
-            onClick={this.handleRemove}
-          >close</i>
+          {this.renderActions()}
         </div>
 
         <div className='PlayerColors'>

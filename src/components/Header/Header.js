@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from "react-router-dom";
 
 import { ReactComponent as Config } from '../../assets/config.svg';
@@ -7,7 +7,7 @@ import { ReactComponent as Github } from '../../assets/github.svg';
 
 import './style.css';
 
-export default class Header extends Component {
+class Header extends PureComponent {
   render() {
     return (
       <div className="Header">
@@ -15,9 +15,11 @@ export default class Header extends Component {
           <Config />
         </Link>
 
-        <Link className='Header-icon' to="/match/sort">
-          <Dice />
-        </Link>
+        {this.props.matchStarted && (
+          <Link className='Header-icon' to="/match/sort">
+            <Dice />
+          </Link>
+        )}
 
         <a
           target='_blank'
@@ -30,3 +32,5 @@ export default class Header extends Component {
     );
   }
 }
+
+export default Header;

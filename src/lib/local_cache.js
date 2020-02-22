@@ -1,6 +1,5 @@
-
-export const setCache = (key, object)=>{
-  if(JSON.stringify(localStorage.getItem(key)) !== JSON.stringify(object)){
+export const setCache = (key, object) => {
+  if(JSON.stringify(localStorage.getItem(key)) !== JSON.stringify(object)) {
     localStorage.setItem(key, JSON.stringify(object));
     return true;
   }

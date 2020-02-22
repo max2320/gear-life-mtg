@@ -5,7 +5,6 @@ import { ReactComponent as ColorlessImg } from './colorless.svg';
 import { ReactComponent as RedImg } from './red.svg';
 import { ReactComponent as WhiteImg } from './white.svg';
 
-
 export {
   BlackImg,
   BlueImg,

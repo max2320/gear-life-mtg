@@ -1,7 +1,7 @@
 import {setCache, getCache} from '../lib/local_cache';
 
 const defaultState = {
-  currentMatch: 0,
+  currentMatch: null,
   teams: {},
   history: []
 }
@@ -23,29 +23,29 @@ export const actions = {
       const {
         player: { players },
         team: { teams },
-        match: { matchConfig },
-        scoreBoard
+        match: { matchConfig }
       } = getState();
 
-      if(Object.keys(scoreBoard.teams) > 0){
-        await dispatch(actions.resetMatch());
-      }
+      await dispatch(actions.resetMatch());
 
-      const teamIds = [...new Set(Object.values(players).map(({teamId}) => teamId)) ]
+      const playerList = Object.values(players);
+      const teamIds = [...new Set(playerList.map(({ teamId }) => teamId ))]
 
-      const newTeams = teamIds.map((teamId) => teams[teamId]).reduce((cur, team)=>{
-        return {
-          ...cur,
-          [team.id]: {
-            id: team.id,
-            currentScore: {
-              life: matchConfig.life,
-              poison: 0,
-            },
-            wins: 0
-          }
+
+      const teamList = Object.values(teams);
+      const filteredTeams = teamList.filter(({ id }) => teamIds.includes(id));
+
+      const newTeams = filteredTeams.reduce((cur, team) => ({
+        ...cur,
+        [team.id]: {
+          id: team.id,
+          currentScore: {
+            life: matchConfig.life,
+            poison: 0,
+          },
+          wins: 0
         }
-      }, {});
+      }), {});
 
       const payload = {
         currentMatch: 0,
@@ -62,7 +62,7 @@ export const actions = {
       // TODO archive current match
 
       const payload = {
-        currentMatch: 0,
+        currentMatch: null,
         teams: {},
         history: []
       }
@@ -105,7 +105,7 @@ export const actions = {
         scoreBoard: { currentMatch, teams },
       } = getState();
 
-      const newScoreBoard = Object.values(teams).reduce((acc, { wins, id })=>{
+      const newScoreBoard = Object.values(teams).reduce((acc, { wins, id }) => {
         if(teamIds.includes(id)){
           wins++;
         }
@@ -143,7 +143,7 @@ export const actions = {
       dispatch({ type: actionTypes.logHistory, payload });
     }
   },
-  updateCache: ()=>{
+  updateCache: () => {
     return (dispatch, getState) => {
       setCache('scoreBoard', getState().scoreBoard);
       dispatch({ type: actionTypes.updateCache, payload: {} });
@@ -155,6 +155,7 @@ const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case actionTypes.startMatch:
     case actionTypes.registryAction:
+    case actionTypes.resetMatch:
     case actionTypes.registryRoundWinners:
     case actionTypes.logHistory:
       return { ...state, ...payload };

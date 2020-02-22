@@ -1,9 +1,9 @@
-import { ReactComponent as DefaultImg } from './default.svg';
-import { ReactComponent as TwoHeadGiantImg } from './twoHeadGiant.svg';
-import { ReactComponent as EmperorImg } from './emperor.svg';
+import { ReactComponent as StandardSvg } from './standard.svg';
+import { ReactComponent as TwoHeadGiantSvg } from './thgiant.svg';
+import { ReactComponent as EmperorSvg } from './emperor.svg';
 
 export {
-  DefaultImg,
-  TwoHeadGiantImg,
-  EmperorImg
-}
+  StandardSvg,
+  TwoHeadGiantSvg,
+  EmperorSvg
+};

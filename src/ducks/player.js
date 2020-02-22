@@ -1,6 +1,7 @@
 import uuid from '../lib/uuid';
 import {setCache, getCache} from '../lib/local_cache';
 import { actions as teamActions } from './team';
+import { actions as controlActions } from './control';
 
 const defaultState = {
   order: [],
@@ -61,7 +62,7 @@ export const actions = {
 
       dispatch({ type: actionTypes.removePlayer, payload });
       dispatch(actions.updateCache());
-      
+
       if(!Object.values(players).find(({ teamId }) =>(teamId === currenPlayerTeamId))){
         dispatch(teamActions.removeTeam(currenPlayerTeamId));
       }
@@ -125,14 +126,15 @@ export const actions = {
       dispatch(actions.updateCache());
     }
   },
-  reset: () =>{
+  reset: () => {
     return (dispatch, getState) => {
       dispatch({ type: actionTypes.reset, payload: {} });
       dispatch(actions.updateCache());
     }
   },
-  updateCache: ()=>{
+  updateCache: () => {
     return (dispatch, getState) => {
+      dispatch(controlActions.validateAll());
       setCache('player', getState().player);
       dispatch({ type: actionTypes.updateCache, payload: {} });
     }

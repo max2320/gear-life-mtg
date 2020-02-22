@@ -8,8 +8,8 @@ class PlayerList extends PureComponent{
     this.props.createPlayer();
   }
 
-  handleStartMatch = () => {
-    this.props.startMatch();
+  handleStartMatch = async () => {
+    await this.props.startMatch();
     this.props.history.push('/');
   }
 
@@ -52,6 +52,7 @@ class PlayerList extends PureComponent{
           <button
             className='Button Button--green'
             onClick={this.handleStartMatch}
+            disabled={!this.props.allowStart}
           >
             StartMatch
           </button>

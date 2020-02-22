@@ -1,11 +1,10 @@
 import {
-  DefaultImg,
-  TwoHeadGiantImg,
-  EmperorImg
+  StandardSvg,
+  TwoHeadGiantSvg,
+  EmperorSvg
 } from '../../assets/formats';
 
-
-const matchTypes = {
+export const matchTypes = {
   default: {
     id: 'default',
     name: "Free-for-all",
@@ -14,7 +13,8 @@ const matchTypes = {
     teams: 2,
     teamMembers: 1,
     allowCustom: true,
-    Icon: DefaultImg
+    leaders: [],
+    Symbol: StandardSvg
   },
   twoHeadedGiant: {
     id: 'twoHeadedGiant',
@@ -24,20 +24,23 @@ const matchTypes = {
     teams: 2,
     teamMembers: 2,
     allowCustom: false,
-    Icon: TwoHeadGiantImg
+    leaders: [],
+    Symbol: TwoHeadGiantSvg
   },
   emperor: {
     id: 'emperor',
     name: "Emperor",
     life: 20,
     poison: 10,
-    teams: 2,
-    teamMembers: 3,
+    teams: 6,
+    teamMembers: 1,
     allowCustom: false,
-    Icon: EmperorImg
+    leaders: [1, 4],
+    Symbol: EmperorSvg
   }
 };
 
-export {
+
+export default {
   matchTypes
 };

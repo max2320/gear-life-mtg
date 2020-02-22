@@ -4,6 +4,9 @@ import MatchPlayer from '../MatchPlayer';
 import MatchControl from '../MatchControl';
 import ColorSymbols from '../../ColorSymbols';
 
+import { ReactComponent as GeneralSvg } from '../../../assets/general.svg';
+
+
 import './style.css';
 import { colorBackground } from '../../../lib/color';
 
@@ -11,49 +14,49 @@ import { colorBackground } from '../../../lib/color';
 class MatchTeam extends PureComponent {
   id = this.props.id;
 
-  get teamPlayers(){
-    return Object.values(this.props.players).filter(({teamId})=> teamId === this.id);
+  get teamPlayers() {
+    return Object.values(this.props.players).filter(({teamId}) => teamId === this.id);
   }
 
-  get scoreBoard(){
+  get scoreBoard() {
     return this.props.teams[this.id];
   }
 
-  get teamStyle(){
+  get teamStyle() {
     return { background: colorBackground(this.teamColors) };
   }
 
-  get teamColors(){
-    return [...new Set(this.teamPlayers.reduce((acc, { colors } )=>{
+  get teamColors() {
+    return [...new Set(this.teamPlayers.reduce((acc, { colors } ) => {
       return [...acc, ...colors ];
-    },[]))]
+    },[]))];
   }
 
-  get teamName(){
+  get teamName() {
     let name = this.props.name;
-    if(this.teamPlayers.length === 1){
+
+    if(this.teamPlayers.length === 1) {
       name = `${name} ${this.teamPlayers[0].name}`;
     }
+
     return name;
   }
 
-  shouldRenderPlayers(){
-    if(this.teamPlayers.length === 1){
+  shouldRenderPlayers() {
+    if(this.teamPlayers.length === 1) {
       return null;
     }
 
-    return this.renderPlayers.bind(this)
+    return this.renderPlayers.bind(this);
   }
 
   renderPlayers() {
-    return this.teamPlayers.map((player)=>{
-      return (
-        <MatchPlayer
-          key={player.id}
-          {...player}
-        />
-      );
-    })
+    return this.teamPlayers.map((player) => (
+      <MatchPlayer
+        key={player.id}
+        {...player}
+      />
+    ));
   }
 
   render() {
@@ -61,8 +64,12 @@ class MatchTeam extends PureComponent {
       <div className='Match-Team' style={this.teamStyle}>
         <div className='Match-TeamHeader'>
           <div className='Match-TeamHeader__name'>
+            {this.props.leader && (
+              <GeneralSvg className='Match-TeamHeader__leader' />
+            )}
             {this.teamName}
           </div>
+
           <div className='Match-TeamHeader__score'>
             {this.scoreBoard.wins}
           </div>
@@ -75,6 +82,7 @@ class MatchTeam extends PureComponent {
         </div>
 
         <MatchControl
+          key={this.id}
           teamId={this.id}
           scoreBoard={this.scoreBoard.currentScore}
           players={this.shouldRenderPlayers()}

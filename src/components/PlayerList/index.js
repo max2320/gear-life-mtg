@@ -9,7 +9,12 @@ import { actions as scoreBoardActions } from '../../ducks/scoreBoard';
 
 const { createPlayer } = actions;
 
-const mapStateToProps = ({ player, match: {allowCustom} }) => ({ ...player, allowCustom });
+const mapStateToProps = ({
+  player,
+  match: { allowCustom },
+  control: { allowStart }
+}) => ({ ...player, allowCustom, allowStart });
+
 const mapDispatchToProps = {
   createPlayer,
   startMatch: scoreBoardActions.startMatch
