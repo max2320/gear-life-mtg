@@ -10,10 +10,15 @@ class Match extends PureComponent{
     }
   }
 
+  get showIcons(){
+    return this.props.matchConfig.leaders.length > 0;
+  }
+
   renderTeam(teamId, leader) {
     return (
       <MatchTeam
         key={teamId}
+        showIcons={this.showIcons}
         leader={leader}
         {...this.props.teams[teamId]}
       />
@@ -32,7 +37,7 @@ class Match extends PureComponent{
     }
 
     return (
-      <div className="Match">
+      <div className={`Match ${this.props.matchConfig.id}`}>
         {this.renderTeams()}
 
         <div className="Match__controls">

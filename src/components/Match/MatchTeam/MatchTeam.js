@@ -5,6 +5,7 @@ import MatchControl from '../MatchControl';
 import ColorSymbols from '../../ColorSymbols';
 
 import { ReactComponent as GeneralSvg } from '../../../assets/general.svg';
+import { ReactComponent as EmperorSvg } from '../../../assets/formats/emperor.svg';
 
 
 import './style.css';
@@ -59,14 +60,24 @@ class MatchTeam extends PureComponent {
     ));
   }
 
+  renderIcons() {
+    if(this.props.leader) {
+      return (
+        <EmperorSvg className='Match-TeamHeader__leader' />
+      );
+    } else {
+      return (
+        <GeneralSvg className='Match-TeamHeader__leader' />
+      );
+    }
+  }
+
   render() {
     return (
       <div className='Match-Team' style={this.teamStyle}>
         <div className='Match-TeamHeader'>
           <div className='Match-TeamHeader__name'>
-            {this.props.leader && (
-              <GeneralSvg className='Match-TeamHeader__leader' />
-            )}
+            {this.props.showIcons && this.renderIcons()}
             {this.teamName}
           </div>
 

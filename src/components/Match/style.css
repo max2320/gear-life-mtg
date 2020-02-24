@@ -8,3 +8,8 @@
   flex: 0 0 100%;
   display: flex;
 }
+
+
+.Match.emperor .Match-Team {
+  flex: 1 1 30%; 
+}
