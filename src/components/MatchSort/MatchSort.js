@@ -11,6 +11,10 @@ class MatchSort extends Component {
     teams: null
   }
 
+  componentDidMount(){
+    this.rollDices();
+  }
+
   get teams() {
     return Object.values(this.props.teams);
   }
