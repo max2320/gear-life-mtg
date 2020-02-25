@@ -9,7 +9,7 @@ import './style.css';
 
 class Header extends PureComponent {
   handleMatchSelection = () =>{
-    if(!window.confirm('Are you sure you wanna leave the match?')){
+    if(this.props.matchStarted && !window.confirm('Are you sure you wanna leave the match?')){
       return;
     }
 
