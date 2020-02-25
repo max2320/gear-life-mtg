@@ -1,11 +1,16 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 
 import Header from './Header';
 
-const mapStateToProps = ({ scoreBoard:{ currentMatch } }) => ({
+import { actions } from '../../ducks/scoreBoard';
+
+const { resetMatch } = actions;
+
+const mapStateToProps = ({ scoreBoard: { currentMatch } }) => ({
   matchStarted: currentMatch !== null
 });
 
-const mapDispatchToProps = { };
+const mapDispatchToProps = { resetMatch };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

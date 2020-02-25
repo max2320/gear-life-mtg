@@ -8,12 +8,21 @@ import { ReactComponent as Github } from '../../assets/github.svg';
 import './style.css';
 
 class Header extends PureComponent {
+  handleMatchSelection = () =>{
+    if(!window.confirm('Are you sure you wanna leave the match?')){
+      return;
+    }
+
+    this.props.matchStarted && this.props.resetMatch();
+    this.props.history.push('/match/selection');
+  }
+
   render() {
     return (
       <div className="Header">
-        <Link className='Header-icon' to="/match/selection">
+        <a className='Header-icon' onClick={this.handleMatchSelection}>
           <Config />
-        </Link>
+        </a>
 
         {this.props.matchStarted && (
           <Link className='Header-icon' to="/match/sort">

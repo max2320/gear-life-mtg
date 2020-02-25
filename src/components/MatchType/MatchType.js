@@ -3,6 +3,8 @@ import { matchTypes } from '../../configs/consts/matchTypes';
 
 import './style.css';
 
+import { ReactComponent as LogoSvg } from '../../assets/logo.svg';
+
 class MatchtType extends PureComponent {
   get types() {
     return Object.values(matchTypes);
@@ -35,6 +37,7 @@ class MatchtType extends PureComponent {
   render() {
     return(
       <div className='MatchType'>
+        <LogoSvg />
         <h1>Choose Format</h1>
 
         {this.renderTypes()}

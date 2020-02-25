@@ -5,6 +5,16 @@
   margin: 0 auto;
 }
 
+.MatchType > svg{
+  margin-top: 20px;
+  width: 400px;
+  max-width: 80%;
+}
+
+.MatchType > svg .castle {
+  color: #017702;
+}
+
 .Format{
   background-color: rgba(255,255,255,0.5);
   margin: 10px;
