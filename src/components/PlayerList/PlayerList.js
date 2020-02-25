@@ -13,17 +13,25 @@ class PlayerList extends PureComponent{
     this.props.history.push('/');
   }
 
-  renderPlayer(playerId) {
+
+  get showIcons(){
+    return this.props.matchConfig.leaders.length > 0;
+  }
+
+  renderPlayer(playerId, leader) {
     return (
       <Player
         key={playerId}
+        showIcons={this.showIcons}
+        leader={leader}
         {...this.props.players[playerId]}
       />
     );
   }
 
   renderPlayers() {
-    return this.props.order.map((playerId) => (this.renderPlayer(playerId)));
+    const { leaders } = this.props.matchConfig;
+    return this.props.order.map((playerId, index) => (this.renderPlayer(playerId, leaders.includes(index))));
   }
 
   renderButtons(){

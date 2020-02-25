@@ -11,9 +11,9 @@ const { createPlayer } = actions;
 
 const mapStateToProps = ({
   player,
-  match: { allowCustom },
+  match: { allowCustom, matchConfig },
   control: { allowStart }
-}) => ({ ...player, allowCustom, allowStart });
+}) => ({ ...player, allowCustom, allowStart, matchConfig });
 
 const mapDispatchToProps = {
   createPlayer,

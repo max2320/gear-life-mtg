@@ -4,6 +4,12 @@ import './style.css';
 import {colors, order} from '../../configs/consts/colors';
 import { colorBackground } from '../../lib/color';
 
+
+import { ReactComponent as GeneralSvg } from '../../assets/general.svg';
+import { ReactComponent as EmperorSvg } from '../../assets/formats/emperor.svg';
+
+
+
 class Player extends PureComponent {
   id = this.props.id;
 
@@ -76,6 +82,7 @@ class Player extends PureComponent {
       return (
         <div className='PlayerHeader__team'>
           {this.teamName['label']}
+          {this.props.showIcons && this.renderIcons()}
         </div>
       )
     }
@@ -89,6 +96,18 @@ class Player extends PureComponent {
         >close</i>
       )
     ]
+  }
+
+  renderIcons() {
+    if(this.props.leader) {
+      return (
+        <EmperorSvg className='Match-TeamHeader__leader' />
+      );
+    } else {
+      return (
+        <GeneralSvg className='Match-TeamHeader__leader' />
+      );
+    }
   }
 
   render() {
