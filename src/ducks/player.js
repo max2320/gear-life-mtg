@@ -22,14 +22,14 @@ export const actionTypes = {
 
 export const actions = {
   createPlayer: (teamId = null) => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
       const { players, order, length } = getState().player;
       const { order: teamOrder } = getState().team;
 
       const name = `Player ${(length + 1)}`;
-
+      
       if(typeof teamId !== 'string'){
-        teamId = teamOrder[order.length] || dispatch(teamActions.createTeam());
+        teamId = teamOrder[order.length] || await dispatch(teamActions.createTeam());
       }
 
       const player = {

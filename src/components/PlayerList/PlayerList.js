@@ -54,9 +54,10 @@ class PlayerList extends PureComponent{
           {this.props.allowCustom && this.renderButtons()}
 
           <Link to='/teams/edit'
-            className='Button Button--blue'>
-            Teams
+            className={`Button ${this.props.teamSetup ? 'Button--blue' : 'Button--red'}`}>
+            Teams {!this.props.teamSetup && '(err)' }
           </Link>
+
           <button
             className='Button Button--green'
             onClick={this.handleStartMatch}

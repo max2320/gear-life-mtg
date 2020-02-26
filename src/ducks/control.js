@@ -50,9 +50,8 @@ export const actions = {
       const teamList = Object.values(teams);
       const playerList = Object.values(players);
 
-      const teamNames = teamList.reduce((acc, { colors, name }) => {
-        return acc &&
-               validators.name(name);
+      const teamNames = teamList.reduce((acc, { name }) => {
+        return acc && validators.name(name);
       }, true);
 
       const teamSetup = teamNames && validators.teamsSizes(teamList, playerList);

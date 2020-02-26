@@ -5,7 +5,7 @@ import Team from  '../Team';
 
 class TeamList extends PureComponent{
   handleAddTeam = () =>{
-    this.props.createTeam();
+    this.props.createTeam(true);
   }
 
   renderTeam(teamId) {

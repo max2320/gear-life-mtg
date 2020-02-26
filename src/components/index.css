@@ -36,8 +36,20 @@ button::-moz-focus-inner {
   background: #1c8dd5;
   color: #fff;
 }
+
+.Button--red {
+  background: #960f0f;
+  color: #fff;
+}
+
 .Button:disabled {
   background: #b5b5b5;
   color: #fff;
   cursor: none;
+}
+
+#root{
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
 }

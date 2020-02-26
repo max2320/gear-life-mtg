@@ -39,7 +39,7 @@ export const actions = {
       const selectedMatch = matchTypes[selectedType];
 
       for(let team = 0; team < selectedMatch.teams; team++){
-        const teamId = dispatch(teamActions.createTeam());
+        const teamId = await dispatch(teamActions.createTeam());
 
         for(let player = 0; player < selectedMatch.teamMembers; player++){
           await dispatch(playerActions.createPlayer(teamId));

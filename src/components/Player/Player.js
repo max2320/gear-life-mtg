@@ -42,6 +42,7 @@ class Player extends PureComponent {
         onChange={this.handleTeamUpdate}
         className='PlayerHeader__team'
       >
+        <option disabled>Teams</option>
         {this.props.teamsOptions.map(({key, label}) => {
           return (
             <option

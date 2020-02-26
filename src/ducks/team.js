@@ -1,6 +1,7 @@
 import uuid from '../lib/uuid';
 import {setCache, getCache} from '../lib/local_cache';
 import { actions as controlActions } from './control';
+import { actions as playerActions } from './player';
 
 const defaultState = {
   order: [],
@@ -18,8 +19,8 @@ export const actionTypes = {
 };
 
 export const actions = {
-  createTeam: () => {
-    return (dispatch, getState) => {
+  createTeam: (withPlayer = false) => {
+    return async (dispatch, getState) => {
       const { teams, order, length } = getState().team
 
       const teamName = `Team ${(length + 1)}`;
@@ -34,8 +35,13 @@ export const actions = {
         length: length + 1
       };
 
-      dispatch({ type: actionTypes.createTeam, payload });
-      dispatch(actions.updateCache());
+      await dispatch({ type: actionTypes.createTeam, payload });
+      await dispatch(actions.updateCache());
+
+      if(withPlayer){
+        console.log('created')
+        await dispatch(playerActions.createPlayer(team.id));
+      }
 
       return team.id;
     }
