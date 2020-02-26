@@ -5,22 +5,24 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@fortawesome/fontawesome": "^1.1.0",
-    "@fortawesome/react-fontawesome": "^0.0.17",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "balloon-css": "^1.0.4",
     "dicejs": "^0.1.0",
     "express": "^4.17.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.6",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.0.1",
     "redux": "^3.7.2",
+    "redux-thunk": "^2.3.0",
+    "uuid": "^3.3.2",
     "webpack": "4.29.6"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "yarn && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
@@ -36,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "redux-devtools": "^3.5.0"
   }
 }

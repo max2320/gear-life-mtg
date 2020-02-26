@@ -1,0 +1,36 @@
+.MatchRoundWinner{
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  text-align: center;
+  color: #dfdfdf;
+  margin: 0 auto;
+}
+
+.MatchRoundWinner__container{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.MatchRoundWinner__team{
+  flex: 1 100px;
+  height: 50px;
+  margin: 5px;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+  background: rgba(255,255,255,0.3);
+}
+
+.MatchRoundWinner__team.selected{
+  background: rgba(20, 200, 20, 0.6);
+}
+
+.MatchRoundWinner__team-name{
+}
+
+.MatchRoundWinner__team-score{
+  font-size: 25px;
+  margin-top: 5px;
+}

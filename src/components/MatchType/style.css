@@ -1,0 +1,40 @@
+.MatchType {
+  text-align: center;
+  color: #dfdfdf;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.MatchType > svg{
+  margin-top: 20px;
+  width: 400px;
+  max-width: 80%;
+}
+
+.MatchType > svg .castle {
+  color: #017702;
+}
+
+.Format{
+  background-color: rgba(255,255,255,0.5);
+  margin: 10px;
+  color: #000;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 55px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  max-width: 400px;
+  margin: 10px auto;
+}
+
+.Format__icon{
+  width: 55px;
+  height: 55px;
+  margin: 5px 10px;
+}
+
+.Format__name{
+  margin: 5px;
+}

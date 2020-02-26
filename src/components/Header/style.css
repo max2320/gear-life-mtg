@@ -1,0 +1,18 @@
+.Header{
+  width: 100%;
+  height: 60px;
+  background-color: #dfdfdf;
+}
+
+.Header-icon{
+  margin: 5px 10px;
+  display: inline-block;
+}
+
+.Header-icon--right{
+  float: right;
+}
+
+.Header-icon svg{
+  height: 45px;
+}

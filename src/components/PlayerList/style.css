@@ -1,0 +1,10 @@
+.PlayerList {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.PlayerList__controls{
+  flex: 0 0 100%;
+  display: flex;
+}
