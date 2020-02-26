@@ -25,6 +25,8 @@
   border-radius: 6px;
   cursor: pointer;
   display: flex;
+  max-width: 400px;
+  margin: 10px auto;
 }
 
 .Format__icon{
