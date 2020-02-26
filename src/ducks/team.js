@@ -39,7 +39,6 @@ export const actions = {
       await dispatch(actions.updateCache());
 
       if(withPlayer){
-        console.log('created')
         await dispatch(playerActions.createPlayer(team.id));
       }
 
