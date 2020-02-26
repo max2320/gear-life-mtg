@@ -14,21 +14,20 @@ To access go to https://gearlife.maxfs.com
 - Standard format support (20 life points, 10 poison)
 - Standard free-for-all up to 10 planeswalkers
 - Offline support
-
+- Team management
+- Multi formats
+  - Two headed giant (30 life points, 15 poison)
+  - Commander (30 life points, 15 poison)
+  - Free-for-all extended (30 life points, 15 poison)
+  - Emperor (20 life points, 10 poison)
+ 
 
 ## Roadmap
 
+- [ ] Match history (Mar/2020)
 - [ ] Multi formats
-  - [ ] Two headed giant (30 life points, 15 poison)
-  - [ ] Commander (30 life points, 15 poison)
-  - [ ] Free-for-all extended (30 life points, 15 poison)
-  - [ ] King format (30 life points, 10 poison)
-  - [ ] Emperor (20 life points, 10 poison)
   - [ ] Pioneer (20 life points, 10 poison)
-- [ ] Team management
 - [ ] Manual planeswalker sort
-- [ ] Performance improvements
-- [ ] Match history
 - [ ] Shared session between devices (network required)
 - [ ] Local/cloud deckset save for faster selection
 
@@ -36,7 +35,6 @@ To access go to https://gearlife.maxfs.com
 ## Feature requests
 
 You can create a [Issue](https://github.com/max2320/gear-life-mtg/issues) or fork and submit a pull-request
-
 
 ## Run
 
