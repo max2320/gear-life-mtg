@@ -8,10 +8,16 @@ class TeamList extends PureComponent{
     this.props.createTeam(true);
   }
 
+  get isDeletable(){
+    console.log(this.props.order.length> 2, this.props.allowCustom)
+    return this.props.allowCustom && this.props.order.length > 2;
+  }
+
   renderTeam(teamId) {
     return (
       <Team
         key={teamId}
+        isDeletable={this.isDeletable}
         {...this.props.teams[teamId]}
       />
     );
@@ -35,6 +41,12 @@ class TeamList extends PureComponent{
   render() {
     return (
       <div className="TeamList">
+        {!this.props.teamSetup && (
+          <div className="Altert Alert--error">
+            There is a team with no players!
+          </div>
+        )}
+
         {this.renderTeams()}
 
         <div className="TeamList__controls">

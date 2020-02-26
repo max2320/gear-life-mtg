@@ -18,10 +18,16 @@ class PlayerList extends PureComponent{
     return this.props.matchConfig.leaders.length > 0;
   }
 
+  get isDeletable(){
+    console.log(this.props.order.length> 2, this.props.allowCustom)
+    return this.props.allowCustom && this.props.order.length > 2;
+  }
+
   renderPlayer(playerId, leader) {
     return (
       <Player
         key={playerId}
+        isDeletable={this.isDeletable}
         showIcons={this.showIcons}
         leader={leader}
         {...this.props.players[playerId]}
@@ -55,7 +61,7 @@ class PlayerList extends PureComponent{
 
           <Link to='/teams/edit'
             className={`Button ${this.props.teamSetup ? 'Button--blue' : 'Button--red'}`}>
-            Teams {!this.props.teamSetup && '(err)' }
+            Teams
           </Link>
 
           <button

@@ -13,9 +13,6 @@ class Team extends PureComponent {
     this.props.setTeamName(this.id, name)
   }
 
-  handleSetName = () =>{
-  }
-
   render() {
     return (
       <div className='Team'>
@@ -26,10 +23,12 @@ class Team extends PureComponent {
             onInput={this.handleNameUpdate}
           />
 
-          <i
-            className="material-icons TeamHeader__remove"
-            onClick={this.handleRemove}
-          >close</i>
+          {this.props.isDeletable && (
+            <i
+              className="material-icons TeamHeader__remove"
+              onClick={this.handleRemove}
+            >close</i>
+          )}
         </div>
       </div>
     );

@@ -90,7 +90,7 @@ class Player extends PureComponent {
 
     return [
       this.renderTeamSelection(),
-      (
+      this.props.isDeletable && (
         <i
           className="material-icons PlayerHeader__remove"
           onClick={this.handleRemove}

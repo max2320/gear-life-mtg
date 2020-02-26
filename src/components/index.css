@@ -53,3 +53,19 @@ button::-moz-focus-inner {
   height: 100vh;
   overflow-y: auto;
 }
+
+
+.Alert{
+
+}
+.Alert--error{
+  flex: 1 100%;
+  margin: 5px;
+  padding: 5px;
+  font-weight: bold;
+  text-align: center;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  border-radius: 5px;
+}

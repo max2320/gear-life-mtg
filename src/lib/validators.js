@@ -7,7 +7,7 @@ const validators = {
   },
   teamsSizes: (teams, players) => {
     const teamSizes = teams.map(({ id }) => {
-      return players.filter(({ teamId })=> teamId === id).length;
+      return players.filter(({ teamId }) => teamId === id).length > 0;
     });
 
     return new Set(teamSizes).size === 1

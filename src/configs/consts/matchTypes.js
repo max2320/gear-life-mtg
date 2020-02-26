@@ -1,7 +1,8 @@
 import {
   StandardSvg,
   TwoHeadGiantSvg,
-  EmperorSvg
+  EmperorSvg,
+  CommanderSvg
 } from '../../assets/formats';
 
 export const matchTypes = {
@@ -37,6 +38,28 @@ export const matchTypes = {
     allowCustom: false,
     leaders: [1, 4],
     Symbol: EmperorSvg
+  },
+  commander: {
+    id: 'commander',
+    name: "Commander 1v1",
+    life: 30,
+    poison: 10,
+    teams: 2,
+    teamMembers: 1,
+    allowCustom: false,
+    leaders: [],
+    Symbol: CommanderSvg
+  },
+  edh_commander: {
+    id: 'edh_commander',
+    name: "Commander Free-for-all",
+    life: 40,
+    poison: 10,
+    teams: 2,
+    teamMembers: 1,
+    allowCustom: true,
+    leaders: [],
+    Symbol: CommanderSvg
   }
 };
 
