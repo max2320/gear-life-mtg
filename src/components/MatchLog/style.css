@@ -1,0 +1,96 @@
+.MatchLog{
+  display: flex;
+  flex-flow: column wrap;
+  width: 100%;
+  text-align: center;
+  color: #dfdfdf;
+  margin: 0 auto;
+}
+
+.MatchLog__container{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.MatchLog__team{
+  flex: 1 100px;
+  height: 50px;
+  margin: 5px;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+  background: rgba(255,255,255,0.3);
+}
+
+.MatchLog__team.selected{
+  background: rgba(20, 200, 20, 0.6);
+}
+
+.MatchLog__team-name{
+}
+
+.MatchLog__team-score{
+  font-size: 25px;
+  margin-top: 5px;
+}
+
+
+
+.MatchLogItem {
+  display: flex;
+  flex: 1 450px;
+  height: 50px;
+  margin: 5px;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 1px 1px 2px black;
+  background: rgba(255,255,255,0.3);
+}
+
+.MatchLogItem > div {
+  line-height: 40px;
+}
+
+.MatchLogItem__content {
+  flex: 1;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.MatchLogItem__match {
+  flex: 0 40px;
+  font-weight: bold;
+  font-size: 25px;
+  border-right: 1px solid rgba(255,255,255,0.3);
+  padding: 5px;
+  padding-left: 0;
+}
+
+.MatchLogItem__action {
+  flex: 0 70px;
+  display: flex;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.MatchLogItem__action svg {
+  flex: 1;
+  width: 40px;
+  height: 40px;
+}
+
+.MatchLogItem__action .value {
+  flex: 1;
+  width: 20px;
+  font-size: 25px;
+}
+
+.MatchLogItem__action.red{
+  color: #f00;
+}
+
+.MatchLogItem__action.green{
+  color: #0f0;
+}
