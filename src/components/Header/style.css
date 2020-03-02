@@ -5,14 +5,15 @@
 }
 
 .Header-icon{
-  margin: 5px 10px;
+  margin: 5px;
   display: inline-block;
 }
 
-.Header-icon--right{
+/* .Header-icon--right{
   float: right;
-}
+} */
 
 .Header-icon svg{
-  height: 45px;
+  height: 40px;
+  padding: 5px 0;
 }

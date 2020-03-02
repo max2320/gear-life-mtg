@@ -4,6 +4,8 @@ import './style.css';
 import { ReactComponent as MinusIcon} from '../../assets/minus.svg';
 import { ReactComponent as PlusIcon} from '../../assets/plus.svg';
 
+import Button from '../Button';
+
 
 class Counter extends PureComponent {
   allowUpdate(modifier){
@@ -26,24 +28,36 @@ class Counter extends PureComponent {
     this.allowUpdate(modifier) && this.props.onAction(modifier);
   }
 
+  handleLongAction = (operator) => {
+    const modifier = operator * Number(prompt("how many?", 1));
+
+    if(modifier !== NaN && typeof modifier === 'number'){
+      this.allowUpdate(modifier) && this.props.onAction(modifier);
+    }
+  }
+
   render() {
     return (
       <div className="Counter">
-        <button
+        <Button
           className="Counter__side"
-          onClick={this.handleAction.bind(this, -1)}>
+          onClick={this.handleAction.bind(this, -1)}
+          onClickAndHold={this.handleLongAction.bind(this, -1)}
+        >
           <MinusIcon />
-        </button>
+        </Button>
 
         <div className={`Counter__counter ${this.props.className || ''}`}>
           {this.props.value}
         </div>
 
-        <button
+        <Button
           className="Counter__side"
-          onClick={this.handleAction.bind(this, 1)}>
+          onClick={this.handleAction.bind(this, 1)}
+          onClickAndHold={this.handleLongAction.bind(this, 1)}
+        >
           <PlusIcon />
-        </button>
+        </Button>
       </div>
     );
   }

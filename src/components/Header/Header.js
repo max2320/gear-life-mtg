@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Config } from '../../assets/config.svg';
 import { ReactComponent as Dice } from '../../assets/dice.svg';
 import { ReactComponent as Github } from '../../assets/github.svg';
+import { ReactComponent as HistorySVG } from '../../assets/history.svg';
 
 import './style.css';
 
@@ -31,7 +32,7 @@ class Header extends PureComponent {
               <Dice />
             </Link>
             <Link className='Header-icon' to="/match/log">
-              <Dice />
+              <HistorySVG />
             </Link>
           </Fragment>
         )}
