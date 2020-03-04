@@ -41,8 +41,8 @@ class Counter extends PureComponent {
       <div className="Counter">
         <Button
           className="Counter__side"
-          onClick={this.handleAction.bind(this, -1)}
-          onClickAndHold={this.handleLongAction.bind(this, -1)}
+          onShortPress={this.handleAction.bind(this, -1)}
+          onLongPress={this.handleLongAction.bind(this, -1)}
         >
           <MinusIcon />
         </Button>
@@ -53,8 +53,8 @@ class Counter extends PureComponent {
 
         <Button
           className="Counter__side"
-          onClick={this.handleAction.bind(this, 1)}
-          onClickAndHold={this.handleLongAction.bind(this, 1)}
+          onShortPress={this.handleAction.bind(this, 1)}
+          onLongPress={this.handleLongAction.bind(this, 1)}
         >
           <PlusIcon />
         </Button>
