@@ -29,7 +29,8 @@ class Counter extends PureComponent {
   }
 
   handleLongAction = (operator) => {
-    const modifier = operator * Number(prompt("how many?", 1));
+    const number = Number(prompt("how many?", 1)) || 0;
+    const modifier = operator * number;
 
     if(modifier !== NaN && typeof modifier === 'number'){
       this.allowUpdate(modifier) && this.props.onAction(modifier);
