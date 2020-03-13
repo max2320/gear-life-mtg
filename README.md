@@ -8,13 +8,15 @@ To access go to https://gearlife.maxfs.com
 
 - Life counter
 - Poison counter
-- Roll d6 dice per planeswalker
-- Match planeswalker sorter
+- Counter buttons long-press input
+- Roll d20 dice per planeswalker
 - Deck colorset selection per planeswalker (including colorless)
-- Standard format support (20 life points, 10 poison)
-- Standard free-for-all up to 10 planeswalkers
-- Offline support
-- Team management
+- Full Offline support
+- Team and Players management
+- Match
+  - Planeswalker sorter
+  - History
+  - Round Winner Selection page
 - Multi formats
   - Two headed giant (30 life points, 15 poison)
   - Commander (30 life points, 15 poison)
@@ -24,7 +26,6 @@ To access go to https://gearlife.maxfs.com
 
 ## Roadmap
 
-- [ ] Match history (Mar/2020)
 - [ ] Multi formats
   - [ ] Pioneer (20 life points, 10 poison)
 - [ ] Manual planeswalker sort
@@ -49,7 +50,6 @@ $ docker-compose up
 ```bash
 $ docker-compose run --rm -e NODE_ENV=production -e PUBLIC_URL='https://gearlife.maxfs.com' web yarn build
 ```
-
 
 ### Without docker
 
