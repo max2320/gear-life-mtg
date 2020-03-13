@@ -80,11 +80,19 @@ class MatchLog extends Component {
     currentMatch: this.props.currentMatch
   }
 
+  logsCache = {}
+
   handleSelection = (currentMatch) => this.setState({ currentMatch })
 
   get log() {
     const { history } = this.props;
-    return history.filter(({ match }) => (match === this.state.currentMatch));
+    const { currentMatch } = this.state;
+
+    if(!this.logsCache[currentMatch]) {
+      this.logsCache[currentMatch] = history.filter(({ match }) => (match === currentMatch));
+    }
+
+    return this.logsCache[currentMatch];
   }
 
   get tabs() {
