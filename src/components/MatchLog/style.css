@@ -10,6 +10,7 @@
 .MatchLog__container{
   display: flex;
   flex-flow: row wrap;
+  width: 100%;
 }
 
 .MatchLog__team{
@@ -34,8 +35,6 @@
   font-size: 25px;
   margin-top: 5px;
 }
-
-
 
 .MatchLogItem {
   display: flex;
