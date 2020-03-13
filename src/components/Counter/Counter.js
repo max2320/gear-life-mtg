@@ -1,23 +1,23 @@
 import React, { PureComponent } from 'react';
 
 import './style.css';
+
 import { ReactComponent as MinusIcon} from '../../assets/minus.svg';
 import { ReactComponent as PlusIcon} from '../../assets/plus.svg';
 
 import Button from '../Button';
 
-
 class Counter extends PureComponent {
-  allowUpdate(modifier){
+  allowUpdate(modifier) {
     const { minValue, maxValue, value } = this.props;
     const nextValue = value + modifier;
     let allow = true;
 
-    if(minValue !== undefined){
+    if(minValue !== undefined) {
       allow = allow && minValue <= nextValue;
     }
 
-    if(maxValue !== undefined){
+    if(maxValue !== undefined) {
       allow = allow && maxValue >= nextValue;
     }
 
@@ -30,9 +30,9 @@ class Counter extends PureComponent {
 
   handleLongAction = (operator) => {
     const number = Number(prompt("how many?", 1)) || 0;
-    const modifier = operator * number;
+    const modifier = operator * Math.abs(number);
 
-    if(modifier !== NaN && typeof modifier === 'number'){
+    if(modifier !== NaN && typeof modifier === 'number') {
       this.allowUpdate(modifier) && this.props.onAction(modifier);
     }
   }
