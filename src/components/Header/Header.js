@@ -1,9 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { Link } from "react-router-dom";
 
 import { ReactComponent as Config } from '../../assets/config.svg';
 import { ReactComponent as Dice } from '../../assets/dice.svg';
 import { ReactComponent as Github } from '../../assets/github.svg';
+import { ReactComponent as HistorySVG } from '../../assets/history.svg';
 
 import './style.css';
 
@@ -24,10 +25,16 @@ class Header extends PureComponent {
           <Config />
         </a>
 
+
         {this.props.matchStarted && (
-          <Link className='Header-icon' to="/match/sort">
-            <Dice />
-          </Link>
+          <Fragment>
+            <Link className='Header-icon' to="/match/sort">
+              <Dice />
+            </Link>
+            <Link className='Header-icon' to="/match/log">
+              <HistorySVG />
+            </Link>
+          </Fragment>
         )}
 
         <a

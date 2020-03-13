@@ -72,7 +72,7 @@ export const actions = {
     }
   },
   registryAction: (actionObject) => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
       const { scoreBoard: { teams } } = getState();
       const { action, teamId, value } = actionObject;
 
@@ -94,12 +94,13 @@ export const actions = {
         }
       };
 
-      dispatch({ type: actionTypes.registryAction, payload });
-      dispatch(actions.logHistory(actionObject));
+      await dispatch({ type: actionTypes.registryAction, payload });
+      await dispatch(actions.logHistory(actionObject));
+      dispatch(actions.updateCache());
     }
   },
   registryRoundWinners: (teamIds) => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
       const {
         match: { matchConfig },
         scoreBoard: { currentMatch, teams },
@@ -127,12 +128,13 @@ export const actions = {
         teams: { ...newScoreBoard }
       };
 
-      dispatch({ type: actionTypes.registryRoundWinners, payload });
-      dispatch(actions.logHistory({
+      await dispatch({ type: actionTypes.registryRoundWinners, payload });
+      await dispatch(actions.logHistory({
         match: currentMatch,
         action: 'roundWinners',
         teamIds: teamIds
       }));
+      dispatch(actions.updateCache());
     }
   },
   logHistory:  (actionObject) => {

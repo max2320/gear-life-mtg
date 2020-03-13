@@ -1,21 +1,23 @@
 import React, { PureComponent } from 'react';
 
 import './style.css';
+
 import { ReactComponent as MinusIcon} from '../../assets/minus.svg';
 import { ReactComponent as PlusIcon} from '../../assets/plus.svg';
 
+import Button from '../Button';
 
 class Counter extends PureComponent {
-  allowUpdate(modifier){
+  allowUpdate(modifier) {
     const { minValue, maxValue, value } = this.props;
     const nextValue = value + modifier;
     let allow = true;
 
-    if(minValue !== undefined){
+    if(minValue !== undefined) {
       allow = allow && minValue <= nextValue;
     }
 
-    if(maxValue !== undefined){
+    if(maxValue !== undefined) {
       allow = allow && maxValue >= nextValue;
     }
 
@@ -26,24 +28,37 @@ class Counter extends PureComponent {
     this.allowUpdate(modifier) && this.props.onAction(modifier);
   }
 
+  handleLongAction = (operator) => {
+    const number = Number(prompt("how many?", 1)) || 0;
+    const modifier = operator * Math.abs(number);
+
+    if(modifier !== NaN && typeof modifier === 'number') {
+      this.allowUpdate(modifier) && this.props.onAction(modifier);
+    }
+  }
+
   render() {
     return (
       <div className="Counter">
-        <button
+        <Button
           className="Counter__side"
-          onClick={this.handleAction.bind(this, -1)}>
+          onShortPress={this.handleAction.bind(this, -1)}
+          onLongPress={this.handleLongAction.bind(this, -1)}
+        >
           <MinusIcon />
-        </button>
+        </Button>
 
         <div className={`Counter__counter ${this.props.className || ''}`}>
           {this.props.value}
         </div>
 
-        <button
+        <Button
           className="Counter__side"
-          onClick={this.handleAction.bind(this, 1)}>
+          onShortPress={this.handleAction.bind(this, 1)}
+          onLongPress={this.handleLongAction.bind(this, 1)}
+        >
           <PlusIcon />
-        </button>
+        </Button>
       </div>
     );
   }
