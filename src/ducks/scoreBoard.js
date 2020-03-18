@@ -125,6 +125,7 @@ export const actions = {
       }, {});
 
       const payload = {
+        currentMatch: (currentMatch + 1),
         teams: { ...newScoreBoard }
       };
 

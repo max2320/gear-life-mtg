@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Component } from 'react';
 import { Link } from "react-router-dom";
 
 import './style.css';
@@ -15,7 +15,7 @@ class MatchLogItem extends PureComponent {
   get signalClass() {
     const { action,  value } = this.props;
 
-    if(action === 'poison'){
+    if(action === 'poison') {
       if(value > 0) {
         return 'red';
       } else {
@@ -35,17 +35,29 @@ class MatchLogItem extends PureComponent {
     return this.actionIcons[action];
   }
 
-  renderContent(){
+  renderContent() {
     const { description, action } = this.props;
-    if(action === 'roundWinners'){
+    if(action === 'roundWinners') {
       return `Winner(s): ${description}`
     }
 
     return description;
   }
 
+  renderSymbol() {
+    const { value, action } = this.props;
+    if(action === 'roundWinners') { return; }
+    return(
+      <div className={`MatchLogItem__action ${this.signalClass}`}>
+        <div className="value">{value}</div>
+
+        {this.renderActionSymbol()}
+      </div>
+    );
+  }
+
   render() {
-    const { match, value } = this.props;
+    const { match } = this.props;
 
     return (
       <div className="MatchLogItem">
@@ -53,11 +65,7 @@ class MatchLogItem extends PureComponent {
           {(match + 1)}
         </div>
 
-        <div className={`MatchLogItem__action ${this.signalClass}`}>
-          <div className="value">{value}</div>
-
-          {this.renderActionSymbol()}
-        </div>
+        {this.renderSymbol()}
 
         <div className="MatchLogItem__content">
           {this.renderContent()}
@@ -67,12 +75,36 @@ class MatchLogItem extends PureComponent {
   }
 }
 
-class MatchLog extends PureComponent {
-  renderList() {
-    const { teamList, history} = this.props;
+class MatchLog extends Component {
+  state = {
+    currentMatch: this.props.currentMatch
+  }
 
-    return history.map((item)=>{
+  logsCache = {}
+
+  handleSelection = (currentMatch) => this.setState({ currentMatch })
+
+  get log() {
+    const { history } = this.props;
+    const { currentMatch } = this.state;
+
+    if(!this.logsCache[currentMatch]) {
+      this.logsCache[currentMatch] = history.filter(({ match }) => (match === currentMatch));
+    }
+
+    return this.logsCache[currentMatch];
+  }
+
+  get tabs() {
+    return new Array(this.props.currentMatch + 1).fill();
+  }
+
+  renderList() {
+    const { teamList} = this.props;
+
+    return this.log.map((item) => {
       let description = '';
+
       if(item.teamIds) {
         description = item.teamIds.map((id)=>(teamList[id].name)).join(', ');
       }else{
@@ -83,18 +115,34 @@ class MatchLog extends PureComponent {
     });
   }
 
+  renderTabs() {
+    return this.tabs.map((c, index)=>{
+      return (
+        <div
+          className={`Button Button--${this.state.currentMatch === index ? 'darkblue' : 'blue' }`}
+          onClick={this.handleSelection.bind(this, index)}
+        >
+          Match {index + 1}
+        </div>
+      );
+    })
+  }
+
   render() {
     return (
       <div className='MatchLog'>
         <h1>Match Log</h1>
 
-        <div className='MatchLog__container'>
-          {this.renderList()}
-        </div>
-
         <Link className='Button Button--green' to='/'>
           Back to match
         </Link>
+
+        <div className='MatchLog__container'>
+          <div className='MatchLog__container'>
+            {this.renderTabs()}
+          </div>
+          {this.renderList()}
+        </div>
       </div>
     );
   }

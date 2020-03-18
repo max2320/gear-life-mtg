@@ -37,6 +37,11 @@ button::-moz-focus-inner {
   color: #fff;
 }
 
+.Button--darkblue {
+  background: #4d1cd5;
+  color: #fff;
+}
+
 .Button--red {
   background: #960f0f;
   color: #fff;
