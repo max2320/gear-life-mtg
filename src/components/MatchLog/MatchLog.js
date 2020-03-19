@@ -31,7 +31,7 @@ class MatchLogItem extends PureComponent {
   }
 
   renderActionSymbol() {
-    const { action, value } = this.props;
+    const { action } = this.props;
     return this.actionIcons[action];
   }
 
