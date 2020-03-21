@@ -9,8 +9,10 @@ import { ReactComponent as HistorySVG } from '../../assets/history.svg';
 import './style.css';
 
 class Header extends PureComponent {
-  handleMatchSelection = () =>{
-    if(this.props.matchStarted && !window.confirm('Are you sure you wanna leave the match?')){
+  handleMatchSelection = (e) => {
+    e.preventDefault();
+
+    if(this.props.matchStarted && !window.confirm('Are you sure you wanna leave the match?')) {
       return;
     }
 
@@ -21,10 +23,13 @@ class Header extends PureComponent {
   render() {
     return (
       <div className="Header">
-        <a className='Header-icon' onClick={this.handleMatchSelection}>
+        <a
+          href='/match/selection'
+          className='Header-icon'
+          onClick={this.handleMatchSelection}
+        >
           <Config />
         </a>
-
 
         {this.props.matchStarted && (
           <Fragment>

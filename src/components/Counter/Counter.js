@@ -32,7 +32,7 @@ class Counter extends PureComponent {
     const number = Number(prompt("how many?", 1)) || 0;
     const modifier = operator * Math.abs(number);
 
-    if(modifier !== NaN && typeof modifier === 'number') {
+    if(!isNaN(modifier) && typeof modifier === 'number') {
       this.allowUpdate(modifier) && this.props.onAction(modifier);
     }
   }
